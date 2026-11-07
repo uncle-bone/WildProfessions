@@ -1,0 +1,14 @@
+## Interface: 16001
+## AllowLoadGameType: camelot
+## Title: WildProfessions
+## Notes: Profession progress and planning for WoW Forever
+## Author: Uncle Bone
+## Version: 1.0.0
+## SavedVariables: WildProfessionsDB
+
+Core.lua
+ProfessionAPI.lua
+Planner.lua
+UI.lua
+Integration.lua
+
