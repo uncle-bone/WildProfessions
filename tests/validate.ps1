@@ -30,6 +30,9 @@ $integration = Get-Content -LiteralPath (Join-Path $addonRoot 'Integration.lua')
 if ($integration -notmatch '_G\.NaowhForeverProfessions') { throw 'NaowhForever host detection is missing' }
 if ($integration -notmatch 'ProfessionsFrame') { throw 'Native profession pane integration is missing' }
 if ($integration -notmatch 'EllesmereUI') { throw 'EllesmereUI compatibility diagnostics are missing' }
+$ui = Get-Content -LiteralPath (Join-Path $addonRoot 'UI.lua') -Raw
+if ($ui -match 'SetMinResize') { throw 'Unsupported SetMinResize call remains in UI.lua' }
+if ($ui -notmatch 'SetResizeBounds') { throw 'Forever-supported resize bounds API is missing' }
 $allLua = (Get-ChildItem -LiteralPath $addonRoot -Filter '*.lua' -File | ForEach-Object { Get-Content -LiteralPath $_.FullName -Raw }) -join "`n"
 if ($allLua -match 'ProfessionsFrame\s*:\s*(SetPoint|SetParent|SetScale|SetMovable|SetResizable|StartMoving)\s*\(') {
     throw 'WildProfessions must not mutate Blizzard ProfessionsFrame geometry or parentage'

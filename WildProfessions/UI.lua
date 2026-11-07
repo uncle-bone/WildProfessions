@@ -39,7 +39,11 @@ function WP:CreateUI()
     main:SetMovable(true)
     main:EnableMouse(true)
     main:SetResizable(true)
-    main:SetMinResize(460, 420)
+    local canResize = type(main.SetResizeBounds) == "function"
+    if canResize then
+        canResize = pcall(main.SetResizeBounds, main, 460, 420)
+    end
+    if not canResize then main:SetResizable(false) end
     if main.SetBackdrop then
         main:SetBackdrop({ bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border", tile = true, tileSize = 32, edgeSize = 24, insets = { left = 8, right = 8, top = 8, bottom = 8 } })
     end
@@ -149,6 +153,7 @@ function WP:CreateUI()
         local w, h = main:GetSize()
         WP.db.settings.dashboardSize = { width = w, height = h }
     end)
+    if not canResize then resize:Hide() end
 
     local refresh = makeButton(main, "Refresh", 80, 22, function() WP:Refresh("manual") end)
     refresh:SetPoint("BOTTOMRIGHT", -32, 19)
