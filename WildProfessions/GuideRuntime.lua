@@ -42,7 +42,7 @@ function WP:GetGuideState(profession)
                 mapID = trainer.mapID,
                 x = trainer.x,
                 y = trainer.y,
-                target = gate.cap + 75,
+                target = gate.cap,
                 instructions = trainer.note or ("Train " .. gate.rank .. " before continuing."),
             }
         end
