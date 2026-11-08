@@ -2,7 +2,7 @@ local addonName, WP = ...
 WP = WP or {}
 _G.WildProfessions = WP
 WP.name = addonName or "WildProfessions"
-WP.version = "1.0.0"
+WP.version = "1.1.0-alpha.1"
 WP.professions = WP.professions or {}
 WP.selectedProfession = nil
 WP.refreshPending = false
@@ -60,6 +60,7 @@ function WP:Refresh(reason)
     self:ScanProfessions()
     self:UpdateDashboard()
     self:UpdateTracker()
+    if self.UpdateGuideArrow then self:UpdateGuideArrow() end
     if reason == "manual" then self:Print("Profession data refreshed.") end
 end
 
@@ -84,7 +85,7 @@ function WP:Diagnostics()
     self:Print("version " .. self.version .. " | TOC " .. tostring(toc or "unknown") .. " | professions detected " .. count .. ".")
     local compat = self.compat or {}
     self:Print("pane: " .. tostring(compat.hostKind or "none") .. " | NaowhForever: " .. (compat.naowhLoaded and "detected" or "not detected") .. " | EllesmereUI: " .. (compat.ellesmereLoaded and "detected" or "not detected") .. ".")
-    self:Print("Recipe routes and prices are not bundled as verified data yet; no costs or skill-up chances are fabricated.")
+    self:Print("Bundled guide data: Herbalism 1-300 with live skill checks and route waypoints. Other profession route packs are not bundled yet.")
 end
 
 local frame = CreateFrame("Frame")
@@ -101,6 +102,7 @@ frame:SetScript("OnEvent", function(_, event, ...)
     if event == "PLAYER_LOGIN" then
         WP:EnsureDatabase()
         WP:CreateUI()
+        if WP.InitializeGuideArrow then WP:InitializeGuideArrow() end
         WP:InitializeIntegration()
         WP:ScheduleRefresh("login")
     elseif event == "TRADE_SKILL_SHOW" then
@@ -126,12 +128,13 @@ SlashCmdList.WILDPROFESSIONS = function(message)
     message = (message or ""):lower():match("^%s*(.-)%s*$")
     if message == "refresh" then WP:Refresh("manual")
     elseif message == "tracker" then WP:ToggleTracker()
+    elseif message == "guide" then WP:ToggleGuideArrow()
     elseif message == "lock" then WP:ToggleLock()
     elseif message == "diagnostics" then WP:Diagnostics()
     elseif message == "hide" then WP:HideDashboard()
     elseif message == "" or message == "show" then WP:ToggleDashboard()
     else
-        WP:Print("Commands: /wp, /wp refresh, /wp tracker, /wp lock, /wp hide, /wp diagnostics")
+        WP:Print("Commands: /wp, /wp refresh, /wp tracker, /wp guide, /wp lock, /wp hide, /wp diagnostics")
     end
 end
 

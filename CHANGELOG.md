@@ -1,15 +1,12 @@
 # Changelog
 
-## 1.0.0 - Testing foundation
+## 1.1.0-alpha.1 - Skill-tracked Herbalism guide
 
-- Added standalone per-character profession tracking and bounded skill progress history.
-- Added the initial profession dashboard, compact progress tracker, strategy preference controls, and diagnostics.
-- Added a contextual launcher and companion panel for the Forever profession window.
-- Added optional host detection for the native Forever profession pane and NaowhForever's profession window.
-- Kept the addon independent of NaowhForever and EllesmereUI; no addon source, artwork, or datasets are copied.
-- Added guarded C_TradeSkillUI scanning with a legacy profession API fallback.
-- Fixed dashboard initialization to use Forever's `SetResizeBounds` API and safely disable resizing if unavailable.
-- Clearly mark recipe routes, costs, materials, gathering routes, and client runtime behavior as unverified or not yet implemented.
+- Added a guide runtime that chooses steps from the live profession skill and current rank cap.
+- Added Herbalism rank-training reminders at skill 50, 125, and 200.
+- Added a movable route tracker and directional waypoint arrow.
+- Added a Skyborne starter step and Alliance-friendly Herbalism route through skill 300.
+- Marked route-area waypoint coordinates as approximate and retained the source's high-level validation caveat.
+- Kept the addon independent of external guide or database addons.
 
-This is an early testing build, not a claim that every requested leveling, recipe, gathering, or Forever-specific feature is complete.
-
+This preview contains Herbalism only. Other profession guide data, recipe material lists, live-client behavior, and waypoint accuracy have not been verified in game.

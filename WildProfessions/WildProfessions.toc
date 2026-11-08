@@ -3,12 +3,15 @@
 ## Title: WildProfessions
 ## Notes: Profession progress and planning for WoW Forever
 ## Author: Uncle Bone
-## Version: 1.0.0
+## Version: 1.1.0-alpha.1
 ## SavedVariables: WildProfessionsDB
 
 Core.lua
 ProfessionAPI.lua
+RouteData.lua
+GuideRuntime.lua
 Planner.lua
 UI.lua
+GuideArrow.lua
 Integration.lua
 

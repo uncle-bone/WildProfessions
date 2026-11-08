@@ -56,7 +56,7 @@ function WP:CreateUI()
     title:SetText("WildProfessions")
     local version = createText(main, "GameFontDisableSmall", 11)
     version:SetPoint("TOPRIGHT", -40, -22)
-    version:SetText("v" .. self.version .. "  |  TESTING")
+    version:SetText("v" .. self.version .. "  |  HERBALISM GUIDE")
 
     local close = CreateFrame("Button", nil, main, "UIPanelCloseButton")
     close:SetPoint("TOPRIGHT", -5, -5)
@@ -163,7 +163,7 @@ function WP:CreateUI()
     main:Hide()
 
     local tracker = CreateFrame("Frame", "WildProfessionsTracker", UIParent, "BackdropTemplate")
-    tracker:SetSize(260, 112)
+    tracker:SetSize(260, 148)
     tracker:SetFrameStrata("MEDIUM")
     tracker:SetClampedToScreen(true)
     tracker:SetMovable(true)
@@ -193,7 +193,9 @@ function WP:CreateUI()
     tracker.activity = createText(tracker, "GameFontDisableSmall", 10)
     tracker.activity:SetPoint("TOPLEFT", 10, -64)
     tracker.activity:SetWidth(238)
+    tracker.activity:SetHeight(72)
     tracker.activity:SetJustifyH("LEFT")
+    tracker.activity:SetJustifyV("TOP")
     local trackerClose = CreateFrame("Button", nil, tracker, "UIPanelCloseButton")
     trackerClose:SetSize(22, 22)
     trackerClose:SetPoint("TOPRIGHT", -1, -1)
@@ -249,7 +251,10 @@ function WP:UpdateDashboard()
         local maxSkill = math.max(selected.maxSkill or 0, 1)
         self.dashboardProgress:SetMinMaxValues(0, maxSkill)
         self.dashboardProgress:SetValue(selected.skill or 0)
-        self.detailText:SetText(string.format("|cffffffff%s|r\nSkill: %d / %d\n\nCurrent goal: continue %s progression.\n\nRecommendation: %s\n\nStrategy: %s\n\nRecipe database: not loaded\nMaterial totals and prices: unavailable\nSource verification: no route record", selected.name, selected.skill or 0, selected.maxSkill or 0, selected.name, status.text, strategyNames[strategy] or strategy))
+        local goal = status.title or "No bundled route"
+        local detailText = status.text or "No guide data is available for this profession yet."
+        local zoneText = status.zone and ("\nWaypoint zone: " .. status.zone) or ""
+        self.detailText:SetText(string.format("|cffffffff%s|r\nSkill: %d / %d\n\nCurrent step: %s%s\n\n%s\n\nPlanning preference: %s\n\nRecipe cost and market pricing are not included in this guide build.", selected.name, selected.skill or 0, selected.maxSkill or 0, goal, zoneText, detailText, strategyNames[strategy] or strategy))
     else
         self.dashboardProgress:SetMinMaxValues(0, 1)
         self.dashboardProgress:SetValue(0)
@@ -273,7 +278,15 @@ function WP:UpdateTracker()
     self.trackerFrame.progress:SetText(string.format("Skill %d / %d  (%d%%)", p.skill or 0, p.maxSkill or 0, percent))
     self.trackerFrame.status:SetMinMaxValues(0, math.max(p.maxSkill or 0, 1))
     self.trackerFrame.status:SetValue(p.skill or 0)
-    self.trackerFrame.activity:SetText("Next route step: awaiting verified recipe data")
+    local guide = WP.Planner.GetStatus(p)
+    if guide.status == "active" or guide.status == "trainer" then
+        local herbs = guide.herbs and ("\n" .. guide.herbs) or ""
+        self.trackerFrame.activity:SetText((guide.title or "Current step") .. "\n" .. (guide.zone or "Route") .. " · target skill " .. tostring(guide.target or 300) .. herbs)
+    elseif guide.status == "complete" then
+        self.trackerFrame.activity:SetText("Guide complete: Herbalism 300.")
+    else
+        self.trackerFrame.activity:SetText(guide.text or "No route is bundled for this profession yet.")
+    end
 end
 
 function WP:ToggleDashboard()

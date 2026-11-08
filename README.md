@@ -1,43 +1,39 @@
 # WildProfessions
 
-Independent profession progress tracker for World of Warcraft: Forever.
+A standalone profession tracker and guide addon for WoW Forever.
 
-**Current build:** 1.0.0 testing foundation (not yet a feature-complete release)  
-**Target client:** WoW Forever; last reported build 1.60.1.70790. Interface compatibility must be confirmed in game.
+**Current build:** 1.1.0-alpha.1 preview  
+**Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
-## Current implementation
+## What works in this preview
 
-- Detects profession skill snapshots through the legacy profession API when available, with a guarded newer-API fallback.
-- Tracks per-character profession skill and bounded skill-change history in SavedVariables.
-- Provides a movable dashboard and compact tracker, display selection, hide/lock controls, and diagnostics.
-- Keeps three planning strategy preferences (fastest, cheapest, materials already owned).
-- Explicitly reports when route data is unavailable instead of inventing recipe, price, or skill-up recommendations.
-- Has no external addon dependency and performs scans only on login or profession-related events/manual refresh.
-- Adds a small `WP` launcher beside the active profession window and opens an addon-owned planner companion beside it. Use `/wp` for the standalone view.
-- Detects the NaowhForever profession window when it is active and follows that window instead of the transparent native frame.
-- Remains independent of EllesmereUI; its launcher and panel are separate frames and never move, resize, reparent, scale, or add children to Blizzard's profession frame.
+- Reads the character's current profession skill and cap from the game APIs.
+- Automatically selects the next Herbalism step from the live skill value; the guide catches up when a character starts partway through.
+- Reminds you to train Journeyman, Expert, or Artisan when your skill cap shows that rank is missing.
+- Shows a movable step tracker and a separate movable directional arrow to the current route waypoint.
+- Provides a Skyborne-friendly starter waypoint and an Alliance Herbalism progression through 300.
+- Uses the game's Find Herbs tracking for actual herb nodes. The addon arrow points to an approximate farming area; it does not track individual herb spawns.
+- Keeps the addon standalone; Questie, QuestieDB, Zygor, and RestedXP are not runtime requirements.
 
-## Not implemented in this foundation
+## Current guide coverage
 
-Recipe enumeration, researched 1-300 routes, material inventory matching, shopping/crafting queue UI, trainer maps, auction prices, gathering routes, Legacy/Camping/Merchant's Favor datasets, and live-client verification are not yet complete. These must be added from compatible APIs and source-attributed Forever data before calling the addon feature-complete.
+Herbalism is the first bundled route. The other professions from the WoW Professions Forever index are not in the addon yet. The route has concise original instructions based on the guide's skill brackets and herb requirements. Farming waypoints are area-level approximations, and the source notes its 170+ route was not fully live-tested.
 
-## Profession-window integration and UI compatibility
-
-The addon uses the Forever profession window's open/close and profession-selection signals to keep its panel contextual. The `WP` launcher and planner are top-level addon frames. They anchor to the active profession window as siblings; they do not replace its recipe list or change its protected frame. If NaowhForever's `NaowhForeverProfessions` window is visible, WildProfessions uses that as the host. Otherwise it uses the visible native `ProfessionsFrame`. EllesmereUI remains optional and is not queried for theme internals or required as a dependency. See [compatibility notes](docs/COMPATIBILITY.md).
+Recipe crafting lists, shopping totals, auction prices, recipe availability tracking, and trainer route automation are not included in this preview.
 
 ## Install
 
-Copy the `WildProfessions` folder into `World of Warcraft/_retail_/Interface/AddOns/` (use the AddOns directory for your Forever client), then enable it on the character select screen. Use `/wp` to open the dashboard.
+Download the repository ZIP, extract it, then copy the inner `WildProfessions` folder into the Forever client's `Interface/AddOns` directory. Enable WildProfessions at character select and reload the UI.
 
 ## Commands
 
-- `/wp` - show/hide dashboard
-- `/wp refresh` - refresh profession snapshot
-- `/wp tracker` - show/hide compact tracker
-- `/wp lock` - toggle tracker movement lock
-- `/wp diagnostics` - report build and API detection status
+- `/wp` — open or close the dashboard
+- `/wp tracker` — show or hide the movable profession step tracker
+- `/wp guide` — show or hide the waypoint arrow
+- `/wp refresh` — rescan the live profession skill
+- `/wp lock` — lock or unlock the tracker
+- `/wp diagnostics` — show detected client and guide coverage
 
-## Research and licensing
+## Source
 
-The independent design uses NaowhForever only as architectural research; no NaowhForever source, databases, or artwork are included. Profession recipes and leveling routes need their own provenance and live verification. See [research notes](docs/RESEARCH.md).
-
+The route is an original in-addon summary of the public [WoW Forever Herbalism guide](https://www.wow-professions.com/forever/herbalism-leveling-guide). It does not include that page's prose or map artwork.
