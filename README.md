@@ -1,9 +1,15 @@
 
-## 1.3.0-test.3 downloadable test build
+## 1.3.0-test.4 hotfix test build
+
+[Download WildProfessions 1.3.0-test.4](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.4.zip)
+
+Fixes the embedded planner pricing file syntax error and guards tracker settings until SavedVariables are ready. This is an install-ready test ZIP, not a stable release.
+
+## Previous build: 1.3.0-test.3
 
 [Download WildProfessions 1.3.0-test.3](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.3.zip)
 
-This is an install-ready test ZIP. Please report in-game errors and route/UI behavior; it is not a stable release.
+This is an install-ready test ZIP. It is superseded by test.4.
 
 ## Previous build: 1.2.0-test.6 full test build
 
