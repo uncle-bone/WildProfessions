@@ -1,1 +1,339 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×Nıé:-jZ.¶›­–)Ş³VÆö6ÂòÂuÒââà ¥uå&÷WFTFFÒ°¢†W&&Æ—6ÒÒ°¢æÖRÒ$†W&&Æ—6Ò"À¢Ö…6¶–ÆÂÒ3À¢6÷W&6RÒ&‡GG3¢ò÷wwrçv÷r×&öfW76–öç2æ6öÒöf÷&WfW"ö†W&&Æ—6ÒÖÆWfVÆ–ærÖwV–FR"À¢6÷W&6U7FGW2Ò%F†R6÷W&6R—2&WFÖFW&—fVC²÷'F–öç2&÷fR6¶–ÆÂsÖ’æ÷B&RÆ—fR×FW7FVBâ"À¢&÷WFTæ÷FRÒ%v—ö–çG2Ö&²&÷†–ÖFRf&Ö–ær&V2Âæ÷B†W&"æöFRÆö6F–öç2âW6Rf–æB†W&'2öâF†RÖ–æ–Öf÷"Æ—fRæöFRG&6¶–ærâ"À¢&æ´vFW2Ò°¢²6¶–ÆÂÒSÂ6ÒsRÂ&æ²Ò$¦÷W&æW–Öâ"ÒÀ¢²6¶–ÆÂÒ#RÂ6ÒSÂ&æ²Ò$W‡W'B"ÒÀ¢²6¶–ÆÂÒ#Â6Ò##RÂ&æ²Ò$'F—6â"ÒÀ¢ÒÀ¢G&–æW"Ò°¢¦öæRÒ%¦W‡&2—6ÆR"À¢Ö”BÒ#S#À¢‚ÒSrã’À¢’ÒsRãRÀ¢æÖRÒ%7—&–VÂæ–v‡G&–â"À¢æ÷FRÒ%6·–&÷&æRG&–æW'27—&–VÂæ–v‡G&–âæB†Æ76fW&æ'&VW¦R6âG&–â†W&&Æ—6ÒF‡&÷Vv‚3âÆÆ–æ6R6—FÂG&–æW'2&RÇFW&æF—fW2â"À¢ÒÀ¢7FW2Ò°¢°¢F&vWBÒSÀ¢F—FÆRÒ%7F'FW"†W&'2+r(	3S"À¢¦öæRÒ%¦W‡&2—6ÆR"À¢Ö”BÒ#S#À¢‚ÒCbã’À¢’Ò#bãÀ¢†W&'2Ò%V6V&ÆööÒ+r6–ÇfW&ÆVb+rV'F‡&ö÷BB6¶–ÆÂR"À¢–ç7G'V7F–öç2Ò$vF†W"&÷VæBF†R7F'FW"&VVçF–Â†W&&Æ—6Ò&V6†W2Sâ6·–&÷&æR6âÆV&â†W&&Æ—6Òg&öÒF†R†'fW7F–ærv–æG7FöæW2VW7B&Wv&B÷"G&–æW"âGW&âöâf–æB†W&'3²G&6¶–ærGW&ç2öfbgFW"FVF‚â"À¢ÒÀ¢°¢F&vWBÒRÀ¢F—FÆRÒ$ÖvW&÷–ÂæB'&–'F†÷&â+rS(	3R"À¢¦öæRÒ$F&·6†÷&R"À¢Ö”BÒC3’À¢‚Ò3‚ãÀ¢’ÒCRãÀ¢†W&'2Ò$ÖvW&÷–Â+r'&–'F†÷&â+r7G&ævÆV¶VÇg&öÒ6¶–ÆÂƒR"À¢–ç7G'V7F–öç2Ò$F&·6†÷&R—2F†RÆÆ–æ6R&÷WFR6†ö–6RâÆö6‚ÖöFâ—2V–WFW"ÇFW&æF—fRâG&–â¦÷W&æW–ÖâB6¶–ÆÂS&Vf÷&R6öçF–çV–ærâ"À¢ÒÀ¢°¢F&vWBÒRÀ¢F—FÆRÒ$ÖvW&÷–ÂæB'&–'F†÷&â+rsÓR"À¢¦öæRÒ%6–ÇfW'–æRf÷&W7B"À¢†W&'2Ò$ÖvW&÷–Â+r'&–'F†÷&â+r7G&ævÆV¶VÇg&öÒ6¶–ÆÂƒR"À¢–ç7G'V7F–öç2Ò$†÷&FR÷F–öã¢F†RÆ÷vW"'B7W÷'G26ÖÆÂÆö÷3²Ö÷VçFVB6†&7FW'26âföÆÆ÷rF†RÖ–â&öBâF†RvRöffW'26–ÇfW'–æRf÷"†÷&FRæBÆö6‚ÖöFâ÷"F&·6†÷&Rf÷"ÆÆ–æ6Râ"À¢ÒÀ¢°¢F&vWBÒ#RÀ¢F—FÆRÒ$''V—6WvVVBæBv–ÆB7FVVÆ&ÆööÒ+r^(	3#R"À¢¦öæRÒ$†–ÆÇ6'&Bfö÷F†–ÆÇ2"À¢Ö”BÒC#BÀ¢‚ÒCRãÀ¢’ÒSãÀ¢†W&'2Ò$''V—6WvVVB+rv–ÆB7FVVÆ&ÆööÒ"À¢–ç7G'V7F–öç2Ò$f&ÒF†RÆ÷vW"×&—6²†–ÆÇ6'&B&V2â7FöæWFÆöâÖ÷VçF–ç2—2âÇFW&æF—fRÂ'WB6öÖRö6¶WG2†fR†–v†W"ÖÆWfVÂVæVÖ–W2â"À¢ÒÀ¢°¢F&vWBÒSÀ¢F—FÆRÒ$6öçF–çVR–â†–ÆÇ6'&B+r#^(	3S"À¢¦öæRÒ$†–ÆÇ6'&Bfö÷F†–ÆÇ2"À¢Ö”BÒC#BÀ¢‚ÒCRãÀ¢’ÒSãÀ¢†W&'2Ò$''V—6WvVVB+rv–ÆB7FVVÆ&ÆööÒ+r¶–æw6&ÆööBg&öÒ6¶–ÆÂ#R"À¢–ç7G'V7F–öç2Ò$6öçF–çVRF†R†–ÆÇ6'&BÆö÷âG&–âW‡W'BB6¶–ÆÂ#R&Vf÷&RF†R&öfW76–öâ&V6†W2—G2S6â"À¢ÒÀ¢°¢F&vWBÒsÀ¢F—FÆRÒ$FB¶–æw6&ÆööBæBÆ–fW&ö÷B+rS(	3s"À¢¦öæRÒ$†–ÆÇ6'&Bfö÷F†–ÆÇ2"À¢Ö”BÒC#BÀ¢‚ÒCRãÀ¢’ÒSãÀ¢†W&'2Ò$¶–æw6&ÆööB+rÆ–fW&ö÷Bg&öÒ6¶–ÆÂS"À¢–ç7G'V7F–öç2Ò$FB¶–æw6&ÆööBæBÆ–fW&ö÷Bv†VâF†V—"6¶–ÆÂ&WV—&VÖVçG2&RÖWBâ7FöæWFÆöâ—2âÇFW&æFR¦öæRâ"À¢ÒÀ¢°¢F&vWBÒ#À¢F—FÆRÒ%7G&ævÆWF†÷&â÷"&F†’+rs(	3#"À¢¦öæRÒ%7G&ævÆWF†÷&âfÆR"À¢Ö”BÒC3BÀ¢‚Ò#‚ãÀ¢’ÒCRãÀ¢†W&'2Ò$¶–æw6&ÆööB+rÆ–fW&ö÷B+rfFVÆVb+rvöÆGF†÷&â+r¶†Fv"w2v†—6¶W"g&öÒƒR"À¢–ç7G'V7F–öç2Ò%W6RF†R7G&ævÆWF†÷&â&÷WFR÷"6†ö÷6R&F†’†–v†ÆæG2–b—B—2Ö÷&R6öçfVæ–VçBâ&W&RFòG&–â'F—6âB6¶–ÆÂ#â"À¢ÒÀ¢°¢F&vWBÒ#RÀ¢F—FÆRÒ$f–æ—6‚F†R7W'&VçB&÷WFR+r#(	3#R"À¢¦öæRÒ%7G&ævÆWF†÷&âfÆR"À¢Ö”BÒC3BÀ¢‚Ò#‚ãÀ¢’ÒCRãÀ¢†W&'2Ò$¶–æw6&ÆööB+rÆ–fW&ö÷B+rfFVÆVb+rvöÆGF†÷&â"À¢–ç7G'V7F–öç2Ò%G&–â'F—6âB6¶–ÆÂ#ÂF†Vâ6öçF–çVR'&–VfÇ’–â7G&ævÆWF†÷&â÷"&F†’&Vf÷&RÖ÷f–ærFòFæ&—2÷"6V&–ærv÷&vRâ"À¢ÒÀ¢°¢F&vWBÒ#3À¢F—FÆRÒ%W'ÆRÆ÷GW2æBf—&V&ÆööÒ+r#^(	3#3"À¢¦öæRÒ%Fæ&—2"À¢Ö”BÒCCbÀ¢‚ÒSãÀ¢’Ò3ãÀ¢†W&'2Ò%W'ÆRÆ÷GW2+rf—&V&ÆööÒ"À¢–ç7G'V7F–öç2Ò$f&ÒFæ&—2÷"6V&–ærv÷&vRâæV—F†W"¦öæR†2â†W&&Æ—6ÒG&–æW"Â6òG&–â'F—6â&Vf÷&RG&fVÆ–ærâ"À¢ÒÀ¢°¢F&vWBÒ#sÀ¢F—FÆRÒ%F†R†–çFW&ÆæG2+r#3(	3#s"À¢¦öæRÒ%F†R†–çFW&ÆæG2"À¢Ö”BÒC#RÀ¢‚ÒcãÀ¢’ÒSãÀ¢†W&'2Ò%7Væw&72+rW'ÆRÆ÷GW2+rvöÆFVâ6ç6Ò+rv†÷7B×W6‡&ööÒg&öÒ6¶–ÆÂ#CR"À¢–ç7G'V7F–öç2Ò%W6RF†RÖ&¶VB6fR&Vf÷"v†÷7B×W6‡&ööÒöæ6R6¶–ÆÂ#CR—2&V6†VBâ6öçF–çVRvF†W&–ærVçF–Â#sâ"À¢ÒÀ¢°¢F&vWBÒ3À¢F—FÆRÒ$fVÇvööB+r#s(	33"À¢¦öæRÒ$fVÇvööB"À¢Ö”BÒCC‚À¢‚ÒSãÀ¢’Ò#RãÀ¢†W&'2Ò%7Væw&72+rw&ö×6&ÆööB+rvöÆFVâ6ç6Ò+rG&VÖfö–Â+rÖ÷VçF–â6–ÇfW'6vR+rÆwVV&ÆööÒ"À¢–ç7G'V7F–öç2Ò$6öçF–çVRvF†W&–ær7&÷72fVÇvööBVçF–Â†W&&Æ—6Ò&V6†W23â"À¢ÒÀ¢ÒÀ¢ÒÀ§Ğ ¦Æö6Â†W&"Òuå&÷WFTFFæ†W&&Æ—6Ğ¦†W&"ç6÷W&6RÒ&‡GG3¢ò÷wwrçv÷r×&öfW76–öç2æ6öÒöf÷&WfW"ö†W&&Æ—6ÒÖÆWfVÆ–ærÖwV–FR ¦†W&"ç6÷W&6U7FGW2Ò$f÷&WfW"&WFÖFW&—fVBâF†RvRv&ç2F†B†–v‚×6¶–ÆÂ6V7F–öç2Ö’æ÷B†fR&VVâÆ—fR×FW7FVBâ ¦†W&"ç&÷WFTæ÷FRÒ%¦öæR6†ö–6W2&R7VÖÖ&—¦VBg&öÒF†R6÷W&6RÖ3²v—ö–çG2&R'&öB&V2âW6Rf–æB†W&'2f÷"Æ—fRæöFW2â ¦†W&"ç7FW2Ò°¢²F&vWBÒsÂF—FÆRÒ$†W&&Æ—6ÒÓs"Â¦öæRÒ%7F'F–ær¦öæR"ÂÖ”BÒ#S#Â‚ÒCbã’Â’Ò#bãÂ†W&'2Ò%V6V&ÆööÒÂ6–ÇfW&ÆVbÂV'F‡&ö÷BƒR’"Â–ç7G'V7F–öç2Ò$6†ö÷6R7F'F–ær¦öæRv—F‚f7B†W&"&W7vç2â6·–&÷&æR6âÆV&â†W&&Æ—6Òg&öÒF†Rv–ÆB†'fW7B&Wv&Bf÷"†'fW7F–ærv–æG7FöæW2â"Â6†ö–6W2Ò²$GW&÷F""Â$×VÆv÷&R"Â%F—&—6fÂvÆFW2"Â%¦W‡&2—6ÆR"Â$VÇw–æâf÷&W7B"Â$GVâÖ÷&öv‚"Â%FVÆG&76–Â"ÒÒÀ¢²F&vWBÒRÂF—FÆRÒ$†W&&Æ—6ÒsÓR"Â¦öæRÒ%6–ÇfW'–æRÂÆö6‚ÖöFâÂ÷"F&·6†÷&R"ÂÖ”BÒC3’Â‚Ò3‚ãÂ’ÒCRãÂ†W&'2Ò$ÖvW&÷–ÂÂ'&–'F†÷&âÂ7G&ævÆV¶VÇƒƒR’"Â–ç7G'V7F–öç2Ò%G&–â¦÷W&æW–ÖâBSâF†RwV–FRöffW'2f7F–öâÖ&÷&–FR&÷WFW2–âÆÂF‡&VR¦öæW2â"Â6†ö–6W2Ò²%6–ÇfW'–æRf÷&W7B"Â$Æö6‚ÖöFâ"Â$F&·6†÷&R"ÒÒÀ¢²F&vWBÒsÂF—FÆRÒ$†W&&Æ—6ÒRÓs"Â¦öæRÒ$†–ÆÇ6'&Bfö÷F†–ÆÇ2÷"7FöæWFÆöâÖ÷VçF–ç2"ÂÖ”BÒC#BÂ‚ÒCRãÂ’ÒSãÂ†W&'2Ò$''V—6WvVVBÂv–ÆB7FVVÆ&ÆööÒÂ¶–æw6&ÆööBƒ#R’ÂÆ–fW&ö÷BƒS’"Â–ç7G'V7F–öç2Ò%F†RwV–FRöffW'2&÷F‚¦öæW2â³R†W&&Æ—6Ò&öçW2W&Ö—G2¶–æw6&ÆööBB#â"Â6†ö–6W2Ò²$†–ÆÇ6'&Bfö÷F†–ÆÇ2"Â%7FöæWFÆöâÖ÷VçF–ç2"ÒÒÀ¢²F&vWBÒ#RÂF—FÆRÒ$†W&&Æ—6ÒsÓ#R"Â¦öæRÒ%7G&ævÆWF†÷&âfÆR÷"&F†’†–v†ÆæG2"ÂÖ”BÒC3BÂ‚Ò#‚ãÂ’ÒCRãÂ†W&'2Ò$¶–æw6&ÆööBÂÆ–fW&ö÷BÂfFVÆVbÂvöÆGF†÷&âÂ¶†Fv"w2v†—6¶W"ƒƒR’"Â–ç7G'V7F–öç2Ò$6†ö÷6RF†R&÷WFRF†B7V—G2–÷W"G&fVÂâG&–â'F—6âB#&Vf÷&R6öçF–çV–ærâ"Â6†ö–6W2Ò²%7G&ævÆWF†÷&âfÆR"Â$&F†’†–v†ÆæG2"ÒÒÀ¢²F&vWBÒ#3ÂF—FÆRÒ$†W&&Æ—6Ò#RÓ#3"Â¦öæRÒ%Fæ&—2÷"6V&–ærv÷&vR"ÂÖ”BÒCCbÂ‚ÒSãÂ’Ò3ãÂ†W&'2Ò%W'ÆRÆ÷GW2Âf—&V&ÆööÒ"Â–ç7G'V7F–öç2Ò$æV—F†W"¦öæR†2â†W&&Æ—6ÒG&–æW#²ÆV&â'F—6â&Vf÷&RG&fVÆ–ærâ"Â6†ö–6W2Ò²%Fæ&—2"Â%6V&–ærv÷&vR"ÒÒÀ¢²F&vWBÒ#sÂF—FÆRÒ$†W&&Æ—6Ò#3Ó#s"Â¦öæRÒ%F†R†–çFW&ÆæG2"ÂÖ”BÒC#RÂ‚ÒcãÂ’ÒSãÂ†W&'2Ò%7Væw&72ÂW'ÆRÆ÷GW2ÂvöÆFVâ6ç6ÒÂv†÷7B×W6‡&ööÒƒ#CR’"Â–ç7G'V7F–öç2Ò%F†R6÷W&6RÖ–æ6ÇVFW26fRFWF÷W"f÷"v†÷7B×W6‡&ööÒB#CRâ"ÒÀ¢²F&vWBÒ3ÂF—FÆRÒ$†W&&Æ—6Ò#sÓ3"Â¦öæRÒ$fVÇvööB"ÂÖ”BÒCC‚Â‚ÒSãÂ’Ò#RãÂ†W&'2Ò%7Væw&72Âw&ö×6&ÆööBÂvöÆFVâ6ç6ÒÂG&VÖfö–ÂÂÖ÷VçF–â6–ÇfW'6vRÂÆwVV&ÆööÒ"Â–ç7G'V7F–öç2Ò$6öçF–çVRF‡&÷Vv‚F†RfVÇvööB&÷WFRVçF–Â3â"ÒÀ§Ğ¦Æö6ÂwV–FU&ö÷BÒ&‡GG3¢ò÷wwrçv÷r×&öfW76–öç2æ6öÒöf÷&WfW"ò ¦Æö6ÂgVæ7F–öâ&Vv—7FW$wV–FR†æÖRÂ6ÇVrÂ6÷W&6U7FGW2Â7FW2Âæ÷FW2Â&æ´vFW2¢Æö6Â¶W’ÒæÖS¦Æ÷vW"‚“¦w7V"‚%µâVÒ"Â""¢Æö6Â&÷WFRÒ°¢æÖRÒæÖRÂÖ…6¶–ÆÂÒ3Â6÷W&6RÒwV–FU&ö÷Bââ6ÇVrÀ¢6÷W&6U7FGW2Ò6÷W&6U7FGW2À¢&æ´vFW2Ò&æ´vFW2÷"°¢²6¶–ÆÂÒSÂ6ÒsRÂ&æ²Ò$¦÷W&æW–Öâ"ÒÀ¢²6¶–ÆÂÒ#RÂ6ÒSÂ&æ²Ò$W‡W'B"ÒÀ¢²6¶–ÆÂÒ#Â6Ò##RÂ&æ²Ò$'F—6â"ÒÀ¢ÒÀ¢7FW2Ò·ÒÀ¢Ğ¢f÷"’Â7FW–â——'2‡7FW2’Fğ¢&÷WFRç7FW5¶•ÒÒ²F&vWBÒ7FW³ÒÂF—FÆRÒ7FW³%ÒÂfö7W2Ò7FW³5ÒÂ–ç7G'V7F–öç2Ò7FW³EÒÂ6÷W&6U7FGW2Ò7FW³UÒĞ¢Væ@¢–bæ÷FW2F†Vâ&÷WFRç&÷WFTæ÷FRÒæ÷FW2Væ@¢uå&÷WFTFF¶¶W•ÒÒ&÷WFP¦Væ@ §&Vv—7FW$wV–FR‚$Æ6†V×’"Â&Æ6†V×’ÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFwV–FRâF†RvR6—2F†R##RÓ3&÷WFR—2æ÷Bf–æÃ²F†RÆ7Bö–çG2&RVæFV6–FVBâ"Â°¢²Â$&VçF–6R+rÓ"Â#’Ö–æ÷"&6æRVÆ—†—'2Â÷"’VÆ—†—"öbÖ–æ÷"f÷&6R"Â%F†RÇFW&æF—fR&WÆ6W2F†Rv†öÆR7FW–b6–ÇfW&ÆVb—26†VW"â'W’V×G’f–Ç2g&öÒæV&'’7WÇ’÷"G&FRfVæF÷'2â"ÒÀ¢²SRÂ$&VçF–6R+rÓSR"Â#CRÖ–æ÷"FVfVç6RVÆ—†—'2"Â$ÖFW&–Ç3¢6–ÇfW&ÆVbÂV6V&ÆööÒæBV×G’f–Ç2â"ÒÀ¢²cRÂ$¦÷W&æW–Öâ+rSRÓcR"Â#Ö–æ÷"Öæ÷F–öç2"Â%G&–â¦÷W&æW–ÖâB6¶–ÆÂSæBÆWfVÂ&Vf÷&R76–ærF†RsR6â"ÒÀ¢²“Â$¦÷W&æW–Öâ+rcRÓ“"Â##rÖ–æ÷"f÷'F—GVFRVÆ—†—'2"Â%–VÆÆ÷rg&öÒƒ²F†RÆ7Bö–çG2Ö’F¶RW‡G&7&gG2â"ÒÀ¢²#Â$¦÷W&æW–Öâ+r“Ó#"Â#3VÆ—†—'2öbv—6FöÒ"Â$¶VWF†W6R–bÇ6òÆWfVÆ–ærF–Æ÷&–æs²F†W’&RW6VB'’vÆ÷fW2öbÖVF—FF–öââ"ÒÀ¢²3Â$¦÷W&æW–Öâ+r#Ó3"Â#ÆW76W"Öæ÷F–öç2"Â%W6W2ÖvW&÷–ÂÂ7G&ævÆV¶VÇæBV×G’f–Ç2â"ÒÀ¢²SÂ$¦÷W&æW–Öâ+r3ÓS"Â##f—&Rö–Â"Â$V6‚7&gB––VÆG2Gvòâ¶VW3f÷"VÆ—†—"öbf—&R÷vW"âÇFW&æF—fS¢ÆW76W"Öæ÷F–öâ–bf—&Vf–â6æW"—2W‡Vç6—fR÷"Væf–Æ&ÆRâ"ÒÀ¢²cRÂ$W‡W'B+rSÓcR"Â#RVÆ—†—'2öbf—&R÷vW""Â%W6W2F†R6fVBf—&Rö–ÂâÇFW&æF—fS¢6öçF–çVRÆW76W"Öæ÷F–öç2–b–÷R6†÷6RF†BF‚â"ÒÀ¢²“RÂ$W‡W'B+rcRÓ“R"Â#3bÖæ÷F–öç2"Â%W6W27G&ævÆV¶VÇÂ¶–æw6&ÆööBæBÆVFVBf–Ç2â"ÒÀ¢²##RÂ$W‡W'B+r“RÓ##R"Â#3bæGW&R&÷FV7F–öâ÷F–öç2"Â%&V6—R—2&–æBÖöâ×–6·W²F†RwV–FRÆ—7G2fVæF÷'2–âfW&Æ2Â7G&ævÆWF†÷&âæBFæ&—2â"ÒÀ¢²#3Â$'F—6â+r##RÓ#3"Â$æGW&R&÷FV7F–öâ÷F–öâ&÷WFR6öçF–çVF–öâ"Â$wV–FRÖ&·2F†—26Æ76–2ÖFW&—fVB6öçF–çVF–öâ2VçFW7FVBöâf÷&WfW"Æ—fRâ"ÒÀ¢²#cRÂ$'F—6â+r#3Ó#cR"Â$VÆ—†—"öbw&VFW"Öæ"Â%F†RvRv—fW2F†—2&÷WFR2&÷f—6–öæÂ&WF–æf÷&ÖF–öââ"ÒÀ¢²#sRÂ$'F—6â+r#cRÓ#sR"Â%7WW&–÷"Öæ÷F–öâ"Â%fVæF÷"&V6—S²6ö×&RF†RwV–FRw2Æ—7FVBfVæF÷'2æBÖFW&–Ç2â"ÒÀ¢²#“Â$'F—6â+r#sRÓ#“"Â$6†ö÷6R7WW&–÷"ÖæÂw&VFW"FVfVç6RÂ÷"6†F÷r÷vW""Â$6ö×&RÇFW&æF—fW2v–ç7B7W'&VçB&–6W3²W7F–ÖFVBVçF—F–W2f'’v—F‚–VÆÆ÷röw&VVâ6¶–ÆÂ×W2â"ÒÀ¢²3Â$'F—6â+r#“Ó3"Â$ÖW&6†çBw2ff÷"&V6—RÆ—7FVB'’F†RwV–FR"Â%F†RvR6—2F†Rf–æÂ&÷WFR—2æ÷BFV6–FVC²fW&–g’F†—2&V6—R—2f–Æ&ÆRæBw&çG26¶–ÆÂ&Vf÷&Rf&Ö–ærâ"Â$–æ6ö×ÆWFR"ÒÀ¢ÒÂ$ÖFW&–Ç2&RW7F–ÖFW3²wV–FRvRW‡Æ–6—FÇ’Ö&·2F†RWW"&÷WFR2Væf–æ—6†VBâ" §&Vv—7FW$wV–FR‚$&Æ6·6Ö—F†–ær"Â&&Æ6·6Ö—F†–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVB&÷WFS²F†RwV–FRv&ç2†–v‚×6¶–ÆÂFW7F–ærÖ’ÆrF†RÆ—fRvÖRâ"Â°¢²#RÂ$&VçF–6R+rÓ#R"Â#3&÷Vv‚6†'Væ–ær7FöæW2"Â%W6W23&÷Vv‚7FöæRâ"ÒÀ¢²SÂ$&VçF–6R+r#RÓS"Â#3&÷Vv‚w&–æF–ær7FöæW2"Â%W6W2c&÷Vv‚7FöæS²6fR#bf÷"vVçFÆWG2æB÷76–&ÆR6–ÇfW"&öG2â"ÒÀ¢²crÂ$&VçF–6R+rSÓcr"Â#3b6ö'6Rw&–æF–ær7FöæW2"Â%W6W2s"6ö'6R7FöæS²¶VWF†VÒf÷"'&6W'2ÆFW"â"ÒÀ¢²sRÂ$&VçF–6R+rcrÓsR"Â#‚'VæVB6÷W"vVçFÆWG2"Â%W6W2cB6÷W"&'2æBb6fVB&÷Vv‚w&–æF–ær7FöæW3²&WV—&W2&Æ6·6Ö—F‚†ÖÖW"â"ÒÀ¢²ƒÂ$¦÷W&æW–Öâ+rsRÓƒ"Â%'VæVB6÷W"&VÇG2÷"6–ÇfW"&öG2"Â%G&–â¦÷W&æW–Öâf—'7Bâ6–ÇfW"&öB—2âÇFW&æF—fRv†Vâ—G2ÖFW&–Ç2&R6†VW"â"ÒÀ¢²“RÂ$¦÷W&æW–Öâ+rƒÓ“R"Â#‚'VæVB6÷W"&VÇG2"Â%F†RwV–FR&V6öÖÖVæG2F†—2&÷WFR–â—G27W'&VçBf÷&WfW"fW'6–öââ"ÒÀ¢²"Â$¦÷W&æW–Öâ+r“RÓ""Â%GFW&æVB'&öç¦R'&6W'2Âv—F‚†Vg’w&–æF–ær7FöæR&W"Â%6fR†Vg’w&–æF–ær7FöæW2f÷"ÆFW"&V6—W3²¶VW&VÖ–æ–ær6ö'6Rw&–æF–ær7FöæW2f÷"F†—2&æBâ"ÒÀ¢²#RÂ$¦÷W&æW–Öâ+r"Ó#R"Â%GFW&æVB'&öç¦R'&6W'2"Â%W6W26fVB6ö'6Rw&–æF–ær7FöæW2æB'&öç¦R&'2â"ÒÀ¢²CÂ$¦÷W&æW–Öâ+r#RÓC"Â$'&öç¦R6†÷'G7v÷&G2"Â$wV–FRff÷'2fVæF÷"×6VÆÂfÇVS²âÇFW&æFR'&6W"F‚—2Æ—7FVBf÷"F—6Væ6†çFW'2â"ÒÀ¢²sÂ$¦÷W&æW–Öâ+rCÓs"Â$'&öç¦Rv&†ÖÖW'2"Â$'W’7G&öærfÇW‚g&öÒ&Æ6·6Ö—F†–ær7WÇ’fVæF÷"â"ÒÀ¢²sRÂ$W‡W'B+rsÓsR"Â$w&VVâ—&öâ'&6W'2"Â%G&–âW‡W'BBF†RS6&Vf÷&R6öçF–çV–ærâ"ÒÀ¢²#RÂ$W‡W'B+rsRÓ#R"Â$vöÆFVâ66ÆR'&6W'2ÂF†VâF†RwV–FRw27FVVÂôÖ—F‡&–ÂÇFW&æF—fW2"Â$¶VWF†RV&Æ–W"†Vg’w&–æF–ær7FöæW3²F†RFWF–ÆVB&÷WFR6öçF–ç2ÇFW&æF—fR'&æ6†W2â"ÒÀ¢²3Â$'F—6â+r#RÓ3"Â%F†÷&—VÒæB–×W&–ÂÆFR&V6—R&öw&W76–öâ"Â%F†RwV–FR†2×VÇF—ÆR&V6—RÇFW&æF—fW2æBÆâVW7G3²&Wf–WrF†RÆ—fRvRf÷"W†7BÆâæBÖFW&–Â'&æ6‚&Vf÷&R'W––ærâ"Â$'&æ6‚Ö†Vg“¢W†7BÖFW&–Ç2FWVæBöâ6†÷6Vâ&V6—RF‚â"ÒÀ¢ÒÂ$&Æ6·6Ö—F†–ær&WV—&W2&Æ6·6Ö—F‚†ÖÖW#²÷&W2æB–çFW&ÖVF–FR7FöæW2Ö’&RvF†W&VB÷"&÷Vv‡Bâ" §&Vv—7FW$wV–FR‚$Væ6†çF–ær"Â&Væ6†çF–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²&V6—RF‡&W6†öÆG2æBÖFW&–ÂF÷FÇ26†÷VÆB&R6öæf—&ÖVB–âF†RÆ—fR&öfW76–öâæRâ"Â°¢²"Â$&VçF–6R+rÓ""Â%'VæVB6÷W"&öB"Â%&WV—&W26÷W"&öBæBÖ÷FRöbÖv–3²wV–FR6—2'W’F†W6Rg&öÒâVæ6†çF–ær7WÇ’fVæF÷"â"ÒÀ¢²#Â$&VçF–6R+r"Ó#"Â$Væ6†çB'&6W"Ò–æfW&–÷"7FÖ–æ"Â%W6W2Ö÷FRöbÖv–2â"ÒÀ¢ıêÚ$z{-®éÜj×6†÷'BÂ&Vv–â66÷W2&F†W"F†âÖ¶–ærW‡G&GV&W2â"ÒÀ¢²3RÂ$¦÷W&æW–Öâ+r#RÓ3R"Â#7FæF&B66÷W2"Â%W6W2'&öç¦RGV&W2æBÖ÷72vFS²†Vg’&Æ7F–ær÷vFW"—2âÇFW&æF—fRâ"ÒÀ¢²SÂ$¦÷W&æW–Öâ+r3RÓS"Â$†Vg’&Æ7F–ær÷vFW"æBv†—'&–ær'&öç¦Rv—¦Ö÷2"Â$Ö¶R&÷F‚–âF†RwV–FRw2÷&FW#²&÷F‚&RæVVFVBf÷"F†RÆFW"6†VW&V6—Râ"ÒÀ¢²cÂ$W‡W'B+rSÓc"Â$'&öç¦Rg&ÖWv÷&·2"Â$¶VWÆÂRf÷"F†R6†VW&V6—Râ"ÒÀ¢²#Â$W‡W'B+rcÓ#"Â$6öçF–çVRF†RwV–FRw26†VWæBFWf–6R6WVVæ6R"Â%F†R6÷W&6Rv—fW2&W&WV—6—FR6†–ç3²¶VW–çFW&ÖVF–FR'G2æB6†V6²W†7BVçF—F–W2öâF†RvRâ"ÒÀ¢²3Â$'F—6â+r#Ó3"Â$föÆÆ÷rF†R6÷W&6Rw2WW"Væv–æVW&–ær&V6—R6WVVæ6R"Â%F†RFWF–ÆVB†–v‚×6¶–ÆÂ&÷WFR†2×VÇF—ÆR6ö×öæVçG2æB&V6—R7FW3²fW&–g’&V6—Rf–Æ&–Æ—G’æBÖ÷VçG2&Vf÷&R6†÷–ærâ"ÒÀ¢ÒÂ$Ö–æ–ær7WÆ–W2×V6‚öbVæv–æVW&–ærw2÷&RæB7FöæRâF†Rf÷&WfW"wV–FR6—2væöÖW2æòÆöævW"vWBfÆBVæv–æVW&–ær6¶–ÆÂ&öçW2â" §&Vv—7FW$wV–FR‚$ÆVF†W'v÷&¶–ær"Â&ÆVF†W'v÷&¶–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²–VÆÆ÷r&V6—R6÷VçG2æBWW"6¶–ÆÂÇFW&æF—fW2Ö’&WV—&RW‡G&7&gG2â"Â°¢²3Â$&VçF–6R+rÓ3"Â$Æ–v‡B&Ö÷"¶—G2"Â%F†R6÷W&6RöffW'267&2&ö6W76–ær÷"Æ–v‡BÆVF†W"ÇFW&æF—fRâ"ÒÀ¢²CRÂ$&VçF–6R+r3ÓCR"Â$Æ–v‡B&Ö÷"¶—G2÷"7W&VBÆ–v‡B†–FW2"Â$7W&VBÆ–v‡B†–FW2&RâÇFW&æF—fR–b–÷R&÷Vv‡BÆ–v‡B†–FW3²6fR†–FW2f÷"ÆFW"çG2â"ÒÀ¢²SRÂ$&VçF–6R+rCRÓSR"Â$VÖ&÷76VBÆVF†W"vÆ÷fW2"Â%6¶—F†—2–bW6–ærF†R7W&VBÖ†–FR'&æ6‚F‡&÷Vv‚SRâ"ÒÀ¢²sRÂ$¦÷W&æW–Öâ+rSRÓsR"Â$VÖ&÷76VBÆVF†W"vÆ÷fW2"Â%G&–â¦÷W&æW–Öâ&Vf÷&R76–ærsRâ"ÒÀ¢²ƒÂ$¦÷W&æW–Öâ+rsRÓƒ"Â$ÖVF—VÒÆVF†W""Â%F†RwV–FRÖ¶W2ÖVF—VÒÆVF†W"g&öÒÆ–v‡BÆVF†W"â"ÒÀ¢²“Â$¦÷W&æW–Öâ+rƒÓ“"Â$7W&VBÖVF—VÒ†–FW2÷"f–æRÆVF†W"&VÇG2"Â$6†ö÷6R66÷&F–ærFòv†WF†W"–÷R†fRÖVF—VÒ†–FW2÷"&÷Vv‡BÖVF—VÒÆVF†W#²6fR7W&VB†–FW2â"ÒÀ¢²Â$¦÷W&æW–Öâ+r“Ó"Â$f–æRÆVF†W"&VÇG2"Â$¶VWf÷"F&²ÆVF†W"&VÇG2â"ÒÀ¢²RÂ$¦÷W&æW–Öâ+rÓR"Â$F&²ÆVF†W"6Æö·2÷"Æ–v‡BÆVF†W"çG2"Â%W6RF†RÆ–v‡BÆVF†W"çG2ÇFW&æF—fR–bföÆÆ÷v–ærF†RÆ–v‡B†–FRF‚â"ÒÀ¢²#RÂ$¦÷W&æW–Öâ+rRÓ#R"Â$F&²ÆVF†W"&VÇG2÷"çG2æB†–ÆÆÖâw2vÆ÷fW2"Â$'&æ6‚FWVæG2öâv†WF†W"ÖVF—VÒÆVF†W"÷"ÖVF—VÒ†–FW2vW&RW&6†6VBâ"ÒÀ¢²3Â$W‡W'B+r#RÓ3"Â$†Vg’ÆVF†W""Â%G&–âW‡W'BB6¶–ÆÂ#RæBÆWfVÂ#â"ÒÀ¢²#Â$W‡W'B+r3Ó#"Â$7W&VB†Vg’†–FR÷"æòÖ†–FR&÷WFR"Â$6†ö÷6RW6–ærF†RwV–FRw2ÖFW&–ÂÖ6÷7B6ö×&—6öã²&÷WFR–æ6ÇVFW26WfW&Â&V6—RÇFW&æF—fW2â"ÒÀ¢²3Â$'F—6â+r#Ó3"Â$æ–v‡G66RÂv–6¶VBæB'Væ–2ÆVF†W"&V6—W2"Â%F†RWW"&÷WFR–æ6ÇVFW2GFW&â6†ö–6W3²W6RF†R6÷W&6RwV–FRf÷"7W'&VçBÇFW&æF—fW2æB&V6—RfVæF÷'2â"ÒÀ¢ÒÂ%6¶–ææ–ær—'2v—F‚ÆVF†W'v÷&¶–ærâF†R6÷W&6R&÷WFR†2†–FR×fW'7W2ÖÆVF†W"6†ö–6W3²ÖFW&–Ç2f'’'’F‚â" §&Vv—7FW$wV–FR‚%F–Æ÷&–ær"Â'F–Æ÷&–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFwV–FS²vRæ÷FW2—G2##R²6†÷–ærFF—2–æ6ö×ÆWFRæB–VÆÆ÷r&V6—R6÷VçG2&RW7F–ÖFW2â"Â°¢²SRÂ$&VçF–6R+rÓSR"Â$Æ–æVâ6Æ÷F‚7&gG2"Â%F†R6÷W&6R6—2F–Æ÷&–ær7WÇ’fVæF÷'2æV"G&–æW'26VÆÂF‡&VBæBG–W3²'&–ÆÂ—2F†RF—&—6fÂW†6WF–öââ"ÒÀ¢²ƒÂ$¦÷W&æW–Öâ+rSRÓƒ"Â#CR&öÇG2öbvööÆVâ6Æ÷F‚"Â$ÆV&â¦÷W&æW–Öâ&Vf÷&R7&gF–æs²6fR&öÇG2f÷"ÆFW"æB÷F–öæÆÇ’Ö¶RF†RgVÆÂS2æVVFVBF‡&÷Vv‚6¶–ÆÂCâ"ÒÀ¢²“RÂ$¦÷W&æW–Öâ+rƒÓ“R"Â%vööÆVâ6W2"Â$–b&öÇG2Ç&VG’&—6VB6¶–ÆÂ7BƒÂ6öçF–çVR6W2Fò“Râ"ÒÀ¢²Â$¦÷W&æW–Öâ+r“RÓ"Â$F÷V&ÆR×7F—F6†VBvööÆVâ6†÷VÆFW'2"Â%W6W2vööÆVâ6Æ÷F‚&öÇG2æBf–æRF‡&VBâ"ÒÀ¢²#Â$¦÷W&æW–Öâ+rÓ#"Â#SB&öÇG2öb6–Æ²6Æ÷F‚"Â$¶VWF†VÒf÷"ÆFW"7&gG3²Ö¶–ærƒB&öÇG2æ÷r6÷fW'2F†RwV–FRF‡&÷Vv‚6¶–ÆÂ“â"ÒÀ¢²#RÂ$¦÷W&æW–Öâ+r#Ó#R"Â$vÆ÷fW2öbÖVF—FF–öâ"Â%&WV—&W2vööÆVâ6Æ÷F‚&öÇG2Âf–æRF‡&VBæBVÆ—†—"öbv—6FöÒâ"ÒÀ¢²CÂ$W‡W'B+r#RÓC"Â$vÆ÷fW2öbÖVF—FF–öâ"Â%–VÆÆ÷rF‡&÷Vv†÷WC²Ö’æVVBW‡G&âG&–âW‡W'BB6¶–ÆÂ#RæBÆWfVÂ#â"ÒÀ¢²SÂ$W‡W'B+rCÓS"Â$&öÇG2öbÖvWvVfR"Â%F†R6÷W&6R6—2F÷FÂ&öÇG2&WV—&VBF‡&÷Vv‚##R6â&RÖFRV&Ç’â"ÒÀ¢²sÂ$W‡W'B+rSÓs"Â$7&–×6öâ6–Æ²fW7B"Â%W6W26–Æ²&öÇG2Â&VBG–RæBf–æRF‡&VBâ"ÒÀ¢²“Â$W‡W'B+rsÓ“"Â$7&–×6öâ6–Æ²çFÆööç2"Â%–VÆÆ÷rg&öÒƒ²Ö’&WV—&RW‡G&7&gG2â"ÒÀ¢²#RÂ$W‡W'B+r“Ó#R"Â$&Æ6²ÖvWvVfRvÆ÷fW2"Â%–VÆÆ÷rg&öÒ“RæBw&VVâg&öÒ#â"ÒÀ¢²##RÂ$W‡W'B+r#RÓ##R"Â$ÖvWvVfR&w2"Â%W6W2ÖvWvVfR&öÇG2æB6–Æ¶VâF‡&VBâ"ÒÀ¢²#cRÂ$'F—6â+r##RÓ#cR"Â%'VæV6Æ÷F‚&VÇG2F†Vâ'VæV6Æ÷F‚vÆ÷fW2"Â%6÷W&6R6†÷–ærÆ—7B7F÷2B#cRæB6—2ÆFW"&÷WFR÷&–6W2&RVæf–æ—6†VBâ"Â$–æ6ö×ÆWFR&÷fR#cR"ÒÀ¢²3Â$'F—6â+r#cRÓ3"Â$Æ—fR&V6—R&WV—&VB"Â%F†R6÷W&6R†2æ÷BV&Æ—6†VBf–æ—6†VB#cRÓ3&÷WFS²6†ö÷6RöæÇ’&V6—W2F†RÆ—fRv–æF÷r6öæf—&×2v–ÆÂ6¶–ÆÂWâ"Â$æ÷B&÷f–FVB'’6÷W&6R"ÒÀ¢ÒÂ%W6RF†RÆ—fR&öfW76–öâæRFòfW&–g’&V6—R6¶–ÆÂ×W6öÆ÷'3²6÷W&6RFöW2æ÷Bf–æ—6‚F†Rf–æÂ&ævRâ" §&Vv—7FW$wV–FR‚$Ö–æ–ær"Â&Ö–æ–ærÖÆWfVÆ–ærÖwV–FR"À¢%F†Rf÷&WfW"vRv—fW27W'&VçB&÷WFW2F‡&÷Vv‚—G26¶–ÆÂ'&6¶WG2ÂF†Vâ–FVçF–f–W26Æ76–2ÖFW&—fVB6V7F–öç2F†BÖ’6†ævRâ"Â°¢²cRÂ$6÷W"+rÓcR"Â$6÷W"fV–ç2÷"6ÖVÇF–ær"Â%7F'F–ær×¦öæR6†ö–6S²F†RwV–FRF—67W76W2GW&÷F"Â×VÆv÷&RÂF—&—6fÂÂVÇw–æâÂGVâÖ÷&öv‚ÂFVÆG&76–ÂæB¦W‡&2—6ÆRâ'W’Ö–æ–ær–6²â"ÒÀ¢²#RÂ$6÷W"õF–â+rcRÓ#R"Â%F–âæB6÷W#²÷F–öæÂ6ÖVÇF–ær"Â$wV–FRÆ—7G26fRæB÷Vâ×&÷WFR6†ö–6W2'’f7F–öââF–â&WV—&W2cS²6–ÇfW"sS²—&öâ#Râ"ÒÀ¢²sRÂ$—&öâôvöÆB+r#RÓsR"Â$—&öâFW÷6—G2æBvöÆBfV–ç2"Â%¦öæR6†ö–6W2–æ6ÇVFR&F†’†–v†ÆæG2ÂF†÷W6æBæVVFÆW2æBFW6öÆ6RâvöÆB&WV—&W2SRâ"ÒÀ¢²#CRÂ$Ö—F‡&–Â+rsRÓ#CR"Â$Ö—F‡&–ÂæBG'VW6–ÇfW""Â$wV–FR6†ö–6W2–æ6ÇVFRF†R†–çFW&ÆæG2æBFæ&—3²G'VW6–ÇfW"&WV—&W2#3â"ÒÀ¢²#sRÂ$Ö—F‡&–ÂõF†÷&—VÒ+r#CRÓ#sR"Â%6ÖÆÂF†÷&—VÒfV–ç2"Â$wV–FR6†ö–6W2–æ6ÇVFRVâtv÷&òÂ&Æ7FVBÆæG2æBfVÇvööC²6ÖÆÂF†÷&—VÒ&WV—&W2#CRâ"ÒÀ¢²3Â%F†÷&—VÒ+r#sRÓ3"Â%&–6‚F†÷&—VÒfV–ç2"Â$6†ö–6W2–æ6ÇVFRVâtv÷&òÂV7FW&âÆwVVÆæG2Âv–çFW'7&–æræB'W&æ–ær7FWW3²&–6‚F†÷&—VÒ&WV—&W2#sRâ"ÒÀ¢ÒÂ%F†RwV–FR†26ÖVÇF–æræBÖ–æ–ærÇFW&æF—fW2F‡&÷Vv‚#²W†7BÖ–æ–ær7vâ–ç2&Ræ÷B–æ6ÇVFVB†W&Râ" §&Vv—7FW$wV–FR‚%6¶–ææ–ær"Â'6¶–ææ–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²F†RvR6—2†–v‚×6¶–ÆÂFW7F–ærF¶W2F–ÖRæBÖ’æVVBÆ—fRWFFW2â"Â°¢²sRÂ%6¶–ææ–ær+rÓsR"Â%6¶–âÆ÷rÖÆWfVÂ&V7G2–â–÷W"7F'F–ær¦öæR"Â$wV–FR–æ6ÇVFW2GW&÷F"Â×VÆv÷&RÂF—&—6fÂÂ6·–&÷&æR¦W‡&2—6ÆRÂVÇw–æâÂGVâÖ÷&öv‚æBFVÆG&76–Ââ6·–&÷&æR6âÆV&â—BF‡&÷Vv‚F†RVÇB6öÆÆV7F–ærf÷"&Vv–ææW'2VW7B&Wv&Bâ"ÒÀ¢²SÂ%6¶–ææ–ær+rsRÓS"Â%&öw&W72F‡&÷Vv‚F†RwV–FRw2f7F–öâ¦öæR6†ö–6W2"Â$ÆÆ–æ6RW6W2Æö6‚ÖöFâF†VâvWFÆæG3²†÷&FRföÆÆ÷w2F†RwV–FRw2&'&Vç2&÷WFRâ6†V6²Öö"6¶–ææ–ær×6¶–ÆÂ&WV—&VÖVçBâ"ÒÀ¢²##RÂ%6¶–ææ–ær+rSÓ##R"Â$fö÷F†–ÆÂ6fW&ç2–WF—2÷"GW6·vööB&÷WFR"Â%F†RvR&W6VçG2ÇFW&æF—fR¦öæW2f÷"F†—2&æC²–6²&6VBöâf7F–öâæBG&fVÂâ"ÒÀ¢²#ƒÂ%6¶–ææ–ær+r##RÓ#ƒ"Â$fW&Â66"fÆR–WF—2–âfW&Æ2"Â$6†V6²F†R6÷W&6RvRw2Öö"6¶–ææ–ær&WV—&VÖVçG2&Vf÷&Rf&Ö–ærâ"ÒÀ¢²3Â%6¶–ææ–ær+r#ƒÓ3"Â%vW7FW&âVâtv÷&òF–æ÷6W'2"Â%W6RF†RÆ—fR6¶–ÆÂfÇVRæB6¶–âÖö'2F†BÖVWBF†R6÷W&6Rw2&WV—&VÖVçG2â"ÒÀ¢ÒÂ$æòW†7BÖö"7vâ6ö÷&F–æFW2&R'VæFÆVC²F†—2&÷WFRW6W2¦öæRÖÆWfVÂwV–Fæ6Râ" §&Vv—7FW$wV–FR‚$f—'7B–B"Â&f—'7BÖ–BÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²6÷W&6RÆ&VÇ2WW"ÖFW&–ÂW7F–ÖFW2&÷f—6–öæÂæB6¶–ÆÂ×W2Ö’f'’â"Â°¢²sRÂ$&VçF–6R+rÓsR"Â$Æ–æVâ&æFvW2÷"f—'7B–B†VÆ–ær÷F–öç2"Â$f—'7B–B—26V6öæF'’æB6â&RÆV&æVB'’WfW'’6†&7FW#²6÷W&6R–æ6ÇVFW2V6V&ÆööÒÇFW&æF—fRâ"ÒÀ¢²SÂ$¦÷W&æW–Öâ+rsRÓS"Â%vööÂ&æFvW2"Â$wV–FRÆ—7G2F†R&V6—R÷G&–æW"7FW3²7F÷FòG&–â&Vf÷&R76–ærF†R7W'&VçB6â"ÒÀ¢²##RÂ$W‡W'B+rSÓ##R"Â%6–Æ²F†VâÖvWvVfR&æFvW2"Â$6÷VçG2&RW7F–ÖFW3²–VÆÆ÷r&V6—W26âæVVBW‡G&6Æ÷F‚æB7&gG2â"ÒÀ¢²3Â$'F—6â+r##RÓ3"Â$ÖvWvVfRõ'VæV6Æ÷F‚&æFvW2æBf÷&WfW"†VÆ–ær&V6—W2"Â%F†RvRÖ&·2F†—26†÷–ær6VvÖVçBVæf–æ—6†VC²fW&–g’&V6—R6÷W&6RæBÖFW&–Ç2&Vf÷&R'W––ærâ"Â%WW"Æ—7B&÷f—6–öæÂ"ÒÀ¢ÒÂ$f÷&WfW"Ö÷fVB6W'F–â†VÆ–ær÷F–öç2g&öÒÆ6†V×’Fòf—'7B–Bâ" §&Vv—7FW$wV–FR‚$6öö¶–ær"Â&6öö¶–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²&V6—R6†ö–6RFWVæG2öâÖVBöf—6‚f–Æ&ÆRæBÖFW&–ÂW7F–ÖFW2f'’â"Â°¢²SÂ$&VçF–6R+rÓS"Â$6†ö÷6RÖöær&V6—W2W6–ær–÷W"f–Æ&ÆRÖVB÷"f—6‚"Â%F†RwV–FR&÷f–FW26WfW&Â&V6—R÷F–öç2'’'&6¶WB&F†W"F†âöæRf—†VB&÷WFRâ"ÒÀ¢²SÂ$¦÷W&æW–Öâ+rSÓS"Â%W6RvF†W&VB÷"W&6†6VB–æw&VF–VçG2"Â$WfW'’G&–æW"FV6†W2¦÷W&æW–Öã²6×f—&R—2&WV—&VBf÷"Öç’&V6—W2â6÷W&6RFW67&–&W2f÷&WfW"w26×f—&R¶—Bâ"ÒÀ¢²##RÂ$W‡W'B+rSÓ##R"Â$6†ö÷6R&V6—W2ÖF6†–ær–÷W"ÖFW&–Ç2"Â%G&–æW"&æ²æB6öÖR&V6—R6÷W&6W2&WV—&RG&fVÂ÷"VW7G2â"ÒÀ¢²3Â$'F—6â+r##RÓ3"Â%W6R6÷W&6Rw2'F—6â&V6—R6†ö–6W2"Â%F†RwV–FRÆ—7G2G&–æW"÷VW7BVæÆö6·3²—"v—F‚f—6†–ær´6öö¶–ær–bÆWfVÆ–ær&÷F‚â"ÒÀ¢ÒÂ$6öö¶–ærFöW2æ÷BW6R&–Ö'’&öfW76–öâ6Æ÷C²F†RwV–FR†2–æw&VF–VçBÖFWVæFVçB'&æ6†W2â" §&Vv—7FW$wV–FR‚$f—6†–ær"Â&f—6†–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVC²f—6‚VçF—F–W2&RW7F–ÖFW2æBF†R'F—6âVW7B—2&WV—&VB&öw&W76–öâ7F÷â"Â°¢²sRÂ$f—6†–ær+rÓsR"Â%7F'F–ær×¦öæRvFW"&÷WFR"Â$wV–FRÆ—7G2öÆRÂÇW&RæB7F'F–ær×¦öæR6†ö–6W3²V6‚–æ6ÇVFW2G&–æW"÷fVæF÷"æBf—6†–ær&Vâ"ÒÀ¢²SÂ$f—6†–ær+rsRÓS"Â$6—FÂÖ6—G’f—6†–ær&÷WFR"Â$6†ö÷6R&÷WFR&6VBöâf7F–öâ÷G&fVÃ²F†RvR&÷f–FW2f—6‚W‡V7FF–öç2æB&V6—R7F÷2â"ÒÀ¢²#RÂ$f—6†–ær+rSÓ#R"Â%&öw&W72F‡&÷Vv‚6÷W&6RvFW"¦öæW2"Â%&WV—&W2W‡W'Bô'F—6â&öw&W76–öâæBwV–FR×7V6–f–VB&öö²÷"VW7B7FW2â"ÒÀ¢²#SRÂ$f—6†–ær+r#RÓ#SR"Â$6öçF–çVR&÷WFRæB6ö×ÆWFR'F—6âf—6†–ærVW7B"Â$wV–FR–æ6ÇVFW2VW7B—FV×2æBGW&âÖ–ã²6†V6²&WV—&VÖVçG2&Vf÷&RG&fVÆ–ærâ"ÒÀ¢²3Â$f—6†–ær+r#SRÓ3"Â$fW&Æ2f—6†–ær&÷WFR"Â%W6RF†R7FæFÆöæRf—6†–ærwV–FRÂ÷"f—6†–ær´6öö¶–ær–b&—6–ær6öö¶–ær–â&ÆÆVÂâ"ÒÀ¢ÒÂ$f—6†–ær†2æò7&gB&V6—W3²&÷WFRGfæ6W2g&öÒF†RÆ—fRf—6†–ær6¶–ÆÂfÇVRâ" §&Vv—7FW$wV–FR‚$f—6†–ær²6öö¶–ær"Â&f—6†–ærÖæBÖ6öö¶–ærÖÆWfVÆ–ærÖwV–FR"À¢$f÷&WfW"&WFÖFW&—fVB6öÖ&–æVB&÷WFS²6F6‚6÷VçG2æB6öö¶–ær6¶–ÆÂ×W2&RW7F–ÖFW3²6÷W&6RÖ&·2†–v‚ÖÆWfVÂ6V7F–öâ6Æ76–2ÖFW&—fVBâ"Â°¢²sRÂ$f—6†–ær+rÓsR"Â$6†ö÷6R7F'F–ær×¦öæR&÷WFRæB6öö²F†R6F6‚"Â$wV–FR&V6öÖÖVæG2×VÆv÷&Rf÷"†÷&FRæBVÇw–æâf÷&W7Bf÷"ÆÆ–æ6S²—BÇ6ò–æ6ÇVFW2GW&÷F"ÂF—&—6fÂÂ¦W‡&2ÂGVâÖ÷&öv‚æBFVÆG&76–Ââ"ÒÀ¢²3Â$f—6†–ær+rsRÓ3ò6öö¶–ær+rÓ"Â$f—6‚–â6—FÂæB6öö²6ÖÆÂf—6‚ôÆöæv¦r"Â%F†RwV–FRöffW'26—FÂ6†ö–6W2æBFVÆÇ2–÷Rv†–6‚6F6†W2æB&V6—W2Fò¶VWâ"ÒÀ¢²#RÂ$f—6†–ær+r3Ó#Rò6öö¶–ær+rÓsR"Â$6öçF–çVR6—FÂ÷¦öæRf—6†–æræB6öö²6F6†W2"Â$föÆÆ÷rF†RwV–FRw26WVVçF–Â7FW3²6Vv‡Bf—6‚7WÇ’6öö¶–ær6òfö–B'W––ærF†R6ÖRf—6‚Gv–6Râ"ÒÀ¢²##RÂ$'F—6âf—6†–ærVW7B"Â$6ö×ÆWFRF†Rf—6†–ærVW7B7FW"Â$6öÆÆV7BF†RwV–FRÖÆ—7FVB—FV×2Â–æ6ÇVF–ærÇW&R÷VW7B7WÆ–W2Â&Vf÷&RG&fVÂâ"ÒÀ¢²#SRÂ$f—6†–ær+r#RÓ#SRò6öö¶–ær+rsRÓ##R"Â$6öçF–çVR&÷WFRæB6öö²F†R6F6†W2"Â$wV–FR–æ6ÇVFW2F†R'F—6â6öö¶–ærVW7B–âF†—26WVVæ6Râ"ÒÀ¢²3Â$f—6†–ær+r#SRÓ3ò6öö¶–ær+r##RÓ3"Â$f–æ—6‚f—6†–ær–âfW&Æ2æB6†ö÷6Rf–æÂ6öö¶–ær&V6—R"Â%F†RvRöffW'26†ö–6Röb7Vç66ÆR6ÆÖöâ÷"æ–v‡Ff–â6÷W²†–v‚×6¶–ÆÂ&÷WFR—2Ö&¶VB6Æ76–2ÖFW&—fVBâ"ÒÀ¢ÒÂ$6öÖ&–æVB&÷WFRG&6·2&÷F‚f—6†–æræB6öö¶–ærâF†—27VÖÖ'’FöW2æ÷B–WB7V'G&7Bf—6‚6Vv‡Bg&öÒâ—FVÖ—¦VB6†÷–ærÆ—7Bâ"Â·ÒÂ·Ò ¥uå&÷WFTFFæf—6†–æv6öö¶–ærç6¶–ÆÇ2Ò°¢f—6†–ærÒ²6¶–ÆÂÒÂÖ…6¶–ÆÂÒ3ÒÀ¢6öö¶–ærÒ²6¶–ÆÂÒÂÖ…6¶–ÆÂÒ3ÒÀ§Ğ¥uå&÷WFTFFæf—6†–æv6öö¶–ærç7FW2Ò°¢²6¶–ÆÂÒ$f—6†–ær"Âg&öÒÒÂF&vWBÒsRÂF—FÆRÒ$f—6†–ærÓsR"Â¦öæRÒ%7F'F–ær¦öæR"Âfö7W2Ò$f—6‚–â–÷W"7F'F–ær&VÂF†Vâ6öö²F†R6F6‚"Â–ç7G'V7F–öç2Ò$6†ö÷6RF†RwV–FRw2f7F–öâ&÷WFS¢×VÆv÷&Rf÷"†÷&FR÷"VÇw–æâf÷&W7Bf÷"ÆÆ–æ6S²÷F†W"7F'F–ær¦öæW2&RÆ—7FVBFöòâ"ÒÀ¢²6¶–ÆÂÒ$6öö¶–ær"Âg&öÒÒÂF&vWBÒSÂF—FÆRÒ$6öö¶–ærÓS"Â¦öæRÒ$B6öö¶–ærf—&R"Âfö7W2Ò$6öö²F†R6ÖÆÂf—6‚g&öÒF†R÷Væ–ærf—6†–ær7FW2"Â–ç7G'V7F–öç2Ò%W6RF†Rf—6†–ær²6öö¶–ærwV–FRw2&V6—R6WVVæ6RæBfö–B'W––ærf—6‚Ç&VG’6Vv‡Bâ"ÒÀ¢²6¶–ÆÂÒ$f—6†–ær"Âg&öÒÒsRÂF&vWBÒ3ÂF—FÆRÒ$f—6†–ærsRÓ3"Â¦öæRÒ$6—FÂvFW'2"Âfö7W2Ò$f—6‚F†RwV–FRw26—FÂÖ6—G’&÷WFR"Â–ç7G'V7F–öç2Ò$¶VWF†RæÖVB6F6†W2æVVFVBf÷"F†R—&VB6öö¶–ær7FW2â"ÒÀ¢²6¶–ÆÂÒ$6öö¶–ær"Âg&öÒÒSÂF&vWBÒÂF—FÆRÒ$6öö¶–ærSÓ"Â¦öæRÒ$6öö¶–ærf—&R"Âfö7W2Ò$6öö²F†R6fVBÆöæv¦r×VB6æW"æB÷F†W"Æ—7FVB6F6†W2"Â–ç7G'V7F–öç2Ò$föÆÆ÷rF†R&V6—RÇFW&æF—fW2æBVçF—F–W2öâF†R6÷W&6RvRâ"ÒÀ¢²6¶–ÆÂÒ$f—6†–ær"Âg&öÒÒ3ÂF&vWBÒ#RÂF—FÆRÒ$f—6†–ær3Ó#R"Â¦öæRÒ%6÷W&6R&÷WFR¦öæW2"Âfö7W2Ò$6öçF–çVRF†R6÷W&6Rw2f—6†–ær&÷WFR"Â–ç7G'V7F–öç2Ò$6ö×ÆWFR—G2&öö²æBVW7B7F÷2&Vf÷&RÆVf–ærV6‚'&6¶WBâ"ÒÀ¢²6¶–ÆÂÒ$6öö¶–ær"Âg&öÒÒÂF&vWBÒsRÂF—FÆRÒ$6öö¶–ærÓsR"Â¦öæRÒ$6öö¶–ærf—&R"Âfö7W2Ò$6öö²F†R6F6†W2vF†W&VB–âF†R&V6VF–ær&÷WFR"Â–ç7G'V7F–öç2Ò%W6RF†RwV–FRw2&V6—R6†ö–6W2&6VBöâ–÷W"7GVÂ6F6‚â"ÒÀ¢²6¶–ÆÂÒ$f—6†–ær"Âg&öÒÒ#RÂF&vWBÒ#SRÂF—FÆRÒ$f—6†–ær#RÓ#SR"Â¦öæRÒ$'F—6âf—6†–ær&÷WFR"Âfö7W2Ò$6ö×ÆWFRF†R'F—6âf—6†–ærVW7BæB6öçF–çVRf—6†–ær"Â–ç7G'V7F–öç2Ò$6öÆÆV7BVW7B—FV×2æBÇW&R7WÆ–W2&Vf÷&RG&fVÆ–ærâ"ÒÀ¢²6¶–ÆÂÒ$6öö¶–ær"Âg&öÒÒsRÂF&vWBÒ##RÂF—FÆRÒ$6öö¶–ærsRÓ##R"Â¦öæRÒ$6öö¶–ærf—&R"Âfö7W2Ò$6öçF–çVRF†RwV–FRw26öö¶–ær6WVVæ6RæB'F—6â6öö¶–ærVW7B"Â–ç7G'V7F–öç2Ò%F†RwV–FRÖ&·2F†R†–v†W"&÷WFR2&WFÖFW&—fVBâ"ÒÀ¢²6¶–ÆÂÒ$f—6†–ær"Âg&öÒÒ#SRÂF&vWBÒ3ÂF—FÆRÒ$f—6†–ær#SRÓ3"Â¦öæRÒ$fW&Æ2"Âfö7W2Ò$f–æ—6‚F†RfW&Æ2f—6†–ær&÷WFR"Â–ç7G'V7F–öç2Ò%fW&–g’F†R6÷W&6Rw2†–v‚×6¶–ÆÂwV–Fæ6Rv–ç7BF†RÆ—fR6Æ–VçBâ"ÒÀ¢²6¶–ÆÂÒ$6öö¶–ær"Âg&öÒÒ##RÂF&vWBÒ3ÂF—FÆRÒ$6öö¶–ær##RÓ3"Â¦öæRÒ$6öö¶–ærf—&R"Âfö7W2Ò$6†ö÷6RF†R6÷W&6Rw2f–æÂ&V6—R&÷WFR"Â–ç7G'V7F–öç2Ò%F†R6÷W&6RÆ—7G27Vç66ÆR6ÆÖöâ÷"æ–v‡Ff–â6÷W²†–v‚×6¶–ÆÂwV–Fæ6R—26Æ76–2ÖFW&—fVBâ"ÒÀ§Ğ Ğ Ğ
+local _, WP = ...
+
+WP.RouteData = {
+    herbalism = {
+        name = "Herbalism",
+        maxSkill = 300,
+        source = "https://www.wow-professions.com/forever/herbalism-leveling-guide",
+        sourceStatus = "The source is beta-derived; portions above skill 170 may not be live-tested.",
+        routeNote = "Waypoints mark approximate farming areas, not herb node locations. Use Find Herbs on the minimap for live node tracking.",
+        rankGates = {
+            { skill = 50, cap = 75, rank = "Journeyman" },
+            { skill = 125, cap = 150, rank = "Expert" },
+            { skill = 200, cap = 225, rank = "Artisan" },
+        },
+        trainer = {
+            zone = "Zephras Isle",
+            mapID = 2521,
+            x = 57.9,
+            y = 75.5,
+            name = "Syriel Nightrain",
+            note = "Skyborne trainers Syriel Nightrain and Halassa Fernbreeze can train Herbalism through 300. Alliance capital trainers are alternatives.",
+        },
+        steps = {
+            {
+                target = 50,
+                title = "Starter herbs Â· 1â€“50",
+                zone = "Zephras Isle",
+                mapID = 2521,
+                x = 46.9,
+                y = 26.0,
+                herbs = "Peacebloom Â· Silverleaf Â· Earthroot at skill 15",
+                instructions = "Gather around the starter area until Herbalism reaches 50. Skyborne can learn Herbalism from the Harvesting Windstones quest reward or a trainer. Turn on Find Herbs; tracking turns off after death.",
+            },
+            {
+                target = 115,
+                title = "Mageroyal and Briarthorn Â· 50â€“115",
+                zone = "Darkshore",
+                mapID = 1439,
+                x = 38.0,
+                y = 45.0,
+                herbs = "Mageroyal Â· Briarthorn Â· Stranglekelp from skill 85",
+                instructions = "Darkshore is the Alliance route choice. Loch Modan is a quieter alternative. Train Journeyman at skill 50 before continuing.",
+            },
+            {
+                target = 115,
+                title = "Mageroyal and Briarthorn Â· 70-115",
+                zone = "Silverpine Forest",
+                herbs = "Mageroyal Â· Briarthorn Â· Stranglekelp from skill 85",
+                instructions = "Horde option: the lower part supports small loops; mounted characters can follow the main road. The page offers Silverpine for Horde and Loch Modan or Darkshore for Alliance.",
+            },
+            {
+                target = 125,
+                title = "Bruiseweed and Wild Steelbloom Â· 115â€“125",
+                zone = "Hillsbrad Foothills",
+                mapID = 1424,
+                x = 45.0,
+                y = 50.0,
+                herbs = "Bruiseweed Â· Wild Steelbloom",
+                instructions = "Farm the lower-risk Hillsbrad areas. Stonetalon Mountains is an alternative, but some pockets have higher-level enemies.",
+            },
+            {
+                target = 150,
+                title = "Continue in Hillsbrad Â· 125â€“150",
+                zone = "Hillsbrad Foothills",
+                mapID = 1424,
+                x = 45.0,
+                y = 50.0,
+                herbs = "Bruiseweed Â· Wild Steelbloom Â· Kingsblood from skill 125",
+                instructions = "Continue the Hillsbrad loop. Train Expert at skill 125 before the profession reaches its 150 cap.",
+            },
+            {
+                target = 170,
+                title = "Add Kingsblood and Liferoot Â· 150â€“170",
+                zone = "Hillsbrad Foothills",
+                mapID = 1424,
+                x = 45.0,
+                y = 50.0,
+                herbs = "Kingsblood Â· Liferoot from skill 150",
+                instructions = "Add Kingsblood and Liferoot when their skill requirements are met. Stonetalon is an alternate zone.",
+            },
+            {
+                target = 200,
+                title = "Stranglethorn or Arathi Â· 170â€“200",
+                zone = "Stranglethorn Vale",
+                mapID = 1434,
+                x = 28.0,
+                y = 45.0,
+                herbs = "Kingsblood Â· Liferoot Â· Fadeleaf Â· Goldthorn Â· Khadgar's Whisker from 185",
+                instructions = "Use the Stranglethorn route or choose Arathi Highlands if it is more convenient. Prepare to train Artisan at skill 200.",
+            },
+            {
+                target = 205,
+                title = "Finish the current route Â· 200â€“205",
+                zone = "Stranglethorn Vale",
+                mapID = 1434,
+                x = 28.0,
+                y = 45.0,
+                herbs = "Kingsblood Â· Liferoot Â· Fadeleaf Â· Goldthorn",
+                instructions = "Train Artisan at skill 200, then continue briefly in Stranglethorn or Arathi before moving to Tanaris or Searing Gorge.",
+            },
+            {
+                target = 230,
+                title = "Purple Lotus and Firebloom Â· 205â€“230",
+                zone = "Tanaris",
+                mapID = 1446,
+                x = 50.0,
+                y = 30.0,
+                herbs = "Purple Lotus Â· Firebloom",
+                instructions = "Farm Tanaris or Searing Gorge. Neither zone has an Herbalism trainer, so train Artisan before traveling.",
+            },
+            {
+                target = 270,
+                title = "The Hinterlands Â· 230â€“270",
+                zone = "The Hinterlands",
+                mapID = 1425,
+                x = 60.0,
+                y = 50.0,
+                herbs = "Sungrass Â· Purple Lotus Â· Golden Sansam Â· Ghost Mushroom from skill 245",
+                instructions = "Use the marked cave area for Ghost Mushroom once skill 245 is reached. Continue gathering until 270.",
+            },
+            {
+                target = 300,
+                title = "Felwood Â· 270â€“300",
+                zone = "Felwood",
+                mapID = 1448,
+                x = 50.0,
+                y = 25.0,
+                herbs = "Sungrass Â· Gromsblood Â· Golden Sansam Â· Dreamfoil Â· Mountain Silversage Â· Plaguebloom",
+                instructions = "Continue gathering across Felwood until Herbalism reaches 300.",
+            },
+        },
+    },
+}
+
+local herb = WP.RouteData.herbalism
+herb.source = "https://www.wow-professions.com/forever/herbalism-leveling-guide"
+herb.sourceStatus = "Forever beta-derived. The page warns that high-skill sections may not have been live-tested."
+herb.routeNote = "Zone choices are summarized from the source maps; waypoints are broad areas. Use Find Herbs for live nodes."
+herb.steps = {
+    { target = 70, title = "Herbalism 1-70", zone = "Starting zone", mapID = 2521, x = 46.9, y = 26.0, herbs = "Peacebloom, Silverleaf, Earthroot (15)", instructions = "Choose a starting zone with fast herb respawns. Skyborne can learn Herbalism from the Wild Harvest reward for Harvesting Windstones.", choices = { "Durotar", "Mulgore", "Tirisfal Glades", "Zephras Isle", "Elwynn Forest", "Dun Morogh", "Teldrassil" } },
+    { target = 115, title = "Herbalism 70-115", zone = "Silverpine, Loch Modan, or Darkshore", mapID = 1439, x = 38.0, y = 45.0, herbs = "Mageroyal, Briarthorn, Stranglekelp (85)", instructions = "Train Journeyman at 50. The guide offers faction-appropriate routes in all three zones.", choices = { "Silverpine Forest", "Loch Modan", "Darkshore" } },
+    { target = 170, title = "Herbalism 115-170", zone = "Hillsbrad Foothills or Stonetalon Mountains", mapID = 1424, x = 45.0, y = 50.0, herbs = "Bruiseweed, Wild Steelbloom, Kingsblood (125), Liferoot (150)", instructions = "The guide offers both zones. A +5 Herbalism bonus permits Kingsblood at 120.", choices = { "Hillsbrad Foothills", "Stonetalon Mountains" } },
+    { target = 205, title = "Herbalism 170-205", zone = "Stranglethorn Vale or Arathi Highlands", mapID = 1434, x = 28.0, y = 45.0, herbs = "Kingsblood, Liferoot, Fadeleaf, Goldthorn, Khadgar's Whisker (185)", instructions = "Choose the route that suits your travel. Train Artisan at 200 before continuing.", choices = { "Stranglethorn Vale", "Arathi Highlands" } },
+    { target = 230, title = "Herbalism 205-230", zone = "Tanaris or Searing Gorge", mapID = 1446, x = 50.0, y = 30.0, herbs = "Purple Lotus, Firebloom", instructions = "Neither zone has an Herbalism trainer; learn Artisan before traveling.", choices = { "Tanaris", "Searing Gorge" } },
+    { target = 270, title = "Herbalism 230-270", zone = "The Hinterlands", mapID = 1425, x = 60.0, y = 50.0, herbs = "Sungrass, Purple Lotus, Golden Sansam, Ghost Mushroom (245)", instructions = "The source map includes a cave detour for Ghost Mushroom at 245." },
+    { target = 300, title = "Herbalism 270-300", zone = "Felwood", mapID = 1448, x = 50.0, y = 25.0, herbs = "Sungrass, Gromsblood, Golden Sansam, Dreamfoil, Mountain Silversage, Plaguebloom", instructions = "Continue through the Felwood route until 300." },
+}
+local guideRoot = "https://www.wow-professions.com/forever/"
+local function registerGuide(name, slug, sourceStatus, steps, notes, rankGates)
+    local key = name:lower():gsub("[^%a]", "")
+    local route = {
+        name = name, maxSkill = 300, source = guideRoot .. slug,
+        sourceStatus = sourceStatus,
+        rankGates = rankGates or {
+            { skill = 50, cap = 75, rank = "Journeyman" },
+            { skill = 125, cap = 150, rank = "Expert" },
+            { skill = 200, cap = 225, rank = "Artisan" },
+        },
+        steps = {},
+    }
+    for i, step in ipairs(steps) do
+        route.steps[i] = { target = step[1], title = step[2], focus = step[3], instructions = step[4], sourceStatus = step[5] }
+    end
+    if notes then route.routeNote = notes end
+    WP.RouteData[key] = route
+end
+
+registerGuide("Alchemy", "alchemy-leveling-guide",
+    "Forever beta guide. The page says the 225-300 route is not final; the last 10 points are undecided.", {
+        { 10, "Apprentice Â· 1-10", "9 Minor Arcane Elixirs, or 9 Elixir of Minor Force", "The alternative replaces the whole step if Silverleaf is cheaper. Buy Empty Vials from nearby supply or trade vendors." },
+        { 55, "Apprentice Â· 10-55", "45 Minor Defense Elixirs", "Materials: Silverleaf, Peacebloom and Empty Vials." },
+        { 65, "Journeyman Â· 55-65", "10 Minor Mana Potions", "Train Journeyman at skill 50 and level 10 before passing the 75 cap." },
+        { 90, "Journeyman Â· 65-90", "27 Minor Fortitude Elixirs", "Yellow from 80; the last 10 points may take extra crafts." },
+        { 120, "Journeyman Â· 90-120", "30 Elixirs of Wisdom", "Keep these if also leveling Tailoring; they are used by Gloves of Meditation." },
+        { 130, "Journeyman Â· 120-130", "10 Lesser Mana Potions", "Uses Mageroyal, Stranglekelp and Empty Vials." },
+        { 150, "Journeyman Â· 130-150", "20 Fire Oil", "Each craft yields two. Keep 30 for Elixir of Fire Power. Alternative: Lesser Mana Potion if Firefin Snapper is expensive or unavailable." },
+        { 165, "Expert Â· 150-165", "15 Elixirs of Fire Power", "Uses the saved Fire Oil. Alternative: continue Lesser Mana Potions if you chose that path." },
+        { 195, "Expert Â· 165-195", "36 Mana Potions", "Uses Stranglekelp, Kingsblood and Leaded Vials." },
+        { 225, "Expert Â· 195-225", "36 Nature Protection Potions", "Recipe is bind-on-pickup; the guide lists vendors in Feralas, Stranglethorn and Tanaris." },
+        { 230, "Artisan Â· 225-230", "Nature Protection Potion route continuation", "Guide marks this Classic-derived continuation as untested on Forever live." },
+        { 265, "Artisan Â· 230-265", "Elixir of Greater Mana", "The page gives this route as provisional beta information." },
+        { 275, "Artisan Â· 265-275", "Superior Mana Potion", "Vendor recipe; compare the guide's listed vendors and materials." },
+        { 290, "Artisan Â· 275-290", "Choose Superior Mana, Greater Defense, or Shadow Power", "Compare alternatives against current prices; estimated quantities vary with yellow/green skill-ups." },
+        { 300, "Artisan Â· 290-300", "Merchant's Favor recipe listed by the guide", "The page says the final route is not decided; verify this recipe is available and grants skill before farming." , "Incomplete" },
+    }, "Materials are estimates; guide page explicitly marks the upper route as unfinished.")
+
+registerGuide("Blacksmithing", "blacksmithing-leveling-guide",
+    "Forever beta-derived route; the guide warns high-skill testing may lag the live game.", {
+        { 25, "Apprentice Â· 1-25", "30 Rough Sharpening Stones", "Uses 30 Rough Stone." },
+        { 50, "Apprentice Â· 25-50", "30 Rough Grinding Stones", "Uses 60 Rough Stone; save 26 for gauntlets and possible Silver Rods." },
+        { 67, "Apprentice Â· 50-67", "36 Coarse Grinding Stones", "Uses 72 Coarse Stone; keep them for bracers later." },
+        { 75, "Apprentice Â· 67-75", "8 Runed Copper Gauntlets", "Uses 64 Copper Bars and 16 saved Rough Grinding Stones; requires Blacksmith Hammer." },
+        { 80, "Journeyman Â· 75-80", "Runed Copper Belts or Silver Rods", "Train Journeyman first. Silver Rod is an alternative when its materials are cheaper." },
+        { 95, "Journeyman Â· 80-95", "18 Runed Copper Belts", "The guide recommends this route in its current Forever version." },
+        { 112, "Journeyman Â· 95-112", "Patterned Bronze Bracers, with Heavy Grinding Stone prep", "Save Heavy Grinding Stones for later recipes; keep remaining Coarse Grinding Stones for this band." },
+        { 125, "Journeyman Â· 112-125", "Patterned Bronze Bracers", "Uses saved Coarse Grinding Stones and Bronze Bars." },
+        { 140, "Journeyman Â· 125-140", "Bronze Shortswords", "Guide favors vendor-sell value; an alternate bracer path is listed for disenchanters." },
+        { 170, "Journeyman Â· 140-170", "Bronze Warhammers", "Buy Strong Flux from a Blacksmithing Supply vendor." },
+        { 175, "Expert Â· 170-175", "Green Iron Bracers", "Train Expert at the 150 cap before continuing." },
+        { 215, "Expert Â· 175-215", "Golden Scale Bracers, then the guide's Steel/Mithril alternatives", "Keep the earlier Heavy Grinding Stones; the detailed route contains alternative branches." },
+        { 300, "Artisan Â· 215-300", "Thorium and Imperial Plate recipe progression", "The guide has multiple recipe alternatives and plan quests; review the live page for exact plan and material branch before buying.", "Branch-heavy: exact materials depend on chosen recipe path." },
+    }, "Blacksmithing requires a Blacksmith Hammer; ores and intermediate stones may be gathered or bought.")
+
+registerGuide("Enchanting", "enchanting-leveling-guide",
+    "Forever beta-derived; recipe thresholds and material totals should be confirmed in the live profession pane.", {
+        { 2, "Apprentice Â· 1-2", "Runed Copper Rod", "Requires Copper Rod and Mote of Magic; guide says buy these from an Enchanting Supply vendor." },
+        { 20, "Apprentice Â· 2-20", "Enchant Bracer - Inferior Stamina", "Uses Mote of Magic." },
+        { 70, "Apprentice Â· 20-70", "Enchant Chest - Inferior Stamina or Bracer - Minor Deflect", "Choose Strange Dust or Lesser Magic Essence path; Greater Magic Essence can be split into three Lesser." },
+        { 100, "Journeyman Â· 70-100", "Enchant Chest - Minor Absorption", "Train Journeyman before continuing; choose the material branch matching what you bought." },
+        { 109, "Journeyman Â· 100-109", "Continue Chest - Minor Absorption", "Guide uses this to reach the Runed Silver Rod step." },
+        { 110, "Journeyman Â· 109-110", "Runed Silver Rod", "Uses Silver Rod, Strange Dust, Lesser Magic Essence and Shadowgem." },
+        { 150, "Journeyman Â· 110-150", "Follow the guide's selected dust or essence branch", "See the source page for the full spell-by-spell sequence and variant material list." },
+        { 225, "Expert Â· 150-225", "Follow the guide's skill-range enchant sequence", "Expert rank requires its trainer gate; recipe costs depend on dust and essence branch." },
+        { 300, "Artisan Â· 225-300", "Use the source's artisan enchant progression", "Upper guide bands remain beta-derived; confirm each recipe, reagent and skill color in game." },
+    }, "The source page includes an optional create/confirm macro. This addon does not automate enchant clicks.")
+
+registerGuide("Engineering", "engineering-leveling-guide",
+    "Forever beta-derived; skill-up counts are estimates, especially for yellow recipes.", {
+        { 30, "Apprentice Â· 1-30", "60 Rough Blasting Powder", "Uses 60 Rough Stone; keep all powder for bombs." },
+        { 50, "Apprentice Â· 30-50", "30 Handfuls of Copper Bolts", "Uses Copper Bars; keep bolts for bombs." },
+        { 51, "Apprentice Â· 50-51", "Arclight Spanner", "The guide says to keep this tool for Engineering crafts." },
+        { 75, "Journeyman Â· 51-75", "30 Rough Copper Bombs", "Train Journeyman before unattended crafting; yellow from 60 and may pass 75." },
+        { 90, "Journeyman Â· 75-90", "60 Coarse Blasting Powder", "Save powder for dynamite." },
+        { 100, "Journeyman Â· 90-100", "20 Coarse Dynamite", "Uses saved Coarse Blasting Powder and Linen Cloth." },
+        { 105, "Journeyman Â· 100-105", "Silver Contacts or Flying Tiger Goggles", "Goggles are the alternative when Silver Bars are expensive." },
+        { 125, "Journeyman Â· 105-125", "25 Bronze Tubes", "Yellow throughout; if short, begin scopes rather than making extra tubes." },
+        { 135, "Journeyman Â· 125-135", "10 Standard Scopes", "Uses Bronze Tubes and Moss Agate; Heavy Blasting Powder is an alternative." },
+        { 150, "Journeyman Â· 135-150", "Heavy Blasting Powder and Whirring Bronze Gizmos", "Make both in the guide's order; both are needed for the later sheep recipe." },
+        { 160, "Expert Â· 150-160", "Bronze Frameworks", "Keep all 15 for the sheep recipe." },
+        { 200, "Expert Â· 160-200", "Continue the guide's sheep and device sequence", "The source gives prerequisite chains; keep intermediate parts and check exact quantities on the page." },
+        { 300, "Artisan Â· 200-300", "Follow the source's upper Engineering recipe sequence", "The detailed high-skill route has multiple components and recipe steps; verify recipe availability and amounts before shopping." },
+    }, "Mining supplies much of Engineering's ore and stone. The Forever guide says Gnomes no longer get a flat Engineering skill bonus.")
+
+registerGuide("Leatherworking", "leatherworking-leveling-guide",
+    "Forever beta-derived; yellow recipe counts and upper skill alternatives may require extra crafts.", {
+        { 30, "Apprentice Â· 1-30", "Light Armor Kits", "The source offers scraps processing or a Light Leather alternative." },
+        { 45, "Apprentice Â· 30-45", "Light Armor Kits or Cured Light Hides", "Cured Light Hides are an alternative if you bought Light Hides; save hides for later pants." },
+        { 55, "Apprentice Â· 45-55", "Embossed Leather Gloves", "Skip this if using the cured-hide branch through 55." },
+        { 75, "Journeyman Â· 55-75", "Embossed Leather Gloves", "Train Journeyman before passing 75." },
+        { 80, "Journeyman Â· 75-80", "Medium Leather", "The guide makes Medium Leather from Light Leather." },
+        { 90, "Journeyman Â· 80-90", "Cured Medium Hides or Fine Leather Belts", "Choose according to whether you have Medium Hides or bought Medium Leather; save cured hides." },
+        { 100, "Journeyman Â· 90-100", "Fine Leather Belts", "Keep 10 for Dark Leather Belts." },
+        { 115, "Journeyman Â· 100-115", "Dark Leather Cloaks or Light Leather Pants", "Use the Light Leather Pants alternative if following the Light Hide path." },
+        { 125, "Journeyman Â· 115-125", "Dark Leather Belts or Pants and Hillman's Gloves", "Branch depends on whether Medium Leather or Medium Hides were purchased." },
+        { 130, "Expert Â· 125-130", "Heavy Leather", "Train Expert at skill 125 and level 20." },
+        { 210, "Expert Â· 130-210", "Cured Heavy Hide or no-hide route", "Choose using the guide's material-cost comparison; route includes several recipe alternatives." },
+        { 300, "Artisan Â· 210-300", "Nightscape, Wicked and Runic Leather recipes", "The upper route includes pattern choices; use the source guide for current alternatives and recipe vendors." },
+    }, "Skinning pairs with Leatherworking. The source route has hide-versus-leather choices; materials vary by path.")
+
+registerGuide("Tailoring", "tailoring-leveling-guide",
+    "Forever beta guide; page notes its 225+ shopping data is incomplete and yellow recipe counts are estimates.", {
+        { 55, "Apprentice Â· 1-55", "Linen Cloth crafts", "The source says Tailoring Supply vendors near trainers sell thread and dyes; Brill is the Tirisfal exception." },
+        { 80, "Journeyman Â· 55-80", "45 Bolts of Woolen Cloth", "Learn Journeyman before crafting; save bolts for later and optionally make the full 153 needed through skill 140." },
+        { 95, "Journeyman Â· 80-95", "Woolen Capes", "If bolts already raised skill past 80, continue capes to 95." },
+        { 100, "Journeyman Â· 95-100", "Double-stitched Woolen Shoulders", "Uses Woolen Cloth bolts and Fine Thread." },
+        { 120, "Journeyman Â· 100-120", "54 Bolts of Silk Cloth", "Keep them for later crafts; making 184 bolts now covers the guide through skill 190." },
+        { 125, "Journeyman Â· 120-125", "Gloves of Meditation", "Requires Woolen Cloth bolts, Fine Thread and Elixir of Wisdom." },
+        { 140, "Expert Â· 125-140", "Gloves of Meditation", "Yellow throughout; may need extra. Train Expert at skill 125 and level 20." },
+        { 150, "Expert Â· 140-150", "Bolts of Mageweave", "The source says total bolts required through 225 can be made early." },
+        { 170, "Expert Â· 150-170", "Crimson Silk Vest", "Uses Silk bolts, Red Dye and Fine Thread." },
+        { 190, "Expert Â· 170-190", "Crimson Silk Pantaloons", "Yellow from 180; may require extra crafts." },
+        { 215, "Expert Â· 190-215", "Black Mageweave Gloves", "Yellow from 195 and green from 210." },
+        { 225, "Expert Â· 215-225", "Mageweave Bags", "Uses Mageweave bolts and Silken Thread." },
+        { 265, "Artisan Â· 225-265", "Runecloth Belts then Runecloth Gloves", "Source shopping list stops at 265 and says later route/prices are unfinished." , "Incomplete above 265" },
+        { 300, "Artisan Â· 265-300", "Live recipe required", "The source has not published a finished 265-300 route; choose only recipes the live window confirms will skill up.", "Not provided by source" },
+    }, "Use the live profession pane to verify recipe skill-up colors; source does not finish the final range.")
+
+registerGuide("Mining", "mining-leveling-guide",
+    "The Forever page gives current routes through its skill brackets, then identifies Classic-derived sections that may change.", {
+        { 65, "Copper Â· 1-65", "Copper Veins or smelting", "Starting-zone choice; the guide discusses Durotar, Mulgore, Tirisfal, Elwynn, Dun Morogh, Teldrassil and Zephras Isle. Buy a Mining Pick." },
+        { 125, "Copper/Tin Â· 65-125", "Tin and Copper; optional smelting", "Guide lists cave and open-route choices by faction. Tin requires 65; Silver 75; Iron 125." },
+        { 175, "Iron/Gold Â· 125-175", "Iron Deposits and Gold Veins", "Zone choices include Arathi Highlands, Thousand Needles and Desolace. Gold requires 155." },
+        { 245, "Mithril Â· 175-245", "Mithril and Truesilver", "Guide choices include The Hinterlands and Tanaris; Truesilver requires 230." },
+        { 275, "Mithril/Thorium Â· 245-275", "Small Thorium Veins", "Guide choices include Un'Goro, Blasted Lands and Felwood; small Thorium requires 245." },
+        { 300, "Thorium Â· 275-300", "Rich Thorium Veins", "Choices include Un'Goro, Eastern Plaguelands, Winterspring and Burning Steppes; Rich Thorium requires 275." },
+    }, "The guide has smelting and mining alternatives through 120; exact mining spawn pins are not included here.")
+
+registerGuide("Skinning", "skinning-leveling-guide",
+    "Forever beta-derived; the page says high-skill testing takes time and may need live updates.", {
+        { 75, "Skinning Â· 1-75", "Skin low-level beasts in your starting zone", "Guide includes Durotar, Mulgore, Tirisfal, Skyborne Zephras Isle, Elwynn, Dun Morogh and Teldrassil. Skyborne can learn it through the Pelt Collecting for Beginners quest reward." },
+        { 150, "Skinning Â· 75-150", "Progress through the guide's faction zone choices", "Alliance uses Loch Modan then Wetlands; Horde follows the guide's Barrens route. Check mob skinning-skill requirement." },
+        { 225, "Skinning Â· 150-225", "Foothill Caverns yetis or Duskwood route", "The page presents alternative zones for this band; pick based on faction and travel." },
+        { 280, "Skinning Â· 225-280", "Feral Scar Vale yetis in Feralas", "Check the source page's mob skinning requirements before farming." },
+        { 300, "Skinning Â· 280-300", "Western Un'Goro dinosaurs", "Use the live skill value and skin mobs that meet the source's requirements." },
+    }, "No exact mob spawn coordinates are bundled; this route uses zone-level guidance.")
+
+registerGuide("First Aid", "first-aid-leveling-guide",
+    "Forever beta-derived; source labels upper material estimates provisional and skill-ups may vary.", {
+        { 75, "Apprentice Â· 1-75", "Linen Bandages or First Aid healing potions", "First Aid is secondary and can be learned by every character; source includes a Peacebloom alternative." },
+        { 150, "Journeyman Â· 75-150", "Wool Bandages", "Guide lists the recipe/trainer steps; stop to train before passing the current cap." },
+        { 225, "Expert Â· 150-225", "Silk then Mageweave Bandages", "Counts are estimates; yellow recipes can need extra cloth and crafts." },
+        { 300, "Artisan Â· 225-300", "Mageweave/Runecloth Bandages and Forever healing recipes", "The page marks this shopping segment unfinished; verify recipe source and materials before buying." , "Upper list provisional" },
+    }, "Forever moved certain healing potions from Alchemy to First Aid.")
+
+registerGuide("Cooking", "cooking-leveling-guide",
+    "Forever beta-derived; recipe choice depends on meat/fish available and material estimates vary.", {
+        { 50, "Apprentice Â· 1-50", "Choose among recipes using your available meat or fish", "The guide provides several recipe options by bracket rather than one fixed route." },
+        { 150, "Journeyman Â· 50-150", "Use gathered or purchased ingredients", "Every trainer teaches Journeyman; campfire is required for many recipes. Source describes Forever's Campfire Kit." },
+        { 225, "Expert Â· 150-225", "Choose recipes matching your materials", "Trainer rank and some recipe sources require travel or quests." },
+        { 300, "Artisan Â· 225-300", "Use source's artisan recipe choices", "The guide lists trainer/quest unlocks; pair with Fishing+Cooking if leveling both." },
+    }, "Cooking does not use a primary profession slot; the guide has ingredient-dependent branches.")
+
+registerGuide("Fishing", "fishing-leveling-guide",
+    "Forever beta-derived; fish quantities are estimates and the Artisan quest is a required progression stop.", {
+        { 75, "Fishing Â· 1-75", "Starting-zone water route", "Guide lists pole, lure and starting-zone choices; each includes trainer/vendor and fishing area." },
+        { 150, "Fishing Â· 75-150", "Capital-city fishing route", "Choose a route based on faction/travel; the page provides fish expectations and recipe stops." },
+        { 205, "Fishing Â· 150-205", "Progress through source water zones", "Requires Expert/Artisan progression and guide-specified book or quest steps." },
+        { 255, "Fishing Â· 205-255", "Continue route and complete Artisan Fishing quest", "Guide includes quest items and turn-in; check requirements before traveling." },
+        { 300, "Fishing Â· 255-300", "Feralas fishing route", "Use the standalone Fishing guide, or Fishing+Cooking if raising Cooking in parallel." },
+    }, "Fishing has no craft recipes; route advances from the live Fishing skill value.")
+
+registerGuide("Fishing + Cooking", "fishing-and-cooking-leveling-guide",
+    "Forever beta-derived combined route; catch counts and Cooking skill-ups are estimates; source marks high-level section Classic-derived.", {
+        { 75, "Fishing Â· 1-75", "Choose a starting-zone route and cook the catch", "Guide recommends Mulgore for Horde and Elwynn Forest for Alliance; it also includes Durotar, Tirisfal, Zephras, Dun Morogh and Teldrassil." },
+        { 130, "Fishing Â· 75-130 / Cooking Â· 1-100", "Fish in a capital and cook small fish/Longjaw", "The guide offers capital choices and tells you which catches and recipes to keep." },
+        { 205, "Fishing Â· 130-205 / Cooking Â· 100-175", "Continue capital/zone fishing and cook catches", "Follow the guide's sequential steps; caught fish supply cooking so avoid buying the same fish twice." },
+        { 225, "Artisan Fishing quest", "Complete the Fishing quest step", "Collect the guide-listed items, including lure/quest supplies, before travel." },
+        { 255, "Fishing Â· 205-255 / Cooking Â· 175-225", "Continue route and cook the catches", "Guide includes the Artisan Cooking quest in this sequence." },
+        { 300, "Fishing Â· 255-300 / Cooking Â· 225-300", "Finish fishing in Feralas and choose a final cooking recipe", "The page offers a choice of Sunscale Salmon or Nightfin Soup; high-skill route is marked Classic-derived." },
+    }, "Combined route tracks both Fishing and Cooking. This summary does not yet subtract fish caught from an itemized shopping list.", {}, {})
+
+WP.RouteData.fishingcooking.skills = {
+    Fishing = { skill = 0, maxSkill = 300 },
+    Cooking = { skill = 0, maxSkill = 300 },
+}
+WP.RouteData.fishingcooking.steps = {
+    { skill = "Fishing", from = 0, target = 75, title = "Fishing 1-75", zone = "Starting zone", focus = "Fish in your starting area, then cook the catch", instructions = "Choose the guide's faction route: Mulgore for Horde or Elwynn Forest for Alliance; other starting zones are listed too." },
+    { skill = "Cooking", from = 0, target = 50, title = "Cooking 1-50", zone = "At a cooking fire", focus = "Cook the small fish from the opening Fishing steps", instructions = "Use the Fishing + Cooking guide's recipe sequence and avoid buying fish already caught." },
+    { skill = "Fishing", from = 75, target = 130, title = "Fishing 75-130", zone = "Capital waters", focus = "Fish the guide's capital-city route", instructions = "Keep the named catches needed for the paired Cooking steps." },
+    { skill = "Cooking", from = 50, target = 100, title = "Cooking 50-100", zone = "Cooking fire", focus = "Cook the saved Longjaw Mud Snapper and other listed catches", instructions = "Follow the recipe alternatives and quantities on the source page." },
+    { skill = "Fishing", from = 130, target = 205, title = "Fishing 130-205", zone = "Source route zones", focus = "Continue the source's Fishing route", instructions = "Complete its book and quest stops before leaving each bracket." },
+    { skill = "Cooking", from = 100, target = 175, title = "Cooking 100-175", zone = "Cooking fire", focus = "Cook the catches gathered in the preceding route", instructions = "Use the guide's recipe choices based on your actual catch." },
+    { skill = "Fishing", from = 205, target = 255, title = "Fishing 205-255", zone = "Artisan Fishing route", focus = "Complete the Artisan Fishing quest and continue fishing", instructions = "Collect quest items and lure supplies before traveling." },
+    { skill = "Cooking", from = 175, target = 225, title = "Cooking 175-225", zone = "Cooking fire", focus = "Continue the guide's cooking sequence and Artisan Cooking quest", instructions = "The guide marks the higher route as beta-derived." },
+    { skill = "Fishing", from = 255, target = 300, title = "Fishing 255-300", zone = "Feralas", focus = "Finish the Feralas fishing route", instructions = "Verify the source's high-skill guidance against the live client." },
+    { skill = "Cooking", from = 225, target = 300, title = "Cooking 225-300", zone = "Cooking fire", focus = "Choose the source's final recipe route", instructions = "The source lists Sunscale Salmon or Nightfin Soup; high-skill guidance is Classic-derived." },
+}
+
+
