@@ -1,5 +1,5 @@
 
-## 1.2.0-test.3 full test build
+## 1.2.0-test.4 full test build
 
 This build adds a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; the current map overlay displays steps that have map coordinates.
 

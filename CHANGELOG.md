@@ -1,3 +1,7 @@
+## 1.2.0-test.4
+- Replaced cramped dashboard with a searchable guide library, clearer route card, skill progress, and large in-window controls.
+- Styled the tracker and actions with a dark, high-contrast green accent theme.
+
 ## 1.2.0-test.3
 - Fixed route arrow player-coordinate handling so it computes direction instead of silently losing the Y coordinate.
 
