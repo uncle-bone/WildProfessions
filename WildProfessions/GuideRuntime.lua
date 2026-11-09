@@ -70,6 +70,8 @@ function WP:GetGuideState(profession)
             local defaultRoute
             for mapName, mapRoute in pairs(step.mapRoutes or {}) do
                 if not defaultRoute then defaultRoute={name=mapName,data=mapRoute} end
+                local visibleMap = WorldMapFrame and type(WorldMapFrame.GetMapID) == "function" and WorldMapFrame:GetMapID()
+                if visibleMap and visibleMap == mapRoute.mapID then defaultRoute={name=mapName,data=mapRoute};break end
                 local ok, currentMap = C_Map and C_Map.GetBestMapForUnit and pcall(C_Map.GetBestMapForUnit, "player")
                 if ok and currentMap == mapRoute.mapID then defaultRoute={name=mapName,data=mapRoute};break end
             end

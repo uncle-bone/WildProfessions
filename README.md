@@ -1,7 +1,7 @@
 
-## 1.2.0-test.4 full test build
+## 1.2.0-test.5 full test build
 
-This build adds a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; the current map overlay displays steps that have map coordinates.
+This build adds Fishing route stops for leveling, the Nat Pagle quest and fish-specific farming locations. Its map pins are adapted from the supplied Alliance Zygor profession guide. It also includes a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; fishing pins are open-water access points or reported school areas, not guaranteed active pools.
 
 Install the `WildProfessions` folder into `Interface/AddOns`, then use the minimap icon or the visible `WildProfessions` profession-window button. The dashboard is the primary navigation surface; `/wp` remains an optional shortcut.
 
@@ -40,4 +40,4 @@ Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns
 
 The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.
 
-Route data credit: Loch Modan Herbalism waypoint sequence adapted from the user-provided ZygorProfessionsAllianceCLASSIC.lua file.
+Route data credit: Loch Modan Herbalism waypoint sequence and Alliance Fishing stop/farming coordinates adapted from the user-provided `ZygorProfessionsAllianceCLASSIC.lua` file. Route summaries and addon implementation remain WP's own; coordinates should be checked in the Forever client.

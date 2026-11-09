@@ -15,9 +15,19 @@ function WP:RefreshMapOverlay()
   if step.mapID==id and type(step.x)=="number" and type(step.y)=="number" then points[#points+1]={x=step.x/100,y=step.y/100,label=step.title or step.zone} end
   for _,alt in pairs(step.mapRoutes or {}) do if alt.mapID==id then for _,pt in ipairs(alt.points or {}) do points[#points+1]={x=pt[1]/100,y=pt[2]/100,label=step.title or step.zone} end end end
  end
+ for _,farm in ipairs(route.farmRoutes or {}) do
+  if farm.mapID==id then for _,pt in ipairs(farm.points or {}) do points[#points+1]={x=pt[1]/100,y=pt[2]/100,label=farm.name} end end
+ end
  if #points==0 then return end
  for i=1,#points-1 do local q,r=points[i],points[i+1];local dx=(r.x-q.x)*host:GetWidth();local dy=(r.y-q.y)*host:GetHeight();local line=host:CreateTexture(nil,"ARTWORK");line:SetTexture("Interface/Buttons/WHITE8X8");line:SetVertexColor(0.1,1,0.35,0.85);line:SetSize(math.sqrt(dx*dx+dy*dy),4);line:SetPoint("CENTER",host,"TOPLEFT",((q.x+r.x)/2)*host:GetWidth(),-((q.y+r.y)/2)*host:GetHeight());line:SetRotation(math.atan2 and math.atan2(-dy,dx) or 0);line:Show();host.routeMarks[#host.routeMarks+1]=line end
- for i,pt in ipairs(points) do local pin=makeMark(host,"Interface/Buttons/WHITE8X8",16,1,0.85,0.1);pin:SetPoint("CENTER",host,"TOPLEFT",pt.x*host:GetWidth(),-pt.y*host:GetHeight());pin:Show();host.routeMarks[#host.routeMarks+1]=pin;local label=host:CreateFontString(nil,"OVERLAY","GameFontNormalSmall");label:SetText(i);label:SetPoint("CENTER",pin,"CENTER");label:SetTextColor(0,0,0,1);label:Show();host.routeMarks[#host.routeMarks+1]=label end
+ for i,pt in ipairs(points) do
+  local pin=CreateFrame("Frame",nil,host);pin:SetSize(18,18);pin:SetPoint("CENTER",host,"TOPLEFT",pt.x*host:GetWidth(),-pt.y*host:GetHeight());pin:EnableMouse(true)
+  pin.icon=makeMark(pin,"Interface/Buttons/WHITE8X8",16,1,0.85,0.1);pin.icon:SetPoint("CENTER")
+  pin.label=pin:CreateFontString(nil,"OVERLAY","GameFontNormalSmall");pin.label:SetText(i);pin.label:SetPoint("CENTER",pin,"CENTER");pin.label:SetTextColor(0,0,0,1)
+  pin:SetScript("OnEnter",function(f) if GameTooltip then GameTooltip:SetOwner(f,"ANCHOR_RIGHT");GameTooltip:SetText(pt.label or "Route waypoint",1,0.82,0);GameTooltip:Show() end end)
+  pin:SetScript("OnLeave",function() if GameTooltip then GameTooltip:Hide() end end)
+  pin:Show();host.routeMarks[#host.routeMarks+1]=pin
+ end
 end
 function WP:InitializeMapOverlay()
  if self.mapOverlayHost then return end

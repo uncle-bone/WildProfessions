@@ -1,3 +1,8 @@
+## 1.2.0-test.5
+- Added Fishing leveling map routes, starter and faction water stops, the Nat Pagle quest fish locations, and item-specific fish farming pins adapted from the supplied Zygor profession guide.
+- Added fishing farming pins to the map overlay and made alternate route selection prefer the zone currently shown on the world map.
+- Updated attribution for the adapted Fishing location data.
+
 ## 1.2.0-test.4
 - Replaced cramped dashboard with a searchable guide library, clearer route card, skill progress, and large in-window controls.
 - Styled the tracker and actions with a dark, high-contrast green accent theme.

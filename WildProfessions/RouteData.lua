@@ -326,6 +326,55 @@ registerGuide("Fishing", "fishing-leveling-guide",
         { 300, "Fishing · 255-300", "Feralas fishing route", "Use the standalone Fishing guide, or Fishing+Cooking if raising Cooking in parallel." },
     }, "Fishing has no craft recipes; route advances from the live Fishing skill value.")
 
+-- Fishing location pins and route stops adapted from the user's supplied
+-- ZygorProfessionsAllianceCLASSIC.lua. These are fishing access points, not
+-- guaranteed pool spawns; open-water locations can move with server changes.
+local fishing = WP.RouteData.fishing
+fishing.routeNote = "Fishing spots are adapted from the supplied Zygor profession guide. They mark water access points, not guaranteed school spawns."
+fishing.steps[1].zone, fishing.steps[1].mapID, fishing.steps[1].x, fishing.steps[1].y = "Elwynn Forest", 1429, 33.70, 62.97
+fishing.steps[1].focus = "Train in Stormwind; fish Elwynn waters to 75; keep Shiny Baubles active."
+fishing.steps[1].mapRoutes = {
+    ["Elwynn Forest"] = { mapID=1429, points={{33.70,62.97},{33.59,63.52}} },
+    ["Teldrassil"] = { mapID=1438, points={{56.25,93.72}} },
+}
+fishing.steps[2].zone, fishing.steps[2].mapID, fishing.steps[2].x, fishing.steps[2].y = "Stormwind City", 1453, 55.24, 69.73
+fishing.steps[2].focus = "Train Journeyman at 75; fish Stormwind, then Redridge to 150; use Nightcrawlers."
+fishing.steps[2].mapRoutes = {
+    ["Stormwind City"] = { mapID=1453, points={{55.09,69.76},{54.78,68.96},{55.24,69.73}} },
+    ["Redridge Mountains"] = { mapID=1433, points={{24.60,56.28}} },
+}
+fishing.steps[3].zone, fishing.steps[3].mapID, fishing.steps[3].x, fishing.steps[3].y = "Stranglethorn Vale", 1434, 27.64, 76.67
+fishing.steps[3].focus = "Buy Expert Fishing - The Bass and You from Old Man Heming; fish to 225 with Bright Baubles."
+fishing.steps[3].mapRoutes = {
+    ["Stranglethorn Vale"] = { mapID=1434, points={{27.42,77.16},{27.64,76.67},{26.22,73.57}} },
+}
+fishing.steps[4].zone, fishing.steps[4].mapID, fishing.steps[4].x, fishing.steps[4].y = "Dustwallow Marsh", 1445, 58.55, 60.21
+fishing.steps[4].focus = "At level 35, start Nat Pagle's Artisan Fishing quest; catch one quest fish in each of four zones."
+fishing.steps[4].mapRoutes = {
+    ["Dustwallow Marsh"] = { mapID=1445, points={{58.55,60.21}} },
+    ["Feralas"] = { mapID=1444, points={{62.38,52.50}} },
+    ["Desolace"] = { mapID=1443, points={{38.96,22.70}} },
+    ["Swamp of Sorrows"] = { mapID=1435, points={{90.45,73.47}} },
+    ["Stranglethorn Vale"] = { mapID=1434, points={{24.58,65.80}} },
+}
+fishing.steps[5].zone, fishing.steps[5].mapID, fishing.steps[5].x, fishing.steps[5].y = "The Hinterlands", 1425, 29.50, 47.82
+fishing.steps[5].focus = "Follow the road through the zone to the water; fish from 255 to 300 with Bright Baubles."
+fishing.steps[5].mapRoutes = { ["The Hinterlands"] = { mapID=1425, points={{18.57,53.61},{28.61,53.02},{29.50,47.82}} } }
+
+-- Fish farming locations from the same supplied file. Grouped by water zone
+-- so the map draws only the relevant stops when the matching zone is open.
+fishing.farmRoutes = {
+    { name="Raw Brilliant Smallfish", mapID=1429, skill=1, points={{33.59,63.52}}, note="Elwynn Forest open water" },
+    { name="Raw Slitherskin Mackerel", mapID=1438, skill=1, points={{56.25,93.72}}, note="Teldrassil open water" },
+    { name="Raw Rainbow Fin Albacore", mapID=1437, skill=1, points={{9.32,61.63}}, note="Alliance Wetlands water" },
+    { name="Raw Longjaw Mud Snapper", mapID=1453, skill=1, points={{54.78,68.96}}, note="Stormwind City water" },
+    { name="Raw Sagefish", mapID=1424, skill=100, points={{62.51,43.06},{69.87,13.66}}, note="Hillsbrad river; follow north for schools" },
+    { name="Raw Mithril Head Trout", mapID=1445, skill=130, points={{59.95,34.54}}, note="Dustwallow Marsh" },
+    { name="Raw Rockscale Cod", mapID=1434, skill=130, points={{26.22,73.57}}, note="Stranglethorn Vale" },
+    { name="Raw Sunscale Salmon", mapID=1444, skill=205, points={{62.39,52.49}}, note="Feralas; daytime only" },
+}
+fishing.steps[1].farming = fishing.farmRoutes
+
 registerGuide("Fishing + Cooking", "fishing-and-cooking-leveling-guide",
     "Forever beta-derived combined route; catch counts and Cooking skill-ups are estimates; source marks high-level section Classic-derived.", {
         { 75, "Fishing · 1-75", "Choose a starting-zone route and cook the catch", "Guide recommends Mulgore for Horde and Elwynn Forest for Alliance; it also includes Durotar, Tirisfal, Zephras, Dun Morogh and Teldrassil." },

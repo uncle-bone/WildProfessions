@@ -3,7 +3,7 @@
 ## Title: WildProfessions
 ## Notes: Profession progress and planning for WoW Forever
 ## Author: Uncle Bone
-## Version: 1.2.0-test.4
+## Version: 1.2.0-test.5
 ## SavedVariables: WildProfessionsDB
 
 Core.lua
