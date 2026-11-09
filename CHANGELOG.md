@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.0-alpha.2 - Source-linked guide expansion
+
+- Added original source-linked route summaries for all 13 profession guide entries, including the combined Fishing + Cooking route.
+- Added `/wp route` to show all bundled skill steps, alternatives and source confidence notes.
+- Generalized rank reminders and tracker completion text for professions beyond Herbalism.
+- Expanded Herbalism route choices and documented Mining, Skinning and other gathering zone brackets.
+- Marked incomplete and beta-derived guide ranges instead of filling gaps with unverified recipes.
+- Updated README to state what this guide expansion does and what a full recipe planner still needs.
+
+This is an unpublished local preview. It has not been tested in the Forever client. CraftRoute code was not copied; its repository did not specify reuse terms. No exact recipe-by-recipe shopping engine is included in this build.
+
 ## 1.1.0-alpha.1 - Skill-tracked Herbalism guide
 
 - Added a guide runtime that chooses steps from the live profession skill and current rank cap.
@@ -8,5 +19,3 @@
 - Added a Skyborne starter step and Alliance-friendly Herbalism route through skill 300.
 - Marked route-area waypoint coordinates as approximate and retained the source's high-level validation caveat.
 - Kept the addon independent of external guide or database addons.
-
-This preview contains Herbalism only. Other profession guide data, recipe material lists, live-client behavior, and waypoint accuracy have not been verified in game.

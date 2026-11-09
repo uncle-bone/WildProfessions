@@ -113,7 +113,7 @@ function WP:UpdateGuideArrow()
 
     if state.status == "complete" then
         frame.title:SetText(state.title)
-        frame.subtitle:SetText("Herbalism 300 / 300")
+        frame.subtitle:SetText((state.route and state.route.name or "Profession") .. " " .. tostring(state.maxSkill or 300) .. " / " .. tostring(state.maxSkill or 300))
         frame.hint:SetText("Use /wp to choose another profession.")
         frame.arrow:SetRotation(0)
         return
@@ -129,7 +129,7 @@ function WP:UpdateGuideArrow()
         local dy = py - state.y / 100
         local angle = math.atan2 and math.atan2(dx, dy) or 0
         frame.arrow:SetRotation(angle)
-        frame.hint:SetText("Follow arrow to approximate route area; use Find Herbs for live nodes.")
+        frame.hint:SetText(state.routeNote or "Follow the guide's route area; use the profession's built-in tracking for live nodes.")
     else
         frame.arrow:SetRotation(0)
         frame.hint:SetText("Travel to the route zone. /wp guide hides or shows this arrow.")
@@ -147,3 +147,4 @@ function WP:ToggleGuideArrow()
         self:UpdateGuideArrow()
     end
 end
+

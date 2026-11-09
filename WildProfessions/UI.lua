@@ -56,7 +56,7 @@ function WP:CreateUI()
     title:SetText("WildProfessions")
     local version = createText(main, "GameFontDisableSmall", 11)
     version:SetPoint("TOPRIGHT", -40, -22)
-    version:SetText("v" .. self.version .. "  |  HERBALISM GUIDE")
+    version:SetText("v" .. self.version .. "  |  FOREVER GUIDES")
 
     local close = CreateFrame("Button", nil, main, "UIPanelCloseButton")
     close:SetPoint("TOPRIGHT", -5, -5)
@@ -116,6 +116,7 @@ function WP:CreateUI()
     local detail = createText(main, "GameFontHighlight", 12)
     detail:SetPoint("TOPLEFT", 244, -108)
     detail:SetWidth(285)
+    detail:SetHeight(225)
     detail:SetJustifyH("LEFT")
     detail:SetJustifyV("TOP")
     detail:SetText("Waiting for profession data.")
@@ -254,7 +255,11 @@ function WP:UpdateDashboard()
         local goal = status.title or "No bundled route"
         local detailText = status.text or "No guide data is available for this profession yet."
         local zoneText = status.zone and ("\nWaypoint zone: " .. status.zone) or ""
-        self.detailText:SetText(string.format("|cffffffff%s|r\nSkill: %d / %d\n\nCurrent step: %s%s\n\n%s\n\nPlanning preference: %s\n\nRecipe cost and market pricing are not included in this guide build.", selected.name, selected.skill or 0, selected.maxSkill or 0, goal, zoneText, detailText, strategyNames[strategy] or strategy))
+        local focusText = status.focus and ("\nGuide focus: " .. status.focus) or ""
+        local route = status.route
+        local sourceLine = route and route.source and ("\nSource: " .. route.source) or ""
+        local confidenceLine = status.sourceStatus and ("\nData status: " .. status.sourceStatus) or ""
+        self.detailText:SetText(string.format("|cffffffff%s|r\nSkill: %d / %d\n\nCurrent step: %s%s%s\n\n%s%s%s\n\nFull route: /wp route\nPlanning preference: %s\nRecipe costs and market prices are not included.", selected.name, selected.skill or 0, selected.maxSkill or 0, goal, zoneText, focusText, detailText, sourceLine, confidenceLine, strategyNames[strategy] or strategy))
     else
         self.dashboardProgress:SetMinMaxValues(0, 1)
         self.dashboardProgress:SetValue(0)
@@ -283,7 +288,7 @@ function WP:UpdateTracker()
         local herbs = guide.herbs and ("\n" .. guide.herbs) or ""
         self.trackerFrame.activity:SetText((guide.title or "Current step") .. "\n" .. (guide.zone or "Route") .. " · target skill " .. tostring(guide.target or 300) .. herbs)
     elseif guide.status == "complete" then
-        self.trackerFrame.activity:SetText("Guide complete: Herbalism 300.")
+        self.trackerFrame.activity:SetText("Guide complete: " .. p.name .. " " .. tostring(guide.target or 300) .. ".")
     else
         self.trackerFrame.activity:SetText(guide.text or "No route is bundled for this profession yet.")
     end
@@ -353,4 +358,5 @@ function WP:ToggleLock()
     self.db.settings.trackerLocked = not self.db.settings.trackerLocked
     self:Print("tracker " .. (self.db.settings.trackerLocked and "locked" or "unlocked") .. ".")
 end
+
 

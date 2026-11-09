@@ -2,7 +2,7 @@ local addonName, WP = ...
 WP = WP or {}
 _G.WildProfessions = WP
 WP.name = addonName or "WildProfessions"
-WP.version = "1.1.0-alpha.1"
+WP.version = "1.1.0-alpha.2"
 WP.professions = WP.professions or {}
 WP.selectedProfession = nil
 WP.refreshPending = false
@@ -85,7 +85,9 @@ function WP:Diagnostics()
     self:Print("version " .. self.version .. " | TOC " .. tostring(toc or "unknown") .. " | professions detected " .. count .. ".")
     local compat = self.compat or {}
     self:Print("pane: " .. tostring(compat.hostKind or "none") .. " | NaowhForever: " .. (compat.naowhLoaded and "detected" or "not detected") .. " | EllesmereUI: " .. (compat.ellesmereLoaded and "detected" or "not detected") .. ".")
-    self:Print("Bundled guide data: Herbalism 1-300 with live skill checks and route waypoints. Other profession route packs are not bundled yet.")
+    local routes = 0
+    for _ in pairs(WP.RouteData or {}) do routes = routes + 1 end
+    self:Print("Bundled guide routes: " .. routes .. ". Use /wp route to print the selected profession's full route. Confirm beta-derived steps against the game.")
 end
 
 local frame = CreateFrame("Frame")
@@ -131,10 +133,25 @@ SlashCmdList.WILDPROFESSIONS = function(message)
     elseif message == "guide" then WP:ToggleGuideArrow()
     elseif message == "lock" then WP:ToggleLock()
     elseif message == "diagnostics" then WP:Diagnostics()
+    elseif message == "route" or message == "routes" then
+        local key = WP.selectedProfession and WP.selectedProfession:lower():gsub("[^%a]", "")
+        if key == "fishing" and WP.RouteData.fishingcooking then
+            local combined = WP.RouteData.fishingcooking
+            combined.skills = combined.skills or {}
+            combined.skills.Fishing = WP.professions.Fishing or { skill = 0, maxSkill = 300 }
+            combined.skills.Cooking = WP.professions.Cooking or { skill = 0, maxSkill = 300 }
+            for line in WP:FormatCombinedGuideRoute(combined):gmatch("[^\n]+") do WP:Print(line) end
+        elseif WP.selectedProfession and WP.professions[WP.selectedProfession] and WP.FormatGuideRoute then
+            local profession = WP.professions[WP.selectedProfession]
+            for line in WP:FormatGuideRoute(profession):gmatch("[^\n]+") do WP:Print(line) end
+        else
+            WP:Print("Open a profession first, then use /wp route.")
+        end
     elseif message == "hide" then WP:HideDashboard()
     elseif message == "" or message == "show" then WP:ToggleDashboard()
     else
-        WP:Print("Commands: /wp, /wp refresh, /wp tracker, /wp guide, /wp lock, /wp hide, /wp diagnostics")
+        WP:Print("Commands: /wp, /wp route, /wp refresh, /wp tracker, /wp guide, /wp lock, /wp hide, /wp diagnostics")
     end
 end
+
 
