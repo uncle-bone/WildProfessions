@@ -45,7 +45,7 @@ function WP:CreateUI()
     main:SetMovable(true)
     main:EnableMouse(true)
     main:SetResizable(true)
-    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 760, 520) end
+    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 880, 560) end
     if main.SetBackdrop then
         main:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
         main:SetBackdropColor(0.035, 0.045, 0.06, 0.98)
@@ -53,7 +53,7 @@ function WP:CreateUI()
     end
     restorePoint(main, "dashboardPoint", "CENTER", 0, 0)
     local savedSize = self.db.settings.dashboardSize
-    if type(savedSize) == "table" then main:SetSize(tonumber(savedSize.width) or 900, tonumber(savedSize.height) or 600) end
+    if type(savedSize) == "table" then main:SetSize(math.max(880, tonumber(savedSize.width) or 900), math.max(560, tonumber(savedSize.height) or 600)) end
 
     local header = CreateFrame("Frame", nil, main, "BackdropTemplate")
     header:SetPoint("TOPLEFT", 8, -8)
