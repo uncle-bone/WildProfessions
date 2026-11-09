@@ -1,5 +1,11 @@
 
-## 1.2.0-test.6 full test build
+## 1.3.0-test.3 downloadable test build
+
+[Download WildProfessions 1.3.0-test.3](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.3.zip)
+
+This is an install-ready test ZIP. Please report in-game errors and route/UI behavior; it is not a stable release.
+
+## Previous build: 1.2.0-test.6 full test build
 
 This build adds 163 faction-aware farming paths adapted from the supplied Zygor profession files for Herbalism, Mining, Skinning, and Fishing, including the item farming guides and Alliance/Horde locations. Map routes draw independently, avoid connecting separate farming loops, and show the route/item name and skill requirement when you hover a pin. Existing launcher, dashboard, tracker, arrow, and profession guides remain included. No AH or auction pricing features are included. Gathering paths are guide routes, not live node spawns; fishing pins mark water access or school areas, not guaranteed active pools.
 
@@ -9,7 +15,7 @@ Install the `WildProfessions` folder into `Interface/AddOns`, then use the minim
 
 A standalone profession progress tracker and source-linked guide browser for WoW Forever.
 
-**Current build:** 1.2.0-test.6 (local test build; not yet released)  
+**Current build:** 1.3.0-test.3 (test build; not a stable release)  
 **Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
 ## Guide coverage
