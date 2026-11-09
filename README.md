@@ -1,5 +1,5 @@
 
-## 1.2.0-test.1 full test build
+## 1.2.0-test.2 full test build
 
 This build adds a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; the current map overlay displays steps that have map coordinates.
 
@@ -39,3 +39,5 @@ Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns
 ## Sources
 
 The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.
+
+Route data credit: Loch Modan Herbalism waypoint sequence adapted from the user-provided ZygorProfessionsAllianceCLASSIC.lua file.

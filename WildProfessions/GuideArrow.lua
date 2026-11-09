@@ -125,9 +125,16 @@ function WP:UpdateGuideArrow()
 
     local onMap = isPlayerOnMap(state.mapID)
     local px, py = onMap and playerPosition(state.mapID) or nil
-    if type(px) == "number" and type(py) == "number" and type(state.x) == "number" and type(state.y) == "number" then
-        local dx = state.x / 100 - px
-        local dy = py - state.y / 100
+    local targetX, targetY = state.x, state.y
+    if type(px) == "number" and type(py) == "number" and type(state.routePoints) == "table" and #state.routePoints > 0 then
+        local best, bestDistance = 1, math.huge
+        for i, point in ipairs(state.routePoints) do local dx,dy=point[1]/100-px,point[2]/100-py;local dist=dx*dx+dy*dy;if dist<bestDistance then best,bestDistance=i,dist end end
+        local nextPoint=state.routePoints[math.min(best+1,#state.routePoints)] or state.routePoints[best]
+        targetX,targetY=nextPoint[1],nextPoint[2]
+    end
+    if type(px) == "number" and type(py) == "number" and type(targetX) == "number" and type(targetY) == "number" then
+        local dx = targetX / 100 - px
+        local dy = py - targetY / 100
         local angle = math.atan2 and math.atan2(dx, dy) or 0
         frame.arrow:SetRotation(angle)
         frame.hint:SetText(state.routeNote or "Follow the guide's route area; use the profession's built-in tracking for live nodes.")

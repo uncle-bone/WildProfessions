@@ -66,6 +66,14 @@ function WP:GetGuideState(profession)
 
     for index, step in ipairs(route.steps or {}) do
         if skill < step.target then
+            local chosenMap, chosenX, chosenY, chosenPoints, chosenZone = step.mapID, step.x, step.y, nil, step.zone
+            local defaultRoute
+            for mapName, mapRoute in pairs(step.mapRoutes or {}) do
+                if not defaultRoute then defaultRoute={name=mapName,data=mapRoute} end
+                local ok, currentMap = C_Map and C_Map.GetBestMapForUnit and pcall(C_Map.GetBestMapForUnit, "player")
+                if ok and currentMap == mapRoute.mapID then defaultRoute={name=mapName,data=mapRoute};break end
+            end
+            if defaultRoute then chosenMap=defaultRoute.data.mapID;chosenPoints=defaultRoute.data.points;chosenZone=defaultRoute.name;local first=chosenPoints and chosenPoints[1];if first then chosenX,chosenY=first[1],first[2] end end
             return {
                 status = "active",
                 route = route,
@@ -74,10 +82,11 @@ function WP:GetGuideState(profession)
                 maxSkill = maxSkill,
                 stepIndex = index,
                 title = step.title,
-                zone = step.zone,
-                mapID = step.mapID,
-                x = step.x,
-                y = step.y,
+                zone = chosenZone,
+                mapID = chosenMap,
+                x = chosenX,
+                y = chosenY,
+                routePoints = chosenPoints,
                 herbs = step.herbs,
                 focus = step.focus or step.herbs,
                 target = step.target,

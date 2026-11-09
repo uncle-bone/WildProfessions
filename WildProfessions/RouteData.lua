@@ -146,6 +146,12 @@ herb.steps = {
     { target = 300, title = "Herbalism 270-300", zone = "Felwood", mapID = 1448, x = 50.0, y = 25.0, herbs = "Sungrass, Gromsblood, Golden Sansam, Dreamfoil, Mountain Silversage, Plaguebloom", instructions = "Continue through the Felwood route until 300." },
 }
 local guideRoot = "https://www.wow-professions.com/forever/"
+herb.steps[2].mapRoutes = {
+    ["Loch Modan"] = { mapID = 1432, points = {
+        {40.87,42.34},{40.99,35.44},{40.38,29.51},{40.17,23.46},{41.23,14.88},{41.13,12.44},{42.83,10.59},{46.36,14.30},{49.72,14.09},{53.28,10.94},{55.46,15.29},{59.73,16.49},{61.91,22.17},{63.02,31.38},{66.61,41.14},{67.83,45.31},{67.40,49.93},{64.11,54.95},{62.24,59.85},{59.35,63.18},{54.73,67.89},{51.47,69.31},{48.03,68.82}
+    } },
+}
+
 local function registerGuide(name, slug, sourceStatus, steps, notes, rankGates)
     local key = name:lower():gsub("[^%a]", "")
     local route = {

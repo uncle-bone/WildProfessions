@@ -1,3 +1,9 @@
+## 1.2.0-test.2
+- Fixed map overlay rendering on the Forever world map and removed unsupported map event registration.
+- Added the Zygor-derived Loch Modan Herbalism route and route line markers.
+- Route arrow follows the nearest route waypoint and opens the selected guide map.
+- Included attribution for the adapted route data.
+
 ## 1.2.0-test.1
 - Added minimap launcher and visible profession-window launcher.
 - Added dashboard controls for tracker, route arrow, map routes, and diagnostics.
