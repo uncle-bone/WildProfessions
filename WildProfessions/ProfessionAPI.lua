@@ -123,7 +123,7 @@ function WP:GetProfessionList()
     local display = { herbalism="Herbalism", mining="Mining", skinning="Skinning", alchemy="Alchemy", blacksmithing="Blacksmithing", enchanting="Enchanting", engineering="Engineering", leatherworking="Leatherworking", tailoring="Tailoring", firstaid="First Aid", cooking="Cooking", fishing="Fishing", fishingcooking="Fishing + Cooking" }
     for key, route in pairs(self.RouteData or {}) do
         local name = route.name or display[key]
-        if name and not seen[name:lower()] then result[#result + 1] = { name=name, skill=0, maxSkill=route.maxSkill or 300, guideOnly=true }; seen[name:lower()] = true end
+        if not route.onHold and name and not seen[name:lower()] then result[#result + 1] = { name=name, skill=0, maxSkill=route.maxSkill or 300, guideOnly=true }; seen[name:lower()] = true end
     end
     table.sort(result, function(a,b) return a.name < b.name end)
     return result

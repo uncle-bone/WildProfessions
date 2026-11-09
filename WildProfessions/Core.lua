@@ -2,7 +2,7 @@ local addonName, WP = ...
 WP = WP or {}
 _G.WildProfessions = WP
 WP.name = addonName or "WildProfessions"
-WP.version = "1.2.0-test.6"
+WP.version = "1.3.0-test.8-dev"
 WP.professions = WP.professions or {}
 WP.selectedProfession = nil
 WP.refreshPending = false
@@ -58,6 +58,12 @@ end
 function WP:Refresh(reason)
     self:EnsureDatabase()
     self:ScanProfessions()
+    if self.selectedProfession and not self.professions[self.selectedProfession] then
+        self.selectedProfession = nil
+        for _, profession in ipairs(self:GetProfessionList()) do
+            if not profession.guideOnly then self.selectedProfession = profession.name; break end
+        end
+    end
     self:UpdateDashboard()
     self:UpdateTracker()
     if self.UpdateGuideArrow then self:UpdateGuideArrow() end
@@ -87,7 +93,9 @@ function WP:Diagnostics()
     self:Print("pane: " .. tostring(compat.hostKind or "none") .. " | NaowhForever: " .. (compat.naowhLoaded and "detected" or "not detected") .. " | EllesmereUI: " .. (compat.ellesmereLoaded and "detected" or "not detected") .. ".")
     local routes = 0
     for _ in pairs(WP.RouteData or {}) do routes = routes + 1 end
-    self:Print("Bundled guide routes: " .. routes .. ". Use /wp route to print the selected profession's full route. Confirm beta-derived steps against the game.")
+    local gathering = 0
+    for _, rows in pairs(WP.ZygorGatheringIndex or {}) do for _ in ipairs(rows) do gathering = gathering + 1 end end
+    self:Print("Bundled guide routes: " .. routes .. " | indexed Zygor gathering/farming paths: " .. gathering .. ". Use /wp route to print the selected profession's full route. Source recommendations remain unverified until checked in game.")
 end
 
 local frame = CreateFrame("Frame")
@@ -109,6 +117,14 @@ frame:SetScript("OnEvent", function(_, event, ...)
         if WP.InitializeMapOverlay then WP:InitializeMapOverlay() end
         WP:InitializeIntegration()
         WP:ScheduleRefresh("login")
+        if C_Timer and C_Timer.After then
+            C_Timer.After(2, function()
+                if WP.selectedProfession then
+                    WP.professions[WP.selectedProfession] = WP.professions[WP.selectedProfession] or { name = WP.selectedProfession, skill = 0, maxSkill = 300 }
+                    WP:UpdateDashboard()
+                end
+            end)
+        end
     elseif event == "TRADE_SKILL_SHOW" then
         WP:ScanOpenProfession()
         WP:UpdateIntegration()
@@ -130,29 +146,26 @@ SLASH_WILDPROFESSIONS1 = "/wp"
 SLASH_WILDPROFESSIONS2 = "/wildprofessions"
 SlashCmdList.WILDPROFESSIONS = function(message)
     message = (message or ""):lower():match("^%s*(.-)%s*$")
-    if message == "refresh" then WP:Refresh("manual")
+    if message == "" or message == "show" or message == "ui" or message == "guides" then WP:OpenMainWindow()
+    elseif message == "refresh" then WP:Refresh("manual")
     elseif message == "tracker" then WP:ToggleTracker()
     elseif message == "guide" then WP:ToggleGuideArrow()
     elseif message == "lock" then WP:ToggleLock()
     elseif message == "diagnostics" then WP:Diagnostics()
-    elseif message == "route" or message == "routes" then
-        local key = WP.selectedProfession and WP.selectedProfession:lower():gsub("[^%a]", "")
-        if key == "fishing" and WP.RouteData.fishingcooking then
-            local combined = WP.RouteData.fishingcooking
-            combined.skills = combined.skills or {}
-            combined.skills.Fishing = WP.professions.Fishing or { skill = 0, maxSkill = 300 }
-            combined.skills.Cooking = WP.professions.Cooking or { skill = 0, maxSkill = 300 }
-            for line in WP:FormatCombinedGuideRoute(combined):gmatch("[^\n]+") do WP:Print(line) end
-        elseif WP.selectedProfession and WP.professions[WP.selectedProfession] and WP.FormatGuideRoute then
-            local profession = WP.professions[WP.selectedProfession]
-            for line in WP:FormatGuideRoute(profession):gmatch("[^\n]+") do WP:Print(line) end
-        else
-            WP:Print("Open a profession first, then use /wp route.")
-        end
     elseif message == "hide" then WP:HideDashboard()
-    elseif message == "" or message == "show" then WP:ToggleDashboard()
+    elseif message == "route" or message == "routes" then
+        local state = WP:GetCurrentGuideState()
+        if state and WP.FormatGuideRoute then
+            for line in WP:FormatGuideRoute(state.profession):gmatch("[^" .. string.char(10) .. "]+") do WP:Print(line) end
+        else WP:Print("Open a guide first, then use /wp route.") end
+    elseif message == "zone" then WP:CycleGuideZone()
+    elseif message == "shopping" or message == "shop" then WP:OpenShoppingList()
+    elseif message == "settings" then
+        if SlashCmdList.WILDPROFESSIONS_SKILLUP then SlashCmdList.WILDPROFESSIONS_SKILLUP("") end
+    elseif message == "report" or message == "help" or message == "audit" or message == "trainers" or message == "leaderboard" or message == "stats" or message == "share" or message == "export" or message == "issue" or message == "bug" or message == "feature" or message == "unskip" then
+        if SlashCmdList.WILDPROFESSIONS_SKILLUP then SlashCmdList.WILDPROFESSIONS_SKILLUP(message) end
     else
-        WP:Print("Commands: /wp, /wp route, /wp refresh, /wp tracker, /wp guide, /wp lock, /wp hide, /wp diagnostics")
+        WP:Print("Commands: /wp, /wp guides, /wp route, /wp zone, /wp shopping, /wp tracker, /wp settings, /wp refresh")
     end
 end
 

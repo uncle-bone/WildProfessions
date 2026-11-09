@@ -138,7 +138,7 @@ herb.sourceStatus = "Forever beta-derived. The page warns that high-skill sectio
 herb.routeNote = "Zone choices are summarized from the source maps; waypoints are broad areas. Use Find Herbs for live nodes."
 herb.steps = {
     { target = 70, title = "Herbalism 1-70", zone = "Starting zone", mapID = 2521, x = 46.9, y = 26.0, herbs = "Peacebloom, Silverleaf, Earthroot (15)", instructions = "Choose a starting zone with fast herb respawns. Skyborne can learn Herbalism from the Wild Harvest reward for Harvesting Windstones.", choices = { "Durotar", "Mulgore", "Tirisfal Glades", "Zephras Isle", "Elwynn Forest", "Dun Morogh", "Teldrassil" } },
-    { target = 115, title = "Herbalism 70-115", zone = "Silverpine, Loch Modan, or Darkshore", mapID = 1439, x = 38.0, y = 45.0, herbs = "Mageroyal, Briarthorn, Stranglekelp (85)", instructions = "Train Journeyman at 50. The guide offers faction-appropriate routes in all three zones.", choices = { "Silverpine Forest", "Loch Modan", "Darkshore" } },
+    { target = 115, title = "Herbalism 70-115", zone = "Silverpine, Loch Modan, or Darkshore", herbs = "Mageroyal, Briarthorn, Stranglekelp (85)", instructions = "Train Journeyman at 50. The guide offers faction-appropriate routes in all three zones.", choices = { "Silverpine Forest", "Loch Modan", "Darkshore" } },
     { target = 170, title = "Herbalism 115-170", zone = "Hillsbrad Foothills or Stonetalon Mountains", mapID = 1424, x = 45.0, y = 50.0, herbs = "Bruiseweed, Wild Steelbloom, Kingsblood (125), Liferoot (150)", instructions = "The guide offers both zones. A +5 Herbalism bonus permits Kingsblood at 120.", choices = { "Hillsbrad Foothills", "Stonetalon Mountains" } },
     { target = 205, title = "Herbalism 170-205", zone = "Stranglethorn Vale or Arathi Highlands", mapID = 1434, x = 28.0, y = 45.0, herbs = "Kingsblood, Liferoot, Fadeleaf, Goldthorn, Khadgar's Whisker (185)", instructions = "Choose the route that suits your travel. Train Artisan at 200 before continuing.", choices = { "Stranglethorn Vale", "Arathi Highlands" } },
     { target = 230, title = "Herbalism 205-230", zone = "Tanaris or Searing Gorge", mapID = 1446, x = 50.0, y = 30.0, herbs = "Purple Lotus, Firebloom", instructions = "Neither zone has an Herbalism trainer; learn Artisan before traveling.", choices = { "Tanaris", "Searing Gorge" } },
@@ -146,11 +146,10 @@ herb.steps = {
     { target = 300, title = "Herbalism 270-300", zone = "Felwood", mapID = 1448, x = 50.0, y = 25.0, herbs = "Sungrass, Gromsblood, Golden Sansam, Dreamfoil, Mountain Silversage, Plaguebloom", instructions = "Continue through the Felwood route until 300." },
 }
 local guideRoot = "https://www.wow-professions.com/forever/"
-herb.steps[2].mapRoutes = {
-    ["Loch Modan"] = { mapID = 1432, points = {
-        {40.87,42.34},{40.99,35.44},{40.38,29.51},{40.17,23.46},{41.23,14.88},{41.13,12.44},{42.83,10.59},{46.36,14.30},{49.72,14.09},{53.28,10.94},{55.46,15.29},{59.73,16.49},{61.91,22.17},{63.02,31.38},{66.61,41.14},{67.83,45.31},{67.40,49.93},{64.11,54.95},{62.24,59.85},{59.35,63.18},{54.73,67.89},{51.47,69.31},{48.03,68.82}
-    } },
-}
+-- Do not hand-author waypoint loops here. Gathered-resource overlays come from
+-- imported route records with explicit zone/map coordinates. The guide's zone
+-- alternatives remain in the step data and text-only choices are labeled as such.
+herb.steps[2].mapRoutes = {}
 
 local function registerGuide(name, slug, sourceStatus, steps, notes, rankGates)
     local key = name:lower():gsub("[^%a]", "")
@@ -165,7 +164,7 @@ local function registerGuide(name, slug, sourceStatus, steps, notes, rankGates)
         steps = {},
     }
     for i, step in ipairs(steps) do
-        route.steps[i] = { target = step[1], title = step[2], focus = step[3], instructions = step[4], sourceStatus = step[5] }
+        route.steps[i] = { target = step[1], title = step[2], focus = step[3], instructions = step[4], sourceStatus = step[5], recipeOptions = step[6], estimate = step[7] }
     end
     if notes then route.routeNote = notes end
     WP.RouteData[key] = route
@@ -310,12 +309,20 @@ registerGuide("First Aid", "first-aid-leveling-guide",
     }, "Forever moved certain healing potions from Alchemy to First Aid.")
 
 registerGuide("Cooking", "cooking-leveling-guide",
-    "Forever beta-derived; recipe choice depends on meat/fish available and material estimates vary.", {
-        { 50, "Apprentice · 1-50", "Choose among recipes using your available meat or fish", "The guide provides several recipe options by bracket rather than one fixed route." },
-        { 150, "Journeyman · 50-150", "Use gathered or purchased ingredients", "Every trainer teaches Journeyman; campfire is required for many recipes. Source describes Forever's Campfire Kit." },
-        { 225, "Expert · 150-225", "Choose recipes matching your materials", "Trainer rank and some recipe sources require travel or quests." },
-        { 300, "Artisan · 225-300", "Use source's artisan recipe choices", "The guide lists trainer/quest unlocks; pair with Fishing+Cooking if leveling both." },
-    }, "Cooking does not use a primary profession slot; the guide has ingredient-dependent branches.")
+    "Forever beta-derived; recipe counts are estimates, yellow recipes may need extra crafts, and alternatives replace one another.", {
+        { 50, "Apprentice 1-50", "Choose ONE: Brilliant Smallfish, Slitherskin Mackerel, Charred Wolf Meat, Roasted Boar Meat, or Herb Baked Egg", "About 55 crafts estimated. Fish recipes need raw fish; meat recipes need matching meat; Herb Baked Egg needs Small Eggs and Mild Spices. Do not add alternatives together.", nil, "Brilliant Smallfish OR Slitherskin Mackerel OR Charred Wolf Meat OR Chunk of Boar Meat OR Small Egg + Mild Spices", "~55 crafts; estimate" },
+        { 100, "Journeyman 50-100", "Choose ONE: Longjaw Mud Snapper, Rainbow Fin Albacore, Smoked Bear Meat, or another listed branch", "About 55 fish crafts estimated; Smoked Bear Meat is estimated at 65-75 Bear Meat. Learn Journeyman at 50. Campfire may be required; use a trainer fire or Campfire Kit.", nil, "Raw Longjaw Mud Snapper OR Raw Rainbow Fin Albacore OR Bear Meat + Mild Spices", "~55 fish crafts / ~65-75 Bear Meat; estimate" },
+        { 130, "Journeyman 100-130", "Choose ONE: Bristle Whisker Catfish or a listed crab/crawler meat recipe", "About 30-40 crafts estimated. If choosing Catfish, catch extra now for 130-150; saved catches are carried forward, not counted again as shopping needs.", nil, "Raw Bristle Whisker Catfish OR one crab/crawler recipe branch", "~30-40 crafts; estimate" },
+        { 150, "Journeyman 130-150", "Choose ONE: Bristle Whisker Catfish, Curiously Tasty Omelet, Goblin Deviled Clams, or Hot Lion Chops", "Expert Cooking comes from the Expert Cookbook at 125 (Alliance: Ashenvale; Horde: Desolace). Buy and read it before the 150 cap.", nil, "Raw Bristle Whisker Catfish OR Raptor Egg + Hot Spices OR clam ingredients OR Lion Meat + Hot Spices", "~20-25 crafts; estimate" },
+        { 175, "Expert 150-175", "Choose ONE: Curiously Tasty Omelet or Hot Lion Chops", "Use the recipe branch matching materials on hand. This standalone guide does not require leveling Fishing.", nil, "Raptor Egg + Hot Spices OR Lion Meat + Hot Spices", "~25 crafts; estimate" },
+        { 225, "Expert 175-225", "Choose ONE: Mithril Headed Trout, Roast Raptor, or Soothing Turtle Bisque", "About 50 crafts estimated. Mithril Headed Trout uses raw fish; Roast Raptor uses Raptor Flesh and Hot Spices. Soothing Turtle Bisque requires its quest recipe.", nil, "Raw Mithril Head Trout OR Raptor Flesh + Hot Spices OR quest recipe ingredients", "~50 crafts; estimate" },
+        { 275, "Artisan 225-275", "Choose ONE: Spotted Yellowtail, Filet of Redgill, Undermine Clam Chowder, Monster Omelet, or Tender Wolf Steak", "Artisan Cooking requires Clamlette Surprise at Cooking 225 and level 35. Source estimates about 65 crafts of one selected recipe; branches are alternatives.", nil, "One recipe branch only: fish OR clam OR Monster Omelet OR Tender Wolf Steak ingredients", "~65 crafts; estimate" },
+        { 300, "Artisan 275-300", "Choose ONE: Poached Sunscale Salmon or Nightfin Soup; source also lists a quest recipe alternative", "About 35 crafts estimated. Fish recipes turn yellow at 290, so extra crafts may be needed. This is not a guaranteed shopping total.", nil, "Raw Sunscale Salmon OR Raw Nightfin Snapper + Refreshing Spring Water OR quest branch", "~35 crafts; estimate; yellow from 290" },
+    }, "Standalone Cooking follows Cooking skill only. Recipes are alternatives; Fishing is not required unless a fish recipe is selected.", {
+        { skill = 50, cap = 75, rank = "Journeyman", zone = "Any Cooking trainer", note = "Train Journeyman before continuing beyond the 75 cap." },
+        { skill = 125, cap = 150, rank = "Expert", zone = "Ashenvale (Alliance) or Desolace (Horde)", note = "Buy and read the Expert Cookbook before continuing past the 150 cap." },
+        { skill = 225, cap = 225, rank = "Artisan", zone = "Gadgetzan, Tanaris", note = "Complete Clamlette Surprise. Requires Cooking 225, level 35, 12 Giant Eggs, 10 Zesty Clam Meat, and 20 Alterac Swiss." },
+    })
 
 registerGuide("Fishing", "fishing-leveling-guide",
     "Forever beta-derived; fish quantities are estimates and the Artisan quest is a required progression stop.", {
@@ -375,17 +382,48 @@ WP.RouteData.fishingcooking.skills = {
     Fishing = { skill = 0, maxSkill = 300 },
     Cooking = { skill = 0, maxSkill = 300 },
 }
+WP.RouteData.fishingcooking.name = "Cooking with Fishing"
+WP.RouteData.fishingcooking.mode = "cookingfishing"
+WP.RouteData.fishingcooking.source = "https://www.wow-professions.com/forever/fishing-and-cooking-leveling-guide"
 WP.RouteData.fishingcooking.steps = {
-    { skill = "Fishing", from = 0, target = 75, title = "Fishing 1-75", zone = "Starting zone", focus = "Fish in your starting area, then cook the catch", instructions = "Choose the guide's faction route: Mulgore for Horde or Elwynn Forest for Alliance; other starting zones are listed too." },
-    { skill = "Cooking", from = 0, target = 50, title = "Cooking 1-50", zone = "At a cooking fire", focus = "Cook the small fish from the opening Fishing steps", instructions = "Use the Fishing + Cooking guide's recipe sequence and avoid buying fish already caught." },
-    { skill = "Fishing", from = 75, target = 130, title = "Fishing 75-130", zone = "Capital waters", focus = "Fish the guide's capital-city route", instructions = "Keep the named catches needed for the paired Cooking steps." },
-    { skill = "Cooking", from = 50, target = 100, title = "Cooking 50-100", zone = "Cooking fire", focus = "Cook the saved Longjaw Mud Snapper and other listed catches", instructions = "Follow the recipe alternatives and quantities on the source page." },
-    { skill = "Fishing", from = 130, target = 205, title = "Fishing 130-205", zone = "Source route zones", focus = "Continue the source's Fishing route", instructions = "Complete its book and quest stops before leaving each bracket." },
-    { skill = "Cooking", from = 100, target = 175, title = "Cooking 100-175", zone = "Cooking fire", focus = "Cook the catches gathered in the preceding route", instructions = "Use the guide's recipe choices based on your actual catch." },
-    { skill = "Fishing", from = 205, target = 255, title = "Fishing 205-255", zone = "Artisan Fishing route", focus = "Complete the Artisan Fishing quest and continue fishing", instructions = "Collect quest items and lure supplies before traveling." },
-    { skill = "Cooking", from = 175, target = 225, title = "Cooking 175-225", zone = "Cooking fire", focus = "Continue the guide's cooking sequence and Artisan Cooking quest", instructions = "The guide marks the higher route as beta-derived." },
-    { skill = "Fishing", from = 255, target = 300, title = "Fishing 255-300", zone = "Feralas", focus = "Finish the Feralas fishing route", instructions = "Verify the source's high-skill guidance against the live client." },
-    { skill = "Cooking", from = 225, target = 300, title = "Cooking 225-300", zone = "Cooking fire", focus = "Choose the source's final recipe route", instructions = "The source lists Sunscale Salmon or Nightfin Soup; high-skill guidance is Classic-derived." },
+    { skill="Cooking", from=0, target=50, title="Cooking 1-50: starting fish recipes", zone="Cooking fire", fish="Raw Brilliant Smallfish or Raw Slitherskin Mackerel", fishingTarget=75, fishingChoices={"Mulgore","Durotar","Tirisfal Glades","Zephras Isle","Elwynn Forest","Dun Morogh","Teldrassil"}, focus="Cook fish you already caught; either fish recipe is a choice, not an additive shopping requirement.", instructions="The guide estimates about 55 crafts for this band. If you are short, catch and cook more. Keep other catches for later Cooking steps." },
+    { skill="Cooking", from=50, target=100, title="Cooking 50-100: Longjaw Mud Snapper", zone="Cooking fire", fish="Raw Longjaw Mud Snapper", fishingTarget=130, fishingChoices={"Stormwind City","Thunder Bluff","Undercity","Orgrimmar"}, focus="Cook saved Longjaw Mud Snapper. The source says later fishing can supply more if Cooking is still short.", instructions="Learn Journeyman Cooking at skill 50 before continuing. Fish in a nearby capital for the catch." },
+    { skill="Cooking", from=100, target=130, title="Cooking 100-130: Bristle Whisker Catfish or meat recipe", zone="Cooking fire", fish="Raw Bristle Whisker Catfish (choice); meat recipes are alternatives", fishingTarget=130, fishingChoices={"Stormwind City","Thunder Bluff","Undercity","Orgrimmar"}, focus="Choose one recipe branch based on catches you actually have; do not add alternatives together.", instructions="The guide suggests roughly 30-40 crafts. It recommends catching extra Catfish now for skill 130-150." },
+    { skill="Cooking", from=130, target=150, title="Cooking 130-150: Catfish or non-fish alternatives", zone="Cooking fire", fish="Raw Bristle Whisker Catfish (choice); Curiously Tasty Omelet / clam / lion recipes are alternatives", fishingTarget=205, fishingChoices={"Stonetalon Mountains","Ashenvale"}, focus="Cook remaining Catfish if following the fish branch; other recipes replace this branch.", instructions="Expert Cooking is taught by the Expert Cookbook at 125. The source estimates about 20-25 crafts for this band." },
+    { skill="Cooking", from=150, target=175, title="Cooking 150-175: fish or meat recipe choice", zone="Cooking fire", fish="Mithril Head Trout becomes a later fish option; Curiously Tasty Omelet or Hot Lion Chops are listed here", fishingTarget=205, fishingChoices={"Stonetalon Mountains","Ashenvale"}, focus="The guide's 150-175 recipes are alternatives. The fish recipe is part of the following band; use ingredients actually available.", instructions="Expert Cooking requires skill 125 and the Expert Cookbook. Confirm the cookbook is learned before cooking past the cap." },
+    { skill="Cooking", from=175, target=225, title="Cooking 175-225: Mithril Head Trout or meat recipes", zone="Cooking fire", fish="Raw Mithril Head Trout; Roast Raptor or Soothing Turtle Bisque are alternatives", fishingTarget=255, fishingChoices={"Dustwallow Marsh","Feralas","Desolace","Swamp of Sorrows","Stranglethorn Vale"}, focus="Use one recipe branch. If fishing, save quest fish and catch materials needed for the Artisan Fishing step.", instructions="The guide estimates about 50 crafts; recipes turn yellow near the end. Finish the Artisan Fishing quest separately if you are also raising Fishing." },
+    { skill="Cooking", from=225, target=300, title="Cooking 225-300: artisan fish recipes", zone="Cooking fire", fish="Spotted Yellowtail or Filet of Redgill; recipes are alternatives", fishingTarget=300, fishingChoices={"Feralas"}, focus="Fishing to 300 in Feralas can supply the fish branch. Keep caught fish reserved for Cooking before shopping for more.", instructions="Learn Artisan Cooking from the Clamlette Surprise quest at level 35 and Cooking 225. The upper route is marked untested on the source page; verify recipes and skill-ups in game." },
 }
+WP.RouteData.fishingcooking.routeNote = "Cooking is the tracked skill in this guide. Fishing remains a separate profession: its live skill is shown as a fish-supply dependency, and map options point to fish routes. The standalone Fishing guide tracks Fishing by itself. Recipe alternatives replace one another; no fish is treated as bought when already caught."
+WP.RouteData.fishingcooking.onHold = true
+WP.RouteData.fishingcooking.holdNote = "Combined Fishing + Cooking guide paused by user; use the standalone Cooking and Fishing guides for now."
+WP.RouteData.fishingcooking.skills.Fishing = WP.professions and WP.professions.Fishing or WP.RouteData.fishingcooking.skills.Fishing
+WP.RouteData.fishingcooking.skills.Cooking = WP.professions and WP.professions.Cooking or WP.RouteData.fishingcooking.skills.Cooking
+
+-- Explicit source carry-forward notes. These are preservation instructions, not
+-- an inventory ledger or guaranteed shopping quantities.
+local function addCarryForward(routeKey, stepIndex, note)
+    local route = WP.RouteData[routeKey]
+    local step = route and route.steps and route.steps[stepIndex]
+    if step then step.carryForward = note end
+end
+
+addCarryForward("alchemy", 7, "Reserve 30 Fire Oil for Elixir of Fire Power. This is a planned intermediate, not surplus.")
+addCarryForward("alchemy", 8, "Use the Fire Oil reserved from the prior step; do not add those saved units again to shopping totals.")
+addCarryForward("blacksmithing", 2, "Carry 26 Rough Grinding Stones forward for Runed Copper Gauntlets; the source also notes possible Silver Rod use.")
+addCarryForward("blacksmithing", 3, "Keep the produced Coarse Grinding Stones for the later bracer steps; the source calls for 36 here.")
+addCarryForward("blacksmithing", 7, "Keep Heavy Grinding Stones for later recipes and carry any unused Coarse Grinding Stones forward.")
+addCarryForward("engineering", 1, "Keep the Rough Blasting Powder for the later bomb steps.")
+addCarryForward("engineering", 2, "Keep the Copper Bolts for the bomb sequence.")
+addCarryForward("engineering", 3, "Keep the Arclight Spanner; later Engineering recipes require it as a tool.")
+addCarryForward("engineering", 5, "Keep the Coarse Blasting Powder for Coarse Dynamite.")
+addCarryForward("tailoring", 2, "Keep Woolen Cloth Bolts for later crafts. The source says an early larger batch can cover through skill 140.")
+addCarryForward("tailoring", 5, "Keep Silk Cloth Bolts for later recipes. The source says 184 bolts cover the guide through skill 190.")
+addCarryForward("tailoring", 6, "Use reserved Woolen Cloth Bolts and any saved Elixir of Wisdom; do not count those carried materials as new purchases.")
+addCarryForward("cooking", 3, "If you chose the Catfish branch, reserve the extra catches for Cooking 130-150. Already caught fish are not new shopping needs.")
+addCarryForward("cooking", 4, "Use Catfish reserved from the prior step before adding more fish to the shopping list.")
+addCarryForward("fishingcooking", 1, "Keep fish catches needed by the upcoming Cooking steps; caught fish should not be counted again as shopping purchases.")
+addCarryForward("fishingcooking", 3, "Keep the named fish needed for the following Cooking steps and track Fishing/Cooking progress independently.")
+addCarryForward("fishingcooking", 5, "Cook fish already caught for the guide before adding fish to any shopping list.")
 
 

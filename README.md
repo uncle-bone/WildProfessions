@@ -1,9 +1,10 @@
+## 1.3.0-test.8-dev — Farming Atlas build
 
-## 1.3.0-test.4 hotfix test build
+[Download WildProfessions 1.3.0-test.8-dev](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.8-dev.zip)
 
-[Download WildProfessions 1.3.0-test.4](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.4.zip)
+The separate Farming Guides atlas now includes 345 source records imported from the supplied Zygor Alliance/Horde profession guide files: 307 entries have source waypoint coordinates and 38 are listed as text-only because those guides contain no usable coordinates. The All Farms view searches across the categories; Herbalism, Mining, Skinning, and Fishing filters remain. Route overlays draw only routes with coordinates. Static package validation passed; this is a test build, not a stable release.
 
-Fixes the embedded planner pricing file syntax error and guards tracker settings until SavedVariables are ready. This is an install-ready test ZIP, not a stable release.
+Install by extracting the `WildProfessions` folder into `Interface/AddOns`.
 
 ## Previous build: 1.3.0-test.3
 
@@ -26,9 +27,9 @@ A standalone profession progress tracker and source-linked guide browser for WoW
 
 ## Guide coverage
 
-The addon bundles route summaries for Alchemy, Blacksmithing, Enchanting, Engineering, Leatherworking, Tailoring, Herbalism, Mining, Skinning, First Aid, Cooking, Fishing, and a combined Fishing + Cooking route. Each route links to its source guide and carries a confidence note for incomplete or beta-derived sections.
+The addon bundles route summaries for Alchemy, Blacksmithing, Enchanting, Engineering, Leatherworking, Tailoring, Herbalism, Mining, Skinning, First Aid, Cooking, and Fishing. The combined Fishing + Cooking guide remains paused. Each route links to its source guide and carries a confidence note for incomplete or beta-derived sections.
 
-Use `/wp route` to print the selected profession's route, including the current skill bracket, alternatives and guide caveats. The dashboard and movable tracker continue to follow the character's live profession skill. When Fishing is selected, `/wp route` shows the combined Fishing + Cooking sequence and both current skill values.
+Use `/wp route` to print the selected profession's route, including the current skill bracket, alternatives and guide caveats. The dashboard and movable tracker continue to follow the character's live profession skill. Standalone Fishing and Cooking progress are tracked independently. The combined Fishing + Cooking route remains on hold until its step synchronization is fixed.
 
 The WoW-Professions Forever pages say their data is based on the Forever beta and some high skill ranges may not be live-tested. Several pages explicitly leave upper ranges or material lists incomplete. WildProfessions marks these gaps and does not invent recipes or present estimates as verified. The route records are original summaries, not copies of the site's page prose or map artwork.
 
@@ -53,3 +54,5 @@ Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns
 The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.
 
 Route data credit: Loch Modan Herbalism route and gathering/farming waypoints adapted from the user-provided ZygorProfessionsAllianceCLASSIC.lua and ZygorProfessionsHordeCLASSIC.lua files. WildProfessions' route renderer and guide integration are original; all coordinates should be checked in the Forever client.
+
+

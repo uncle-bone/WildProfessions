@@ -18,6 +18,24 @@ local function visibleMapID()
         local ok, id = pcall(WorldMapFrame.GetMapID, WorldMapFrame)
         if ok then return id end
     end
+    if WorldMapFrame and type(WorldMapFrame.mapID) == "number" then return WorldMapFrame.mapID end
+    if type(GetCurrentMapAreaID) == "function" then
+        local ok, id = pcall(GetCurrentMapAreaID)
+        if ok and type(id) == "number" and id > 0 then return id end
+    end
+    if C_Map and type(C_Map.GetBestMapForUnit) == "function" then
+        local ok, id = pcall(C_Map.GetBestMapForUnit, "player")
+        if ok and type(id) == "number" then return id end
+    end
+end
+
+local function openMap(mapID)
+    if C_Map and type(C_Map.OpenWorldMap) == "function" then
+        local ok = pcall(C_Map.OpenWorldMap, mapID)
+        if ok then return end
+    end
+    if ToggleWorldMap then ToggleWorldMap() end
+    if type(SetMapByID) == "function" then pcall(SetMapByID, mapID) end
 end
 
 local function normalizedPoints(points)
@@ -80,8 +98,27 @@ function WP:RefreshMapOverlay()
     clear(host)
     local mapID = visibleMapID()
     if not mapID then return end
-    local route = self:GetGuideRoute(self.selectedProfession)
+    -- Atlas routes are standalone source records and must work even when their
+    -- category is not the character's active skill-up profession.
+    local selectedFarm = self.activeFarmRoute
+    if selectedFarm then
+        if selectedFarm.mapID == mapID then
+            local routePalette = {
+                Herbalism = { 0.15, 0.95, 0.35 }, Mining = { 1.0, 0.78, 0.15 },
+                Skinning = { 0.92, 0.55, 0.22 }, Fishing = { 0.2, 0.7, 1.0 },
+            }
+            local color = routePalette[selectedFarm.category] or { 0.2, 0.8, 0.95 }
+            drawPath(host, normalizedPoints(selectedFarm.points), tostring(selectedFarm.item or selectedFarm.name or "Farming route"), color)
+        end
+        return
+    end
+    local selectedProfession = self.selectedProfession and self.professions[self.selectedProfession]
+    if not selectedProfession and self.selectedProfession then
+        selectedProfession = { name = self.selectedProfession, skill = 0, maxSkill = 300 }
+    end
+    local route = self:GetGuideRoute(selectedProfession)
     if not route then return end
+    local guideState = selectedProfession and self:GetGuideState(selectedProfession) or nil
 
     local paths, signatures = {}, {}
     local palette = {
@@ -112,26 +149,36 @@ function WP:RefreshMapOverlay()
         signatures[signature] = entry
     end
 
+    -- A clicked farming atlas entry is a single route request. Do not paint every
+    -- resource track for that zone on top of the selected route.
     for _, step in ipairs(route.steps or {}) do
         if step.mapID == mapID and type(step.x) == "number" and type(step.y) == "number" then
             addPath({ { step.x, step.y } }, step.title or step.zone, color)
         end
         for mapName, alternative in pairs(step.mapRoutes or {}) do
+            -- Show every zone option on its own map, independent of the saved selection.
             if alternative.mapID == mapID then
                 addPath(alternative.points, (step.title or step.zone or "Guide") .. " - " .. mapName, color)
             end
         end
     end
 
-    local faction = UnitFactionGroup and UnitFactionGroup("player")
+    if guideState and guideState.mapID == mapID and guideState.routePoints then
+        addPath(guideState.routePoints, (guideState.title or route.name or "Guide") .. " - " .. (guideState.selectedZone or guideState.zone or "route"), color)
+    end
+
     for _, farm in ipairs(route.farmRoutes or {}) do
-        if farm.mapID == mapID and (not farm.faction or not faction or farm.faction == faction) then
+        if farm.mapID == mapID then
             local kindColor = palette[professionName] or color
             local label = farm.name or professionName .. " farming route"
             if farm.skill and farm.skill > 0 then label = label .. " (skill " .. farm.skill .. "+)" end
             addPath(farm.points, label, kindColor)
         end
     end
+
+    -- The map is a route view, not a resource heatmap. Farming rows are selected
+    -- explicitly from the Farming Guides atlas; keep the leveling guide overlay
+    -- limited to its selected route and step.
 
     for _, path in ipairs(paths) do
         drawPath(host, path.points, path.label, path.color)
@@ -193,17 +240,16 @@ function WP:ToggleMapRoutes()
         return
     end
     local state = self:GetCurrentGuideState()
-    local mapID = state and state.mapID
+    local mapID = visibleMapID()
+    if not (WorldMapFrame and WorldMapFrame.IsShown and WorldMapFrame:IsShown()) then
+        mapID = state and state.mapID
+    end
     if not mapID then
         self:Print("Select a gathering guide with map data first.")
         return
     end
     self.mapRoutesVisible = true
-    if C_Map and C_Map.OpenWorldMap then
-        C_Map.OpenWorldMap(mapID)
-    elseif ToggleWorldMap then
-        ToggleWorldMap()
-    end
+    openMap(mapID)
     self.mapOverlayHost:Show()
     if self.attachMapOverlay then self.attachMapOverlay() end
 end

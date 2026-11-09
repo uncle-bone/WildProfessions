@@ -1,15 +1,75 @@
 ## Interface: 16001
 ## AllowLoadGameType: camelot
 ## Title: WildProfessions
-## Notes: Profession progress and planning for WoW Forever
-## Author: Uncle Bone
-## Version: 1.2.0-test.6
-## SavedVariables: WildProfessionsDB
+## Notes: Profession planner, guides, reagent tracker, and gathering routes for WoW Forever
+## Author: Uncle Bone; based on SkillUp Forever by Cillian Berragan
+## Version: 1.3.0-test.8-dev
+## X-License: GPL-3.0-or-later
+## X-Website: https://github.com/uncle-bone/WildProfessions
+## SavedVariables: WildProfessionsDB, WildProfessionsPlannerDB
+## IconTexture: Interface\\Icons\\INV_Misc_Herb_01
+## AddonCompartmentFunc: WildProfessions_OnAddonCompartmentClick
 
+SkillUpEngine/Locales\enUS.lua
+SkillUpEngine/Locales\deDE.lua
+SkillUpEngine/Locales\esES.lua
+SkillUpEngine/Locales\esMX.lua
+SkillUpEngine/Locales\frFR.lua
+SkillUpEngine/Locales\koKR.lua
+SkillUpEngine/Locales\ptBR.lua
+SkillUpEngine/Locales\ruRU.lua
+SkillUpEngine/Locales\zhCN.lua
+SkillUpEngine/Locales\zhTW.lua
+SkillUpEngine/Data\Thresholds.lua
+SkillUpEngine/Data\Vendor.lua
+SkillUpEngine/Data\Recipes.lua
+SkillUpEngine/Data\Trainer.lua
+SkillUpEngine/Data\Sources.lua
+SkillUpEngine/Core\SafeCall.lua
+SkillUpEngine/Core\Log.lua
+SkillUpEngine/Core\Model.lua
+SkillUpEngine/Core\Changes.lua
+SkillUpEngine/Core\Live.lua
+SkillUpEngine/Core\Plan.lua
+SkillUpEngine/Core\Gear.lua
+SkillUpEngine/Core\Core.lua
+SkillUpEngine/Core\PeerStats.lua
+SkillUpEngine/Core\LeaderboardsData.lua
+SkillUpEngine/UI\Leaderboards.lua
+SkillUpEngine/Core\Stats.lua
+SkillUpEngine/Integrations\Questie.lua
+SkillUpEngine/Integrations\AtlasLoot.lua
+SkillUpEngine/Integrations\Catalogue.lua
+SkillUpEngine/Integrations\Prices.lua
+SkillUpEngine/UI\Art.lua
+SkillUpEngine/UI\FrameArt.lua
+SkillUpEngine/UI\Report.lua
+SkillUpEngine/UI\Settings.lua
+SkillUpEngine/UI\SettingsPage.lua
+SkillUpEngine/UI\Tooltip.lua
+SkillUpEngine/UI\DetailsBar.lua
+SkillUpEngine/UI\RecipeList.lua
+SkillUpEngine/Integrations\Sources.lua
+SkillUpEngine/UI\List.lua
+SkillUpEngine/UI\Route.lua
+SkillUpEngine/UI\Gear.lua
+SkillUpEngine/UI\Shopping.xml
+SkillUpEngine/UI\TrackerQuestie.lua
+SkillUpEngine/UI\TrackerEqot.lua
+SkillUpEngine/UI\TrackerLock.lua
+SkillUpEngine/UI\TrackerOrder.lua
+SkillUpEngine/UI\TrackerHost.lua
+SkillUpEngine/UI\Shopping.lua
+SkillUpEngine/UI\ShoppingList.lua
+SkillUpEngine/Integrations\Trainer.lua
+SkillUpEngine/Core\API.lua
+SkillUpEngine/Core\Report.lua
 Core.lua
 ProfessionAPI.lua
 RouteData.lua
 GatheringRoutes.lua
+ZygorGatheringIndex.lua
+FarmingGuideIndex.lua
 GuideRuntime.lua
 Planner.lua
 UI.lua

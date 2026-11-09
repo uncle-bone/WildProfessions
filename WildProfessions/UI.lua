@@ -7,6 +7,39 @@ local function createText(parent, font, size, color)
     return fs
 end
 
+local function itemName(itemID)
+    if C_Item and type(C_Item.GetItemNameByID) == "function" then
+        local ok, name = pcall(C_Item.GetItemNameByID, itemID)
+        if ok and type(name) == "string" then return name end
+    end
+    if type(GetItemInfo) == "function" then
+        local ok, name = pcall(GetItemInfo, itemID)
+        if ok and type(name) == "string" then return name end
+    end
+    if C_Item and type(C_Item.RequestLoadItemDataByID) == "function" then pcall(C_Item.RequestLoadItemDataByID, itemID) end
+    return "Item " .. tostring(itemID)
+end
+
+local function formatGuideMaterials(materials)
+    if type(materials) == "string" then return materials end
+    if type(materials) ~= "table" then return nil end
+    local lines = {}
+    for _, item in ipairs(materials) do
+        if type(item) == "table" then
+            local label = item.name or item.item
+            if not label and item.itemID then label = itemName(item.itemID) end
+            label = tostring(label or "Material")
+            local count = tonumber(item.count or item.quantity)
+            if count then label = label .. " x" .. tostring(count) end
+            if item.estimated then label = label .. " (estimated)" end
+            lines[#lines + 1] = label
+        else
+            lines[#lines + 1] = tostring(item)
+        end
+    end
+    return #lines > 0 and table.concat(lines, "\n") or nil
+end
+
 local function makeButton(parent, text, width, height, onClick)
     local button = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
     button:SetSize(width, height)
@@ -35,6 +68,96 @@ local function restorePoint(frame, key, defaultPoint, x, y)
     end
 end
 
+local function farmingKey(name)
+    return (name or ""):lower():gsub("[^%a]", "")
+end
+
+local function collectFarmingRoutes(professionName)
+    local result, seen = {}, {}
+    local allFarms = professionName == "All Farms"
+    local function add(entry, categoryFallback)
+        if type(entry) ~= "table" then return end
+        local zone = entry.zone or "No map route"
+        local points = type(entry.points) == "table" and entry.points or {}
+        local category = entry.category or categoryFallback or "Farming"
+        local item = entry.item or entry.name or entry.bracket or "Farm guide"
+        local key = table.concat({ tostring(category), tostring(zone), tostring(entry.mapID or ""), tostring(item), tostring(entry.faction or "") }, "|")
+        local prior = seen[key]
+        if prior then
+            if #points > #(prior.points or {}) then prior.points, prior.mapID = points, entry.mapID end
+            if (not prior.target or prior.target == 0) and tonumber(entry.skill or entry.target) then prior.target = tonumber(entry.skill or entry.target) end
+            if prior.source == "Bundled gathering route" and entry.source then prior.source = entry.source end
+            if #points > 0 then prior.unmapped = false end
+            return
+        end
+        local route = {
+            category = category, zone = zone, mapID = entry.mapID, points = points,
+            item = item, target = tonumber(entry.skill or entry.target) or 0,
+            levelRequirement = tonumber(entry.levelRequirement) or 0,
+            skillRequirement = tonumber(entry.skillRequirement) or 0,
+            faction = entry.faction, source = entry.source or "Bundled gathering route",
+            unmapped = entry.unmapped == true or not entry.mapID or #points == 0,
+        }
+        seen[key] = route
+        result[#result + 1] = route
+    end
+
+    if allFarms then
+        for category, rows in pairs(WP.ZygorGatheringIndex or {}) do
+            local categoryName = ({herbalism="Herbalism", mining="Mining", skinning="Skinning", fishing="Fishing"})[category] or category
+            for _, row in ipairs(rows) do add(row, categoryName) end
+        end
+        for key, route in pairs(WP.RouteData or {}) do
+            for _, row in ipairs(route.farmRoutes or {}) do add(row, route.name or key) end
+        end
+    else
+        local indexed = WP.ZygorGatheringIndex and WP.ZygorGatheringIndex[farmingKey(professionName)] or {}
+        for _, row in ipairs(indexed) do add(row, professionName) end
+        local route = WP.RouteData and WP.RouteData[farmingKey(professionName)]
+        if route then for _, row in ipairs(route.farmRoutes or {}) do add(row, professionName) end end
+    end
+
+    for _, row in ipairs(WP.ZygorFarmingGuideIndex or {}) do
+        if allFarms or row.category == professionName then add(row, row.category) end
+    end
+
+    local routeNames = allFarms and {"Herbalism", "Mining", "Skinning", "Fishing"} or {professionName}
+    for _, routeName in ipairs(routeNames) do
+        local route = WP.RouteData and WP.RouteData[farmingKey(routeName)]
+        if route then
+            for _, step in ipairs(route.steps or {}) do
+                for zoneName, mapRoute in pairs(step.mapRoutes or {}) do
+                    add({ zone = zoneName, mapID = mapRoute.mapID, points = mapRoute.points,
+                        name = step.title, skill = step.min or step.target, faction = mapRoute.faction,
+                        source = "WoW-Professions guide route" }, routeName)
+                end
+            end
+            -- Keep every WoW-Professions zone choice visible; only imported waypoint data can be clicked.
+            local mappedZones = {}
+            for _, entry in ipairs(result) do
+                if entry.category == routeName then mappedZones[entry.zone] = true end
+            end
+            for _, step in ipairs(route.steps or {}) do
+                for _, zoneName in ipairs(step.choices or {}) do
+                if not mappedZones[zoneName] then
+                    add({ zone=zoneName, item=step.title or "Guide zone recommendation",
+                        target=tonumber(step.target) or 0, points={}, unmapped=true,
+                        source="WoW-Professions zone recommendation; no imported waypoint route" }, routeName)
+                    mappedZones[zoneName] = true
+                end
+            end
+            end
+        end
+    end
+    table.sort(result, function(a, b)
+        if a.category ~= b.category then return a.category < b.category end
+        if a.target ~= b.target then return a.target < b.target end
+        if a.zone ~= b.zone then return a.zone < b.zone end
+        return tostring(a.item) < tostring(b.item)
+    end)
+    return result
+end
+
 function WP:CreateUI()
     if self.mainFrame then return end
 
@@ -45,7 +168,7 @@ function WP:CreateUI()
     main:SetMovable(true)
     main:EnableMouse(true)
     main:SetResizable(true)
-    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 880, 560) end
+    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 760, 440) end
     if main.SetBackdrop then
         main:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
         main:SetBackdropColor(0.035, 0.045, 0.06, 0.98)
@@ -53,7 +176,7 @@ function WP:CreateUI()
     end
     restorePoint(main, "dashboardPoint", "CENTER", 0, 0)
     local savedSize = self.db.settings.dashboardSize
-    if type(savedSize) == "table" then main:SetSize(math.max(880, tonumber(savedSize.width) or 900), math.max(560, tonumber(savedSize.height) or 600)) end
+    if type(savedSize) == "table" then main:SetSize(math.max(760, tonumber(savedSize.width) or 900), math.max(440, tonumber(savedSize.height) or 600)) end
 
     local header = CreateFrame("Frame", nil, main, "BackdropTemplate")
     header:SetPoint("TOPLEFT", 8, -8)
@@ -78,9 +201,17 @@ function WP:CreateUI()
     local subtitle = createText(header, "GameFontDisableSmall", 10)
     subtitle:SetText("FOREVER PROFESSION GUIDES")
     subtitle:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -3)
+    local systemGuides = makeButton(header, "Camping Guide", 178, 26, function()
+        WP:ShowSystemGuide(WP.systemGuideKind == "camping" and "merchants" or "camping")
+    end)
+    systemGuides:SetPoint("RIGHT", -52, 0)
+    self.systemGuideButton = systemGuides
+    local shoppingNotes = makeButton(header, "Shopping Notes", 116, 26, function() WP:OpenShoppingList() end)
+    shoppingNotes:SetPoint("RIGHT", systemGuides, "LEFT", -8, 0)
+    self.shoppingNotesButton = shoppingNotes
     local version = createText(header, "GameFontDisableSmall", 10)
-    version:SetText("v" .. self.version .. "  •  STANDALONE")
-    version:SetPoint("RIGHT", -48, 0)
+    version:SetText("v" .. self.version .. "  -  STANDALONE")
+    version:SetPoint("LEFT", subtitle, "RIGHT", 12, 0)
 
     local close = CreateFrame("Button", nil, header, "UIPanelCloseButton")
     close:SetPoint("RIGHT", -4, 0)
@@ -123,6 +254,12 @@ function WP:CreateUI()
     listSub:SetText("Choose a profession to view its route")
     listSub:SetPoint("TOPLEFT", 14, -34)
 
+    local farmingButton = makeButton(sidebar, "Farming Guides", 112, 24, function()
+        if WP.farmingFrame then WP.farmingFrame:Show(); WP:UpdateFarmingGuides() end
+    end)
+    farmingButton:SetPoint("TOPRIGHT", -10, -10)
+    self.farmingNavButton = farmingButton
+
     local search = CreateFrame("EditBox", nil, sidebar, "InputBoxTemplate")
     search:SetSize(205, 24)
     search:SetPoint("TOPLEFT", 13, -56)
@@ -131,6 +268,7 @@ function WP:CreateUI()
     search:SetText(self.db.settings.guideSearch or "")
     search:SetScript("OnTextChanged", function(box)
         WP.db.settings.guideSearch = box:GetText() or ""
+        if WP.professionScroll then WP.professionScroll:SetVerticalScroll(0) end
         WP:UpdateDashboard()
     end)
     self.guideSearch = search
@@ -205,13 +343,114 @@ function WP:CreateUI()
     zone:SetWidth(535)
     zone:SetJustifyH("LEFT")
     self.guideZone = zone
-    local detail = createText(card, "GameFontHighlight", 12, { 0.78, 0.84, 0.87 })
-    detail:SetPoint("TOPLEFT", 18, -94)
-    detail:SetWidth(535)
+    local zoneButton = makeButton(card, "Choose Zone", 132, 24, function() WP:CycleGuideZone() end)
+    zoneButton:SetPoint("TOPRIGHT", -16, -58)
+    zoneButton:Hide()
+    zoneButton:SetScript("OnEnter", function(button)
+        local state = WP:GetCurrentGuideState()
+        if GameTooltip then
+            GameTooltip:SetOwner(button, "ANCHOR_RIGHT")
+            GameTooltip:SetText("Available zones", 1, 0.9, 0.5)
+            for _, choice in ipairs(state and state.choices or {}) do GameTooltip:AddLine(choice, 0.85, 0.9, 0.92) end
+            GameTooltip:Show()
+        end
+    end)
+    zoneButton:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+    self.zoneButton = zoneButton
+    self.zoneChoiceButtons = {}
+    for i = 1, 3 do
+        local choiceButton = makeButton(card, "", 162, 22, function(button)
+            if button.zoneName then WP:SetGuideZone(button.zoneName) end
+        end)
+        choiceButton:SetPoint("TOPLEFT", 18 + ((i - 1) * 170), -88)
+        choiceButton:Hide()
+        self.zoneChoiceButtons[i] = choiceButton
+    end
+    local routeList = CreateFrame("ScrollFrame", nil, card)
+    routeList:SetSize(270, 88)
+    routeList:SetPoint("TOPLEFT", 330, -184)
+    local routeChild = CreateFrame("Frame", nil, routeList)
+    routeChild:SetSize(260, 88)
+    routeList:SetScrollChild(routeChild)
+    routeList:EnableMouseWheel(true)
+    routeList:SetScript("OnMouseWheel", function(frame, delta)
+        local maxScroll = math.max(0, (routeChild:GetHeight() or 0) - frame:GetHeight())
+        frame:SetVerticalScroll(math.max(0, math.min(maxScroll, frame:GetVerticalScroll() - delta * 52)))
+    end)
+    self.gatherRouteChoices = {}
+    self.gatherRouteChild = routeChild
+    self.gatherRouteScroll = routeList
+    local detailScroll = CreateFrame("ScrollFrame", nil, card)
+    detailScroll:SetSize(285, 140)
+    detailScroll:SetPoint("TOPLEFT", 18, -116)
+    local detailChild = CreateFrame("Frame", nil, detailScroll)
+    detailChild:SetSize(265, 140)
+    detailScroll:SetScrollChild(detailChild)
+    detailScroll:EnableMouseWheel(true)
+    detailScroll:SetScript("OnMouseWheel", function(frame, delta)
+        local maxScroll = math.max(0, (detailChild:GetHeight() or 0) - frame:GetHeight())
+        frame:SetVerticalScroll(math.max(0, math.min(maxScroll, frame:GetVerticalScroll() - delta * 42)))
+    end)
+    self.detailScroll, self.detailTextChild = detailScroll, detailChild
+    local detail = createText(detailChild, "GameFontHighlight", 12, { 0.78, 0.84, 0.87 })
+    detail:SetPoint("TOPLEFT", 0, 0)
+    detail:SetWidth(265)
     detail:SetHeight(140)
     detail:SetJustifyH("LEFT")
     detail:SetJustifyV("TOP")
     self.detailText = detail
+
+    local divider = card:CreateTexture(nil, "ARTWORK")
+    divider:SetColorTexture(0.16, 0.25, 0.27, 1)
+    divider:SetSize(1, 132)
+    divider:SetPoint("TOPLEFT", 315, -120)
+    local reagentHeading = createText(card, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
+    reagentHeading:SetText("CRAFTING REAGENTS")
+    reagentHeading:SetPoint("TOPLEFT", 330, -118)
+    self.reagentHeading = reagentHeading
+    local reagentScroll = CreateFrame("ScrollFrame",nil,card)
+    local reagentChild = CreateFrame("Frame",nil,reagentScroll)
+    reagentChild:SetSize(250,120)
+    reagentScroll:SetScrollChild(reagentChild)
+    reagentScroll:EnableMouseWheel(true)
+    reagentScroll:SetScript("OnMouseWheel",function(frame,delta)
+        local max=math.max(0,(reagentChild:GetHeight() or 0)-frame:GetHeight())
+        frame:SetVerticalScroll(math.max(0,math.min(max,frame:GetVerticalScroll()-delta*42)))
+    end)
+    local reagentText = createText(reagentChild, "GameFontHighlightSmall", 11, { 0.82, 0.87, 0.89 })
+    reagentText:SetPoint("TOPLEFT", 0, 0)
+    reagentText:SetWidth(245)
+    reagentText:SetJustifyH("LEFT")
+    reagentText:SetJustifyV("TOP")
+    self.reagentText = reagentText
+    self.reagentScroll,self.reagentTextChild=reagentScroll,reagentChild
+
+    local function layoutGuideCard()
+        local width = card:GetWidth() or 570
+        local columnWidth = math.max(190, (width - 62) / 2)
+        detailScroll:ClearAllPoints()
+        detailScroll:SetPoint("TOPLEFT", 18, -116)
+        detailScroll:SetPoint("BOTTOMLEFT", 18, 16)
+        detailScroll:SetWidth(columnWidth)
+        detailChild:SetWidth(math.max(170, columnWidth - 20))
+        detail:SetWidth(math.max(170, columnWidth - 20))
+        divider:ClearAllPoints()
+        divider:SetPoint("TOPLEFT", 30 + columnWidth, -112)
+        divider:SetPoint("BOTTOMLEFT", 30 + columnWidth, 16)
+        reagentHeading:ClearAllPoints()
+        reagentHeading:SetPoint("TOPLEFT", 44 + columnWidth, -118)
+        reagentScroll:ClearAllPoints()
+        reagentScroll:SetPoint("TOPLEFT", 44 + columnWidth, -136)
+        reagentScroll:SetPoint("BOTTOMRIGHT", -16, 16)
+        reagentChild:SetWidth(math.max(170,columnWidth-8))
+        reagentText:SetWidth(math.max(170,columnWidth-8))
+        routeList:ClearAllPoints()
+        routeList:SetPoint("TOPLEFT", 40 + columnWidth, -142)
+        routeList:SetPoint("BOTTOMRIGHT", -16, 16)
+        routeChild:SetWidth(math.max(170, columnWidth - 10))
+    end
+    card:SetScript("OnSizeChanged", layoutGuideCard)
+    layoutGuideCard()
 
     local prefLabel = createText(content, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
     prefLabel:SetText("ROUTE PREFERENCE")
@@ -249,6 +488,90 @@ function WP:CreateUI()
     footer:SetText("Guide steps are character-aware. Route points are approximate farming areas; use in-game tracking for live nodes.")
     self.dashboardFooter = footer
 
+    -- Farming has its own full-size atlas. These routes are intentionally separate
+    -- from the skill-up guide picker so players can browse every gathered item/zone.
+    local farming = CreateFrame("Frame", "WildProfessionsFarmingGuides", main, "BackdropTemplate")
+    farming:SetPoint("TOPLEFT", 10, -76)
+    farming:SetPoint("BOTTOMRIGHT", -10, 36)
+    farming:SetFrameLevel(main:GetFrameLevel() + 10)
+    if farming.SetBackdrop then
+        farming:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=12, insets={left=4,right=4,top=4,bottom=4} })
+        farming:SetBackdropColor(0.035,0.045,0.06,0.99)
+    end
+    local farmTitle = createText(farming,"GameFontNormalLarge",20,{0.45,0.9,0.62})
+    farmTitle:SetPoint("TOPLEFT",18,-18)
+    farmTitle:SetText("Farming & Gathering Atlas")
+    local farmBack = makeButton(farming,"Back to Leveling Guides",168,26,function() farming:Hide() end)
+    farmBack:SetPoint("TOPRIGHT",-18,-16)
+    local farmHint = createText(farming,"GameFontHighlightSmall",11,{0.75,0.82,0.86})
+    farmHint:SetPoint("TOPLEFT",20,-50)
+    farmHint:SetPoint("RIGHT",-18,0)
+    farmHint:SetJustifyH("LEFT")
+    farmHint:SetText("Browse all gathered-material routes separately from leveling guides. Text-only zone choices are listed without invented map paths.")
+    local farmFilters = {}
+    for i, name in ipairs({"All Farms","Herbalism","Mining","Skinning","Fishing"}) do
+        local button = makeButton(farming,name,104,26,function(b)
+            WP.selectedFarmingProfession = b.professionName
+            WP:UpdateFarmingGuides()
+        end)
+        button.professionName = name
+        button:SetPoint("TOPLEFT",18 + (i-1)*110,-76)
+        farmFilters[name] = button
+    end
+    self.farmingFilterButtons = farmFilters
+    local farmSkill = createText(farming,"GameFontHighlight",11,{0.85,0.9,0.92})
+    farmSkill:SetPoint("TOPLEFT",18,-106)
+    farmSkill:SetPoint("RIGHT",farmBack,"LEFT",-14,0)
+    farmSkill:SetJustifyH("RIGHT")
+    self.farmingSkillLabel = farmSkill
+    local farmSearch = CreateFrame("EditBox",nil,farming,"InputBoxTemplate")
+    farmSearch:SetSize(260,24)
+    farmSearch:SetPoint("TOPLEFT",18,-132)
+    farmSearch:SetAutoFocus(false)
+    farmSearch:SetTextInsets(8,6,2,2)
+    farmSearch:SetText("Filter by zone or material")
+    farmSearch:SetScript("OnEditFocusGained",function(box) if box:GetText()=="Filter by zone or material" then box:SetText("") end end)
+    farmSearch:SetScript("OnTextChanged",function() if WP.UpdateFarmingGuides then WP:UpdateFarmingGuides() end end)
+    self.farmingSearch = farmSearch
+    local farmScroll = CreateFrame("ScrollFrame",nil,farming,"UIPanelScrollFrameTemplate")
+    farmScroll:SetPoint("TOPLEFT",18,-164)
+    farmScroll:SetPoint("BOTTOMRIGHT",-34,18)
+    farmScroll:EnableMouseWheel(true)
+    farmScroll:SetScript("OnMouseWheel",function(frame,delta)
+        local max=math.max(0,(self.farmingList:GetHeight() or 0)-frame:GetHeight())
+        frame:SetVerticalScroll(math.max(0,math.min(max,frame:GetVerticalScroll()-delta*56)))
+    end)
+    local farmList = CreateFrame("Frame",nil,farmScroll)
+    farmList:SetSize(600,1)
+    farmScroll:SetScrollChild(farmList)
+    farmScroll:SetScript("OnSizeChanged",function(frame) farmList:SetWidth(math.max(200,frame:GetWidth()-4)) end)
+    self.farmingScroll,self.farmingList,self.farmingRouteRows=farmScroll,farmList,{}
+    farming:Hide()
+    self.farmingFrame=farming
+
+    local systemGuide = CreateFrame("Frame", nil, main, "BackdropTemplate")
+    systemGuide:SetPoint("TOPLEFT", main, "TOPLEFT", 26, -78)
+    systemGuide:SetPoint("BOTTOMRIGHT", main, "BOTTOMRIGHT", -26, 42)
+    systemGuide:SetFrameLevel(main:GetFrameLevel() + 30)
+    if systemGuide.SetBackdrop then
+        systemGuide:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=14, insets={left=4,right=4,top=4,bottom=4} })
+        systemGuide:SetBackdropColor(0.035,0.045,0.06,0.99)
+    end
+    local guideTitle = createText(systemGuide,"GameFontNormalLarge",20,{0.45,0.9,0.62})
+    guideTitle:SetPoint("TOPLEFT",18,-18)
+    guideTitle:SetText("Forever Systems")
+    local guideClose = makeButton(systemGuide,"Back to Profession Guides",190,28,function() systemGuide:Hide() end)
+    guideClose:SetPoint("TOPRIGHT",-18,-16)
+    local guideBody = createText(systemGuide,"GameFontHighlight",14,{0.85,0.9,0.92})
+    guideBody:SetPoint("TOPLEFT",18,-64)
+    guideBody:SetPoint("BOTTOMRIGHT",-18,18)
+    guideBody:SetJustifyH("LEFT")
+    guideBody:SetJustifyV("TOP")
+    guideBody:SetWordWrap(true)
+    self.systemGuideText = guideBody
+    self.systemGuideFrame = systemGuide
+    systemGuide:Hide()
+
     local resize = CreateFrame("Button", nil, main)
     resize:SetSize(16, 16)
     resize:SetPoint("BOTTOMRIGHT", -8, 8)
@@ -266,7 +589,7 @@ function WP:CreateUI()
     main:Hide()
 
     local tracker = CreateFrame("Frame", "WildProfessionsTracker", UIParent, "BackdropTemplate")
-    tracker:SetSize(280, 156)
+    tracker:SetSize(280, 210)
     tracker:SetFrameStrata("MEDIUM")
     tracker:SetClampedToScreen(true)
     tracker:SetMovable(true)
@@ -296,7 +619,7 @@ function WP:CreateUI()
     tracker.activity = createText(tracker, "GameFontHighlightSmall", 10, { 0.78, 0.84, 0.87 })
     tracker.activity:SetPoint("TOPLEFT", 12, -70)
     tracker.activity:SetWidth(252)
-    tracker.activity:SetHeight(70)
+    tracker.activity:SetHeight(124)
     tracker.activity:SetJustifyH("LEFT")
     tracker.activity:SetJustifyV("TOP")
     local trackerClose = CreateFrame("Button", nil, tracker, "UIPanelCloseButton")
@@ -309,12 +632,99 @@ function WP:CreateUI()
     main:SetScript("OnSizeChanged", function(f, w, h) WP.db.settings.dashboardSize = { width = w, height = h } end)
 end
 
+function WP:UpdateFarmingGuides()
+    if not self.farmingList then return end
+    local profession = self.selectedFarmingProfession or "All Farms"
+    self.selectedFarmingProfession = profession
+    local skill = self.professions and self.professions[profession]
+    if profession == "All Farms" then
+        self.farmingSkillLabel:SetText(string.format("%d source route records | click mapped routes to open their map", #(WP.ZygorFarmingGuideIndex or {})))
+    else
+        self.farmingSkillLabel:SetText(skill and string.format("Your %s: %d/%d",profession,skill.skill or 0,skill.maxSkill or 300) or ("Your "..profession.." skill is not learned"))
+    end
+    for name, button in pairs(self.farmingFilterButtons or {}) do
+        button:SetText((name==profession and "[x] " or "")..name)
+    end
+    local routes=collectFarmingRoutes(profession)
+    local query=(self.farmingSearch and self.farmingSearch:GetText() or ""):lower()
+    if query=="filter by zone or material" then query="" end
+    for _,row in ipairs(self.farmingRouteRows or {}) do row:Hide() end
+    local count=0
+    for _,entry in ipairs(routes) do
+        local searchable=(tostring(entry.category).." "..entry.zone.." "..tostring(entry.item).." "..tostring(entry.target).." "..tostring(entry.faction or "")):lower()
+        if query=="" or searchable:find(query,1,true) then
+            count=count+1
+            local row=self.farmingRouteRows[count]
+            if not row then
+                row=CreateFrame("Button",nil,self.farmingList,"BackdropTemplate")
+            row:SetHeight(48)
+                if row.SetBackdrop then row:SetBackdrop({bgFile="Interface\\Buttons\\WHITE8X8",edgeFile="Interface\\Buttons\\WHITE8X8",edgeSize=1});row:SetBackdropColor(0.07,0.09,0.10,1);row:SetBackdropBorderColor(0.14,0.22,0.23,1) end
+                row.title=createText(row,"GameFontNormal",12,{0.92,0.95,0.93})
+                row.title:SetPoint("TOPLEFT",12,-7)
+                row.title:SetPoint("RIGHT",-150,0)
+                row.title:SetJustifyH("LEFT")
+                row.detail=createText(row,"GameFontDisableSmall",10,{0.70,0.78,0.80})
+                row.detail:SetPoint("BOTTOMLEFT",12,7)
+                row.detail:SetPoint("RIGHT",-8,0)
+                row.detail:SetJustifyH("LEFT")
+                row:SetScript("OnEnter",function(f) if f.route then f:SetBackdropColor(0.10,0.18,0.15,1) end end)
+                row:SetScript("OnLeave",function(f) if f.route then f:SetBackdropColor(0.07,0.09,0.10,1) end end)
+                row:SetScript("OnClick",function(f)
+                    if not f.route or f.route.unmapped then return end
+                    WP.activeFarmRoute=f.route
+                    if f.professionName ~= "All Farms" then
+                        WP.selectedProfession=f.professionName
+                        WP:SetGatheringRoute(f.route,f.professionName)
+                    end
+                    WP.mapRoutesVisible=true
+                    if C_Map and C_Map.OpenWorldMap then pcall(C_Map.OpenWorldMap,f.route.mapID) elseif SetMapByID then if ToggleWorldMap then ToggleWorldMap() end;pcall(SetMapByID,f.route.mapID) end
+                    if WP.mapOverlayHost then WP.mapOverlayHost:Show() end
+                    if WP.attachMapOverlay then WP.attachMapOverlay() end
+                    if WP.UpdateGuideArrow then WP:UpdateGuideArrow() end
+                end)
+                self.farmingRouteRows[count]=row
+            end
+            row:SetPoint("TOPLEFT",0,-(count-1)*54)
+            row:SetPoint("RIGHT",self.farmingList,"RIGHT",-4,0)
+            row.title:SetText((profession=="All Farms" and (tostring(entry.category)..": ") or "")..(entry.item or "Farming guide"))
+            local faction=entry.faction and (" | "..entry.faction) or ""
+            if entry.unmapped then
+                local requirement = (entry.target and entry.target > 0) and string.format("skill %d+",entry.target) or ((entry.levelRequirement and entry.levelRequirement > 0) and string.format("character level %d+",entry.levelRequirement) or "skill bracket not listed")
+                row.detail:SetText(string.format("%s  |  %s%s  |  No mapped coordinates  |  %s",entry.zone,requirement,faction,entry.source or "Source guide"))
+                row:SetBackdropColor(0.055,0.065,0.075,1)
+            else
+                local requirement = (entry.target and entry.target > 0) and string.format("skill %d+",entry.target) or ((entry.levelRequirement and entry.levelRequirement > 0) and string.format("character level %d+",entry.levelRequirement) or "skill bracket not listed")
+                row.detail:SetText(string.format("%s  |  %s%s  |  %d mapped waypoints  |  %s",entry.zone,requirement,faction,#entry.points,entry.source or "Bundled guide"))
+                row:SetBackdropColor(0.07,0.09,0.10,1)
+            end
+            row.professionName=profession
+            row.route=entry
+            row:Show()
+        end
+    end
+    self.farmingList:SetHeight(math.max(1,count*54))
+    self.farmingScroll:SetVerticalScroll(math.min(self.farmingScroll:GetVerticalScroll(),math.max(0,self.farmingList:GetHeight()-self.farmingScroll:GetHeight())))
+    if count==0 then
+        self.farmingEmpty=self.farmingEmpty or createText(self.farmingList,"GameFontHighlight",12,{0.78,0.84,0.87})
+        self.farmingEmpty:SetPoint("TOPLEFT",12,-12)
+        self.farmingEmpty:SetText("No farming guides match this filter. Clear the search or choose another category.")
+        self.farmingEmpty:Show()
+    elseif self.farmingEmpty then self.farmingEmpty:Hide() end
+end
+
 function WP:UpdateDashboard()
     if not self.mainFrame then return end
     local professions = self:GetProfessionList()
     if not self.selectedProfession and #professions > 0 then
         for _, item in ipairs(professions) do if item.name == "Herbalism" then self.selectedProfession = item.name; break end end
         if not self.selectedProfession then self.selectedProfession = professions[1].name end
+    end
+    if self.selectedProfession and self.professions[self.selectedProfession] then
+        self.lastTrackedProfession = self.selectedProfession
+    elseif not self.lastTrackedProfession then
+        for _, item in ipairs(professions) do
+            if self.professions[item.name] then self.lastTrackedProfession = item.name; break end
+        end
     end
     local query = (self.guideSearch and self.guideSearch:GetText() or ""):lower()
     local visible = 0
@@ -351,9 +761,18 @@ function WP:UpdateDashboard()
                 b.bg:SetColorTexture(0.08, 0.1, 0.12, 1)
                 b.mark:Hide()
             end
-            b.value:SetText(tostring(profession.skill or 0) .. "/" .. tostring(profession.maxSkill or 300))
+            if profession.name == "Fishing + Cooking" then
+                local combined = self.RouteData and self.RouteData.fishingcooking and self.RouteData.fishingcooking.skills or {}
+                local fishingSkill = (self.professions.Fishing and self.professions.Fishing.skill) or (combined.Fishing and combined.Fishing.skill) or 0
+                local cookingSkill = (self.professions.Cooking and self.professions.Cooking.skill) or (combined.Cooking and combined.Cooking.skill) or 0
+                b.value:SetText("F" .. tostring(fishingSkill) .. " C" .. tostring(cookingSkill))
+            else
+                b.value:SetText(tostring(profession.skill or 0) .. "/" .. tostring(profession.maxSkill or 300))
+            end
             b:SetScript("OnClick", function()
                 WP.selectedProfession = profession.name
+                WP.activeFarmRoute = nil
+                if WP.professions and WP.professions[profession.name] then WP.lastTrackedProfession = profession.name end
                 WP:UpdateDashboard()
                 WP:UpdateTracker()
                 WP:UpdateGuideArrow()
@@ -362,7 +781,10 @@ function WP:UpdateDashboard()
         end
     end
     self.professionList:SetHeight(math.max(400, visible * 34))
-    if self.professionScroll then self.professionScroll:SetVerticalScroll(0) end
+    if self.professionScroll then
+        local maxScroll = math.max(0, (self.professionList:GetHeight() or 0) - self.professionScroll:GetHeight())
+        self.professionScroll:SetVerticalScroll(math.min(self.professionScroll:GetVerticalScroll(), maxScroll))
+    end
 
     local selected = self.selectedProfession and self.professions[self.selectedProfession]
     if not selected and self.selectedProfession then
@@ -377,36 +799,162 @@ function WP:UpdateDashboard()
     end
 
     if selected then
+        local priorDetailScroll = self.detailScroll and self.detailScroll:GetVerticalScroll() or 0
         local maxSkill = math.max(tonumber(selected.maxSkill) or 0, 1)
         self.professionTitle:SetText(selected.name)
         self.skillLabel:SetText(status.combinedProgress or string.format("SKILL  %d / %d", selected.skill or 0, selected.maxSkill or 300))
         local currentSkill, currentMax = status.skill or selected.skill or 0, status.maxSkill or maxSkill
         self.dashboardProgress:SetMinMaxValues(0, math.max(currentMax, 1))
         self.dashboardProgress:SetValue(currentSkill)
+        if status.choices and #status.choices > 1 then
+            self.zoneButton:Hide()
+            for i, button in ipairs(self.zoneChoiceButtons or {}) do
+                local zoneName = status.choices[i]
+                button.zoneName = zoneName
+                if zoneName then
+                    button:SetText((zoneName == status.selectedZone and "[x] " or "") .. zoneName)
+                    button:Show()
+                else
+                    button:Hide()
+                end
+            end
+        else
+            self.zoneButton:Hide()
+            for _, button in ipairs(self.zoneChoiceButtons or {}) do button:Hide() end
+        end
         self.guideStepTitle:SetText(status.title or "No guide step available")
         self.guideZone:SetText(status.zone and ("⌖  " .. status.zone) or "No route location for this step")
         local body = status.text or "No guide data is available."
         if status.focus and status.focus ~= "" then body = status.focus .. "\n\n" .. body end
+        if status.step and status.step.carryForward and status.step.carryForward ~= "" then
+            body = body .. "\n\n|cff67d5a3CARRY FORWARD|r\n" .. status.step.carryForward
+        end
+        local combinedTasks = WP.Planner.FormatCombinedTasks and WP.Planner.FormatCombinedTasks(status) or ""
+        if combinedTasks ~= "" then body = combinedTasks .. "\n\n" .. body end
+        local cookingTask = status.activeTasks and status.activeTasks.Cooking
+        if cookingTask then
+            body = body .. "\n\nCooking materials follow the selected WoW-Professions recipe branch. Use fish already caught before adding fish to a shopping list; itemized carry-forward counts are not yet available for this section."
+        end
+        local fishingTask = status.activeTasks and status.activeTasks.Fishing
+        if fishingTask and WP.Planner.GetGatheringChoices then
+            local fishingRoutes = WP.Planner.GetGatheringChoices(selected)
+            local shown, zones = 0, {}
+            for _, entry in ipairs(fishingRoutes) do
+                if entry.zone and entry.mapID and entry.points and not zones[entry.zone] then
+                    zones[entry.zone] = true
+                    shown = shown + 1
+                    if shown <= 4 then
+                        body = body .. string.format("\n  Fishing route option: %s (%s)", entry.zone, entry.bracket or "farming guide")
+                    end
+                end
+            end
+            if shown > 4 then body = body .. string.format("\n  %d additional fishing route options available in the route list.", shown - 4) end
+        end
         if status.sourceStatus and status.sourceStatus ~= "" then body = body .. "\n\n|cff91a4abGuide data:|r " .. status.sourceStatus end
         if status.routeNote and status.routeNote ~= "" then body = body .. "\n\n|cff91a4abRoute note:|r " .. status.routeNote end
+        local pointCount = status.routePoints and #status.routePoints or 0
+        if pointCount > 0 then body = body .. "\n\nROUTE  " .. pointCount .. " waypoints. Click Show Map Route to see the connected path." end
+        local guideRows = WP.GetGuideSteps and WP:GetGuideSteps(selected) or {}
+        if #guideRows > 0 then
+            body = body .. "\n\n|cff67d5a3GUIDE PROGRESS|r"
+            for _, row in ipairs(guideRows) do
+                local marker = row.complete and "[x] " or (row.current and "> " or "[ ] ")
+                local label = (row.skill and (row.skill .. ": ") or "") .. (row.title or "Guide step")
+                body = body .. "\n" .. marker .. label .. (row.zone and (" - " .. row.zone) or "")
+                if row.skill and row.target then body = body .. string.format(" (%d -> %d)", row.skillValue or 0, row.target) end
+                if row.recipeOptions then body = body .. "\n    Choose one: " .. row.recipeOptions end
+                if row.estimate then body = body .. "\n    Estimated: " .. row.estimate end
+                if row.instructions and row.current then body = body .. "\n    " .. row.instructions end
+            end
+        end
         self.detailText:SetText(body)
-        self.dashboardFooter:SetText("SOURCE  WoW-Professions Forever  •  Route references credited in the bundled changelog.")
+        local detailHeight = math.max(140, (self.detailText:GetStringHeight() or 0) + 8)
+        self.detailText:SetHeight(detailHeight)
+        self.detailTextChild:SetHeight(detailHeight)
+        self.detailScroll:SetVerticalScroll(math.min(priorDetailScroll, math.max(0, detailHeight - self.detailScroll:GetHeight())))
+        local isGathering = WP.Planner.IsGatheringProfession and WP.Planner.IsGatheringProfession(selected.name)
+        if isGathering then
+            self.reagentHeading:SetText("GATHERING ROUTE OPTIONS")
+            self.reagentText:Hide()
+            self.reagentScroll:Hide()
+            self.reagentHeading:Hide()
+            if self.gatherRouteScroll then self.gatherRouteScroll:Show() end
+        else
+            self.reagentHeading:SetText("GUIDE MATERIALS")
+            self.reagentHeading:Show()
+            self.reagentScroll:Show()
+            self.reagentText:Show()
+            local materials = status.step and (status.step.materials or status.step.materialSummary)
+            materials = formatGuideMaterials(materials)
+            self.reagentText:SetText(type(materials) == "string" and materials ~= "" and materials or "This guide section does not yet have a verified itemized material list. Follow the source recipe choices and keep materials reserved for later steps.")
+            local materialHeight=math.max(80,(self.reagentText:GetStringHeight() or 0)+8)
+            self.reagentText:SetHeight(materialHeight)
+            self.reagentTextChild:SetHeight(materialHeight)
+            self.reagentScroll:SetVerticalScroll(math.min(self.reagentScroll:GetVerticalScroll(),math.max(0,materialHeight-self.reagentScroll:GetHeight())))
+            if self.gatherRouteScroll then self.gatherRouteScroll:Hide() end
+        end
+        local gatherRoutes = WP.Planner.GetGatheringChoices(selected)
+        for _, button in ipairs(self.gatherRouteChoices or {}) do button:Hide() end
+        for i, entry in ipairs(gatherRoutes) do
+            local button = self.gatherRouteChoices[i]
+            if not button then
+                button = makeButton(self.gatherRouteChild, "", 235, 23, function(b)
+                    if b.mapID then
+                        WP.activeFarmRoute = b.routeEntry
+                        if WP.mapOverlayHost then WP.mapOverlayHost:Show() end
+                        if b.routeEntry and b.routeEntry.available == false then
+                            WP.mapRoutesVisible = true
+                        else
+                            WP:SetGatheringRoute(b.routeEntry, WP.selectedProfession)
+                        end
+                        if C_Map and C_Map.OpenWorldMap then pcall(C_Map.OpenWorldMap, b.mapID)
+                        elseif SetMapByID then if ToggleWorldMap then ToggleWorldMap() end; pcall(SetMapByID, b.mapID) end
+                        if WP.attachMapOverlay then WP.attachMapOverlay() end
+                    end
+                end)
+                button:SetParent(self.gatherRouteChild)
+                self.gatherRouteChoices[i] = button
+            end
+            button:SetPoint("TOPLEFT", 0, -(i - 1) * 26)
+            local factionTag = entry.faction and (" [" .. entry.faction .. "]") or ""
+            button:SetText(entry.zone .. "  |  " .. (entry.item or entry.bracket or "Gathering route") .. factionTag)
+            button.zoneName, button.mapID, button.routeEntry = entry.zone, entry.mapID, entry
+            button:Show()
+        end
+        if self.gatherRouteChild then self.gatherRouteChild:SetHeight(math.max(88, #gatherRoutes * 26)) end
+        self.dashboardFooter:SetText("GUIDE SOURCE  WoW-Professions Forever  |  GATHERING ROUTES  user-supplied Zygor guide files")
     else
         self.professionTitle:SetText("Select a profession guide")
         self.skillLabel:SetText("No profession scanned")
         self.dashboardProgress:SetMinMaxValues(0, 1)
         self.dashboardProgress:SetValue(0)
+        self.zoneButton:Hide()
+        for _, button in ipairs(self.zoneChoiceButtons or {}) do button:Hide() end
         self.guideStepTitle:SetText("Open a guide from the library")
         self.guideZone:SetText("Your tracked skill progress updates when the game reports it.")
         self.detailText:SetText("This window is the home for profession guides, gathering routes, the route arrow and the tracker.")
+        self.reagentText:SetText("Select a profession to see its planned materials and bag counts.")
+        self.reagentHeading:Show()
+        self.reagentScroll:Show()
+        self.reagentText:Show()
+        self.gatherRouteScroll:Hide()
         self.dashboardFooter:SetText("No skill data detected yet.")
     end
+    if self.farmingFrame and self.farmingFrame:IsShown() then self:UpdateFarmingGuides() end
     if self.UpdateGuideArrow then self:UpdateGuideArrow() end
 end
 
 function WP:UpdateTracker()
     if not self.trackerFrame then return end
     local p = self.selectedProfession and self.professions[self.selectedProfession]
+    if not p and self.lastTrackedProfession then p = self.professions[self.lastTrackedProfession] end
+    if not p then
+        for name, learned in pairs(self.professions or {}) do
+            p = learned
+            self.lastTrackedProfession = name
+            break
+        end
+    end
     if not p then
         self.trackerFrame.title:SetText("WildProfessions")
         self.trackerFrame.progress:SetText("No profession detected")
@@ -423,11 +971,26 @@ function WP:UpdateTracker()
     local guide = WP.Planner.GetStatus(p)
     if guide.status == "active" or guide.status == "trainer" then
         local herbs = guide.herbs and ("\n" .. guide.herbs) or ""
-        self.trackerFrame.activity:SetText((guide.title or "Current step") .. "\n" .. (guide.zone or "Route") .. " · target skill " .. tostring(guide.target or 300) .. herbs)
+        local detail = (guide.title or "Current step") .. "\n" .. (guide.zone or "Route") .. "  target " .. tostring(guide.target or 300) .. herbs
+        self.trackerFrame.activity:SetText(detail)
     elseif guide.status == "complete" then
         self.trackerFrame.activity:SetText("Guide complete: " .. p.name .. " " .. tostring(guide.target or 300) .. ".")
     else
         self.trackerFrame.activity:SetText(guide.text or "No route is bundled for this profession yet.")
+    end
+end
+
+function WP:OpenMainWindow()
+    if not self.mainFrame then self:CreateUI() end
+    self.mainFrame:Show()
+end
+
+function WP:OpenShoppingList()
+    local skillUp = self.SkillUp
+    if skillUp and type(skillUp.OpenShoppingList) == "function" then
+        skillUp.OpenShoppingList()
+    else
+        self:Print("The guide notes window is not ready yet. Try /reload, then /wp shopping.")
     end
 end
 
