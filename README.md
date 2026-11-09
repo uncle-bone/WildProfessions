@@ -1,39 +1,41 @@
+
+## 1.2.0-test.1 full test build
+
+This build adds a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; the current map overlay displays steps that have map coordinates.
+
+Install the `WildProfessions` folder into `Interface/AddOns`, then use the minimap icon or the visible `WildProfessions` profession-window button. The dashboard is the primary navigation surface; `/wp` remains an optional shortcut.
+
 # WildProfessions
 
-A standalone profession tracker and guide addon for WoW Forever.
+A standalone profession progress tracker and source-linked guide browser for WoW Forever.
 
-**Current build:** 1.1.0-alpha.1 preview  
+**Current build:** 1.1.0-alpha.2 guide expansion (local preview; not yet released)  
 **Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
-## What works in this preview
+## Guide coverage
 
-- Reads the character's current profession skill and cap from the game APIs.
-- Automatically selects the next Herbalism step from the live skill value; the guide catches up when a character starts partway through.
-- Reminds you to train Journeyman, Expert, or Artisan when your skill cap shows that rank is missing.
-- Shows a movable step tracker and a separate movable directional arrow to the current route waypoint.
-- Provides a Skyborne-friendly starter waypoint and an Alliance Herbalism progression through 300.
-- Uses the game's Find Herbs tracking for actual herb nodes. The addon arrow points to an approximate farming area; it does not track individual herb spawns.
-- Keeps the addon standalone; Questie, QuestieDB, Zygor, and RestedXP are not runtime requirements.
+The addon bundles route summaries for Alchemy, Blacksmithing, Enchanting, Engineering, Leatherworking, Tailoring, Herbalism, Mining, Skinning, First Aid, Cooking, Fishing, and a combined Fishing + Cooking route. Each route links to its source guide and carries a confidence note for incomplete or beta-derived sections.
 
-## Current guide coverage
+Use `/wp route` to print the selected profession's route, including the current skill bracket, alternatives and guide caveats. The dashboard and movable tracker continue to follow the character's live profession skill. When Fishing is selected, `/wp route` shows the combined Fishing + Cooking sequence and both current skill values.
 
-Herbalism is the first bundled route. The other professions from the WoW Professions Forever index are not in the addon yet. The route has concise original instructions based on the guide's skill brackets and herb requirements. Farming waypoints are area-level approximations, and the source notes its 170+ route was not fully live-tested.
+The WoW-Professions Forever pages say their data is based on the Forever beta and some high skill ranges may not be live-tested. Several pages explicitly leave upper ranges or material lists incomplete. WildProfessions marks these gaps and does not invent recipes or present estimates as verified. The route records are original summaries, not copies of the site's page prose or map artwork.
 
-Recipe crafting lists, shopping totals, auction prices, recipe availability tracking, and trainer route automation are not included in this preview.
+This is guide coverage, not yet a full CraftRoute-style recipe planner. Recipe-by-recipe material accounting, shopping lists, Auctionator prices, automatic crafting, and verified waypoint pins remain future work. Gathering routes use broad zones and the game's built-in tracking; they do not show exact node spawns.
 
 ## Install
 
-Download the repository ZIP, extract it, then copy the inner `WildProfessions` folder into the Forever client's `Interface/AddOns` directory. Enable WildProfessions at character select and reload the UI.
+Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns` directory. Enable it at character select and reload the UI.
 
 ## Commands
 
 - `/wp` — open or close the dashboard
-- `/wp tracker` — show or hide the movable profession step tracker
+- `/wp route` — print the selected profession's full bundled route
+- `/wp tracker` — show or hide the movable tracker
 - `/wp guide` — show or hide the waypoint arrow
-- `/wp refresh` — rescan the live profession skill
+- `/wp refresh` — rescan profession skill
 - `/wp lock` — lock or unlock the tracker
-- `/wp diagnostics` — show detected client and guide coverage
+- `/wp diagnostics` — show client and route coverage
 
-## Source
+## Sources
 
-The route is an original in-addon summary of the public [WoW Forever Herbalism guide](https://www.wow-professions.com/forever/herbalism-leveling-guide). It does not include that page's prose or map artwork.
+The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.

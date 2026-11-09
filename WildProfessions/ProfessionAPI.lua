@@ -32,7 +32,7 @@ end
 function WP:ScanProfessions()
     local found = {}
 
-    -- Forever's native profession pane uses C_TradeSkillUI. Enumerate only
+    -- Forever''s native profession pane uses C_TradeSkillUI. Enumerate only
     -- skill lines the client reports; never infer a skill or recipe from names.
     local ts = C_TradeSkillUI
     if ts and type(ts.GetAllProfessionTradeSkillLines) == "function"
@@ -118,9 +118,15 @@ function WP:ScanOpenProfession()
 end
 
 function WP:GetProfessionList()
-    local result = {}
-    for name, info in pairs(self.professions) do result[#result + 1] = info end
-    table.sort(result, function(a, b) return a.name < b.name end)
+    local result, seen = {}, {}
+    for name, info in pairs(self.professions) do result[#result + 1] = info; seen[name:lower()] = true end
+    local display = { herbalism="Herbalism", mining="Mining", skinning="Skinning", alchemy="Alchemy", blacksmithing="Blacksmithing", enchanting="Enchanting", engineering="Engineering", leatherworking="Leatherworking", tailoring="Tailoring", firstaid="First Aid", cooking="Cooking", fishing="Fishing", fishingcooking="Fishing + Cooking" }
+    for key, route in pairs(self.RouteData or {}) do
+        local name = route.name or display[key]
+        if name and not seen[name:lower()] then result[#result + 1] = { name=name, skill=0, maxSkill=route.maxSkill or 300, guideOnly=true }; seen[name:lower()] = true end
+    end
+    table.sort(result, function(a,b) return a.name < b.name end)
     return result
 end
+
 

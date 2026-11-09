@@ -85,8 +85,8 @@ function WP:InitializeIntegration()
     if not self.mainFrame then return end
     if not self.launcher then
         local button = CreateFrame("Button", "WildProfessionsPaneLauncher", UIParent, "UIPanelButtonTemplate")
-        button:SetSize(28, 22)
-        button:SetText("WP")
+        button:SetSize(126, 24)
+        button:SetText("WildProfessions")
         button:SetScript("OnClick", function() WP:ToggleIntegrated() end)
         button:SetScript("OnEnter", function(self)
             if GameTooltip then
@@ -145,4 +145,5 @@ function WP:ToggleIntegrated()
         self:ShowIntegrated(host)
     end
 end
+
 
