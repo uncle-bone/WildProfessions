@@ -1,7 +1,7 @@
 
-## 1.2.0-test.5 full test build
+## 1.2.0-test.6 full test build
 
-This build adds Fishing route stops for leveling, the Nat Pagle quest and fish-specific farming locations. Its map pins are adapted from the supplied Alliance Zygor profession guide. It also includes a visible minimap button, a larger WildProfessions button on the open profession window, main-window controls for tracker/route arrow/map routes/diagnostics, and a guide index that includes every bundled profession guide even before the profession is scanned. No AH or auction pricing features are included. Gathering waypoints are approximate guide areas, not live node locations; fishing pins are open-water access points or reported school areas, not guaranteed active pools.
+This build adds 163 faction-aware farming paths adapted from the supplied Zygor profession files for Herbalism, Mining, Skinning, and Fishing, including the item farming guides and Alliance/Horde locations. Map routes draw independently, avoid connecting separate farming loops, and show the route/item name and skill requirement when you hover a pin. Existing launcher, dashboard, tracker, arrow, and profession guides remain included. No AH or auction pricing features are included. Gathering paths are guide routes, not live node spawns; fishing pins mark water access or school areas, not guaranteed active pools.
 
 Install the `WildProfessions` folder into `Interface/AddOns`, then use the minimap icon or the visible `WildProfessions` profession-window button. The dashboard is the primary navigation surface; `/wp` remains an optional shortcut.
 
@@ -9,7 +9,7 @@ Install the `WildProfessions` folder into `Interface/AddOns`, then use the minim
 
 A standalone profession progress tracker and source-linked guide browser for WoW Forever.
 
-**Current build:** 1.2.0-test.5 (local test build; not yet released)  
+**Current build:** 1.2.0-test.6 (local test build; not yet released)  
 **Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
 ## Guide coverage
@@ -20,7 +20,7 @@ Use `/wp route` to print the selected profession's route, including the current 
 
 The WoW-Professions Forever pages say their data is based on the Forever beta and some high skill ranges may not be live-tested. Several pages explicitly leave upper ranges or material lists incomplete. WildProfessions marks these gaps and does not invent recipes or present estimates as verified. The route records are original summaries, not copies of the site's page prose or map artwork.
 
-This is guide coverage, not yet a full CraftRoute-style recipe planner. Recipe-by-recipe material accounting, shopping lists, Auctionator prices, automatic crafting, and verified waypoint pins remain future work. Gathering routes use broad zones and the game's built-in tracking; they do not show exact node spawns.
+This is guide coverage, not yet a full CraftRoute-style recipe planner. Recipe-by-recipe material accounting, shopping lists, Auctionator prices, and automatic crafting remain future work. Map routes use the supplied guide coordinates; they do not identify live node spawns.
 
 ## Install
 
@@ -28,17 +28,16 @@ Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns
 
 ## Commands
 
-- `/wp` - open or close the dashboard
-- `/wp route` - print the selected profession's full bundled route
-- `/wp tracker` - show or hide the movable tracker
-- `/wp guide` - show or hide the waypoint arrow
-- `/wp refresh` - rescan profession skill
-- `/wp lock` - lock or unlock the tracker
-- `/wp diagnostics` - show client and route coverage
+- `/wp` — open or close the dashboard
+- `/wp route` — print the selected profession's full bundled route
+- `/wp tracker` — show or hide the movable tracker
+- `/wp guide` — show or hide the waypoint arrow
+- `/wp refresh` — rescan profession skill
+- `/wp lock` — lock or unlock the tracker
+- `/wp diagnostics` — show client and route coverage
 
 ## Sources
 
 The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.
 
-Route data credit: Loch Modan Herbalism waypoint sequence and Alliance Fishing stop/farming coordinates adapted from the user-provided `ZygorProfessionsAllianceCLASSIC.lua` file. Route summaries and addon implementation remain WP's own; coordinates should be checked in the Forever client.
-
+Route data credit: Loch Modan Herbalism route and gathering/farming waypoints adapted from the user-provided ZygorProfessionsAllianceCLASSIC.lua and ZygorProfessionsHordeCLASSIC.lua files. WildProfessions' route renderer and guide integration are original; all coordinates should be checked in the Forever client.

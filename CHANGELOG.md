@@ -1,3 +1,9 @@
+## 1.2.0-test.6
+- Added 163 faction-aware farming paths from the supplied Zygor profession guides across Herbalism, Mining, Skinning, and Fishing, including the material farming guides.
+- Reworked the map overlay to draw each route separately, deduplicate shared paths, color routes by profession, and show route names and skill requirements on hover.
+- Refreshes route geometry only when the map or selected profession changes to avoid rebuilding overlay frames every update tick.
+- Added the full route dataset as a separate load-once Lua data file and credited the supplied Alliance/Horde guide files.
+
 ## 1.2.0-test.5
 - Added Fishing leveling map routes, starter and faction water stops, the Nat Pagle quest fish locations, and item-specific fish farming pins adapted from the supplied Zygor profession guide.
 - Added fishing farming pins to the map overlay and made alternate route selection prefer the zone currently shown on the world map.
