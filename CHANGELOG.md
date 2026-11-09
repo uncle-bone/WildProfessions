@@ -1,3 +1,6 @@
+## 1.2.0-test.3
+- Fixed route arrow player-coordinate handling so it computes direction instead of silently losing the Y coordinate.
+
 ## 1.2.0-test.2
 - Fixed map overlay rendering on the Forever world map and removed unsupported map event registration.
 - Added the Zygor-derived Loch Modan Herbalism route and route line markers.

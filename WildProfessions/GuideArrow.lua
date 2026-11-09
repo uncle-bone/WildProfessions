@@ -124,7 +124,8 @@ function WP:UpdateGuideArrow()
     frame.subtitle:SetText((state.zone or "Route") .. "  ·  " .. tostring(state.skill or 0) .. " → " .. tostring(state.target or 300))
 
     local onMap = isPlayerOnMap(state.mapID)
-    local px, py = onMap and playerPosition(state.mapID) or nil
+    local px, py
+    if onMap then px, py = playerPosition(state.mapID) end
     local targetX, targetY = state.x, state.y
     if type(px) == "number" and type(py) == "number" and type(state.routePoints) == "table" and #state.routePoints > 0 then
         local best, bestDistance = 1, math.huge
