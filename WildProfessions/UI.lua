@@ -220,6 +220,10 @@ function WP:UpdateDashboard()
     for _, b in ipairs(self.professionButtons or {}) do b:Hide() end
     wipe(self.professionButtons or {})
     local professions = self:GetProfessionList()
+    if not self.selectedProfession and #professions > 0 then
+        for _, item in ipairs(professions) do if item.name == "Herbalism" then self.selectedProfession = item.name; break end end
+        if not self.selectedProfession then self.selectedProfession = professions[1].name end
+    end
     if #professions == 0 then
         local empty = self.emptyProfessionText
         if not empty then
@@ -257,16 +261,17 @@ function WP:UpdateDashboard()
     end
     if selected then
         local maxSkill = math.max(selected.maxSkill or 0, 1)
-        self.dashboardProgress:SetMinMaxValues(0, maxSkill)
-        self.dashboardProgress:SetValue(selected.skill or 0)
+        self.dashboardProgress:SetMinMaxValues(0, math.max(status.maxSkill or maxSkill, 1))
+        self.dashboardProgress:SetValue(status.skill or selected.skill or 0)
         local goal = status.title or "No bundled route"
+        local progressText = status.combinedProgress or string.format("Skill: %d / %d", selected.skill or 0, selected.maxSkill or 0)
         local detailText = status.text or "No guide data is available for this profession yet."
         local zoneText = status.zone and ("\nWaypoint zone: " .. status.zone) or ""
         local focusText = status.focus and ("\nGuide focus: " .. status.focus) or ""
         local route = status.route
         local sourceLine = route and route.source and ("\nSource: " .. route.source) or ""
         local confidenceLine = status.sourceStatus and ("\nData status: " .. status.sourceStatus) or ""
-        self.detailText:SetText(string.format("|cffffffff%s|r\nSkill: %d / %d\n\nCurrent step: %s%s%s\n\n%s%s%s\n\nUse Route Arrow and Map Routes buttons below.\nPlanning preference: %s\nRecipe costs and market prices are not included.", selected.name, selected.skill or 0, selected.maxSkill or 0, goal, zoneText, focusText, detailText, sourceLine, confidenceLine, strategyNames[strategy] or strategy))
+        self.detailText:SetText(string.format("|cffffffff%s|r\n%s\n\nCurrent step: %s%s%s\n\n%s%s%s\n\nUse Route Arrow and Map Routes buttons below.\nPlanning preference: %s\nRecipe costs and market prices are not included.", selected.name, progressText, goal, zoneText, focusText, detailText, sourceLine, confidenceLine, strategyNames[strategy] or strategy))
     else
         self.dashboardProgress:SetMinMaxValues(0, 1)
         self.dashboardProgress:SetValue(0)

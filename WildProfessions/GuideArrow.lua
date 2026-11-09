@@ -40,6 +40,7 @@ function WP:InitializeGuideArrow()
     frame:SetClampedToScreen(true)
     frame:SetMovable(true)
     frame:EnableMouse(true)
+    frame:SetScript("OnMouseUp", function() local state=WP:GetCurrentGuideState(); if state and state.mapID and C_Map and C_Map.OpenWorldMap then C_Map.OpenWorldMap(state.mapID) elseif ToggleWorldMap then ToggleWorldMap() end end)
     if frame.SetBackdrop then
         frame:SetBackdrop({
             bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -113,8 +114,8 @@ function WP:UpdateGuideArrow()
 
     if state.status == "complete" then
         frame.title:SetText(state.title)
-        frame.subtitle:SetText("Herbalism 300 / 300")
-        frame.hint:SetText("Use /wp to choose another profession.")
+        frame.subtitle:SetText((state.route and state.route.name or "Profession") .. " " .. tostring(state.maxSkill or 300) .. " / " .. tostring(state.maxSkill or 300))
+        frame.hint:SetText("Guide complete. Click here to open the route map.")
         frame.arrow:SetRotation(0)
         return
     end
@@ -129,10 +130,10 @@ function WP:UpdateGuideArrow()
         local dy = py - state.y / 100
         local angle = math.atan2 and math.atan2(dx, dy) or 0
         frame.arrow:SetRotation(angle)
-        frame.hint:SetText("Follow arrow to approximate route area; use Find Herbs for live nodes.")
+        frame.hint:SetText(state.routeNote or "Follow the guide's route area; use the profession's built-in tracking for live nodes.")
     else
         frame.arrow:SetRotation(0)
-        frame.hint:SetText("Travel to the route zone. /wp guide hides or shows this arrow.")
+        frame.hint:SetText((state.zone and ("Travel to " .. state.zone .. ". ") or "Travel to the route area. ") .. "Click here to open the map.")
     end
 end
 
@@ -147,3 +148,4 @@ function WP:ToggleGuideArrow()
         self:UpdateGuideArrow()
     end
 end
+

@@ -28,6 +28,9 @@ function WP.Planner.GetStatus(profession)
         herbs = state.herbs,
         routeNote = state.routeNote,
         sourceStatus = state.sourceStatus,
+        route = state.route,
+        focus = state.focus,
+        combinedProgress = state.combinedProgress,
     }
 end
 
@@ -40,3 +43,4 @@ function WP.Planner.SetStrategy(strategy)
     WP:UpdateTracker()
     return true
 end
+

@@ -55,9 +55,9 @@ function WP:ScanProfessions()
         end
     end
 
-    -- Camelot exposes GetProfessions() for the native right-side profession
-    -- tabs. Use it as a compatibility fallback when the C API returns nothing.
-    if next(found) == nil and type(GetProfessions) == "function" then
+    -- Also merge Camelot legacy skill lines: secondary professions may not
+    -- appear in the C_TradeSkillUI enumeration on this client.
+    if type(GetProfessions) == "function" then
         local ok, p1, p2, p3, p4, p5, p6, p7 = safeCall(GetProfessions)
         if ok then
             local indices = { p1, p2, p3, p4, p5, p6, p7 }
@@ -65,7 +65,7 @@ function WP:ScanProfessions()
                 local index = indices[i]
                 if type(index) == "number" then
                     local info = getProfessionInfo(index)
-                    if info then found[info.name] = info end
+                    if info and (not found[info.name] or (found[info.name].maxSkill or 0) == 0) then found[info.name] = info end
                 end
             end
         end
