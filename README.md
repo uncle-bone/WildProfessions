@@ -9,7 +9,7 @@ Install the `WildProfessions` folder into `Interface/AddOns`, then use the minim
 
 A standalone profession progress tracker and source-linked guide browser for WoW Forever.
 
-**Current build:** 1.1.0-alpha.2 guide expansion (local preview; not yet released)  
+**Current build:** 1.2.0-test.5 (local test build; not yet released)  
 **Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
 ## Guide coverage
@@ -28,16 +28,17 @@ Extract the `WildProfessions` folder into the Forever client's `Interface/AddOns
 
 ## Commands
 
-- `/wp` — open or close the dashboard
-- `/wp route` — print the selected profession's full bundled route
-- `/wp tracker` — show or hide the movable tracker
-- `/wp guide` — show or hide the waypoint arrow
-- `/wp refresh` — rescan profession skill
-- `/wp lock` — lock or unlock the tracker
-- `/wp diagnostics` — show client and route coverage
+- `/wp` - open or close the dashboard
+- `/wp route` - print the selected profession's full bundled route
+- `/wp tracker` - show or hide the movable tracker
+- `/wp guide` - show or hide the waypoint arrow
+- `/wp refresh` - rescan profession skill
+- `/wp lock` - lock or unlock the tracker
+- `/wp diagnostics` - show client and route coverage
 
 ## Sources
 
 The route index is [WoW-Professions Forever](https://www.wow-professions.com/forever). Individual route records link directly to each page. Guide content is beta-derived and should be checked against the live client, especially where a route or shopping list is labelled unfinished.
 
 Route data credit: Loch Modan Herbalism waypoint sequence and Alliance Fishing stop/farming coordinates adapted from the user-provided `ZygorProfessionsAllianceCLASSIC.lua` file. Route summaries and addon implementation remain WP's own; coordinates should be checked in the Forever client.
+
