@@ -6,23 +6,11 @@ The separate Farming Guides atlas now includes 345 source records imported from 
 
 Install by extracting the `WildProfessions` folder into `Interface/AddOns`.
 
-## Previous build: 1.3.0-test.3
-
-[Download WildProfessions 1.3.0-test.3](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.3.zip)
-
-This is an install-ready test ZIP. It is superseded by test.4.
-
-## Previous build: 1.2.0-test.6 full test build
-
-This build adds 163 faction-aware farming paths adapted from the supplied Zygor profession files for Herbalism, Mining, Skinning, and Fishing, including the item farming guides and Alliance/Horde locations. Map routes draw independently, avoid connecting separate farming loops, and show the route/item name and skill requirement when you hover a pin. Existing launcher, dashboard, tracker, arrow, and profession guides remain included. No AH or auction pricing features are included. Gathering paths are guide routes, not live node spawns; fishing pins mark water access or school areas, not guaranteed active pools.
-
-Install the `WildProfessions` folder into `Interface/AddOns`, then use the minimap icon or the visible `WildProfessions` profession-window button. The dashboard is the primary navigation surface; `/wp` remains an optional shortcut.
-
 # WildProfessions
 
 A standalone profession progress tracker and source-linked guide browser for WoW Forever.
 
-**Current build:** 1.3.0-test.3 (test build; not a stable release)  
+**Current build:** 1.3.0-test.8-dev (test build; not a stable release)  
 **Client target:** WoW Forever 1.60.1, interface 16001, Lua 5.1
 
 ## Guide coverage
@@ -31,7 +19,7 @@ The addon bundles route summaries for Alchemy, Blacksmithing, Enchanting, Engine
 
 Use `/wp route` to print the selected profession's route, including the current skill bracket, alternatives and guide caveats. The dashboard and movable tracker continue to follow the character's live profession skill. Standalone Fishing and Cooking progress are tracked independently. The combined Fishing + Cooking route remains on hold until its step synchronization is fixed.
 
-The WoW-Professions Forever pages say their data is based on the Forever beta and some high skill ranges may not be live-tested. Several pages explicitly leave upper ranges or material lists incomplete. WildProfessions marks these gaps and does not invent recipes or present estimates as verified. The route records are original summaries, not copies of the site's page prose or map artwork.
+The WoW-Professions Forever pages say their data is based on the Forever beta and some high skill ranges may not be live-tested. Several pages explicitly leave upper ranges or material lists incomplete. WildProfessions marks these gaps and does not invent recipes or present estimates as verified. WoW-Professions supplies the skill brackets and recommended zone choices. Farming waypoint paths are imported from the supplied Zygor Alliance/Horde profession guide files when coordinate data is present; entries without points remain text-only. The addon does not copy the website's guide prose or map artwork.
 
 This is guide coverage, not yet a full CraftRoute-style recipe planner. Recipe-by-recipe material accounting, shopping lists, Auctionator prices, and automatic crafting remain future work. Map routes use the supplied guide coordinates; they do not identify live node spawns.
 
