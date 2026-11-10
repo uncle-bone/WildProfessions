@@ -1,6 +1,6 @@
 # WildFarming RXP Route Pack
 
-RestedXP-format Forever guides generated from the mapped route records bundled with WildProfessions. The pack includes 300 mapped material routes in 16 profession/faction guides.
+RestedXP-format Forever guides generated from the mapped route records bundled with WildProfessions. The pack includes 307 mapped material routes in 16 profession/faction guides.
 
 ## Install in WoW Forever
 
