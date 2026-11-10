@@ -61,7 +61,13 @@ end
 -- Addon-owned windows share the WildProfessions field-desk frame rather than the
 -- legacy portrait panel used by the original planner.
 function Art.Window(name, width, height, title)
-	local frame = CreateFrame("Frame", name, UIParent, "BackdropTemplate")
+	local ok, frame = pcall(CreateFrame, "Frame", name, UIParent, "PortraitFrameTemplate")
+	if not ok or not frame then
+		frame = CreateFrame("Frame", name, UIParent, "BackdropTemplate")
+		frame:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
+		frame:SetBackdropColor(0.025, 0.035, 0.06, 0.99)
+		frame:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
+	end
 	frame:SetSize(width, height)
 	frame:SetPoint("CENTER")
 	frame:SetFrameStrata("DIALOG")
@@ -69,42 +75,49 @@ function Art.Window(name, width, height, title)
 	frame:SetClampedToScreen(true)
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
-	frame:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
-	frame:SetBackdropColor(0.025, 0.035, 0.06, 0.99)
-	frame:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
-	local header = CreateFrame("Frame", nil, frame, "BackdropTemplate")
-	header:SetPoint("TOPLEFT", 6, -6)
-	header:SetPoint("TOPRIGHT", -6, -6)
-	header:SetHeight(48)
-	header:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
-	header:SetBackdropColor(0.07, 0.10, 0.17, 1)
-	local accent = header:CreateTexture(nil, "ARTWORK")
-	accent:SetColorTexture(0.98, 0.61, 0.20, 1)
-	accent:SetHeight(2)
-	accent:SetPoint("BOTTOMLEFT")
-	accent:SetPoint("BOTTOMRIGHT")
-	local icon = header:CreateTexture(nil, "ARTWORK")
-	icon:SetSize(30, 30)
-	icon:SetPoint("LEFT", 12, 0)
-	frame.windowIcon = icon
-	local label = header:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-	label:SetPoint("LEFT", icon, "RIGHT", 10, 0)
-	label:SetPoint("RIGHT", -44, 0)
-	label:SetJustifyH("LEFT")
-	label:SetTextColor(0.94, 0.96, 1)
-	frame.windowTitle = label
+
+	frame.windowTitle = frame.TitleContainer and frame.TitleContainer.TitleText or frame.TitleText
+	if not frame.windowTitle then
+		frame.windowTitle = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+		frame.windowTitle:SetPoint("TOP", 0, -8)
+	end
+	frame.windowTitle:SetText(title or "WildProfessions")
 	frame.SetTitle = function(self, text) self.windowTitle:SetText(text or "WildProfessions") end
+
+	local portrait = frame.PortraitContainer and frame.PortraitContainer.portrait or frame.portrait
+	if portrait then
+		portrait:SetTexture("Interface\\Icons\\Trade_Herbalism")
+		portrait:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+		frame.windowIcon = portrait
+	else
+		local icon = frame:CreateTexture(nil, "ARTWORK")
+		icon:SetSize(40, 40)
+		icon:SetPoint("TOPLEFT", 13, -20)
+		icon:SetTexture("Interface\\Icons\\Trade_Herbalism")
+		frame.windowIcon = icon
+	end
 	frame.GetPortrait = function(self) return self.windowIcon end
-	frame:SetTitle(title)
-	local close = CreateFrame("Button", nil, header, "UIPanelCloseButton")
-	close:SetSize(24, 24)
-	close:SetPoint("RIGHT", -4, 0)
+
+	local close = frame.CloseButton
+	if not close then
+		close = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
+		close:SetPoint("TOPRIGHT", -2, -2)
+	end
 	close:SetScript("OnClick", function() frame:Hide() end)
 	frame.windowClose = close
+
+	-- A transparent drag strip preserves the portrait frame art while keeping the
+	-- familiar WildSpark drag behavior.
+	local header = CreateFrame("Frame", nil, frame)
+	header:SetPoint("TOPLEFT", 58, -5)
+	header:SetSize(math.max(200, width - 100), 48)
 	header:EnableMouse(true)
 	header:RegisterForDrag("LeftButton")
 	header:SetScript("OnDragStart", function() frame:StartMoving() end)
 	header:SetScript("OnDragStop", function() frame:StopMovingOrSizing() end)
 	frame.header = header
+
+	frame:Hide()
+	tinsert(UISpecialFrames, name)
 	return frame
 end

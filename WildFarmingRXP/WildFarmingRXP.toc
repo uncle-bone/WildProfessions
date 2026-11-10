@@ -1,0 +1,8 @@
+## Interface: 16001
+## AllowLoadGameType: camelot
+## Title: WildFarming RXP Profession Guides
+## Notes: Skill-gated RestedXP profession leveling guides for WoW Forever
+## Author: Uncle Bone
+## Version: 0.2.0-dev
+## Dependencies: RXPGuides
+Routes.lua

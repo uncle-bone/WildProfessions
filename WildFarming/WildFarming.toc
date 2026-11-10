@@ -1,0 +1,13 @@
+## Interface: 16001
+## AllowLoadGameType: camelot
+## Title: WildFarming
+## Notes: Standalone farming route planner and map waypoint guide for WoW Forever
+## Author: Uncle Bone
+## Version: 0.1.0-dev
+## SavedVariables: WildFarmingDB
+Core.lua
+RouteData.lua
+GatheringRoutes.lua
+ZygorGatheringIndex.lua
+FarmingGuideIndex.lua
+Farming.lua
