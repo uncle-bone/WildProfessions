@@ -21,7 +21,7 @@ local function professionSkills()
     local out={}
     if GetProfessions and GetProfessionInfo then
         local p1,p2,p3,p4=GetProfessions()
-        for _,slot in ipairs({p1,p2,p3,p4}) do
+        for _,slot in pairs({p1,p2,p3,p4}) do
             if slot then local name,_,rank,maxRank=GetProfessionInfo(slot); if name then out[name]={rank=rank or 0,max=maxRank or 0} end end
         end
     end
@@ -145,7 +145,7 @@ function WF:UpdateArrow()
         local ok,pos=pcall(C_Map.GetPlayerMapPosition,r.mapID,"player")
         if ok and pos and pos.GetXY then
             local x,y=pos:GetXY();local dx=(p[1] or 0)/100-x;local dy=y-(p[2] or 0)/100
-            if math.sqrt(dx*dx+dy*dy)<0.008 then self.db.waypoint=i%#r.points+1; self:RefreshOverlay(); self:UpdateArrow(); return end
+            if math.sqrt(dx*dx+dy*dy)<0.008 then self.db.waypoint=i%#r.points+1; self:RefreshOverlay(); return end
         end
     end
 end
