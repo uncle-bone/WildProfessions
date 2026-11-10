@@ -1,7 +1,14 @@
 -- WildFarming RXP routes, generated from bundled route suggestions.
 -- Waypoints are suggestions and are not guaranteed live node spawns.
 local L = GetLocale() if L and RXP.enabledLocale[L] then return end
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Cooking (Alliance)\n#displayname WildFarming Cooking (Alliance)\n#group WildFarming Routes\n#subgroup Cooking\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Cooking (Alliance)
+#displayname WildFarming Cooking (Alliance)
+#group WildFarming Routes
+#subgroup Cooking
+step
     #loop
     .goto Alterac Mountains,73.57,66.04,40,0
     .goto Alterac Mountains,77.21,62.35,40,0
@@ -1233,7 +1240,14 @@ step
     >>Farm Tangy Clam Meat (recommended level 25+, Wetlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Cooking (Horde)\n#displayname WildFarming Cooking (Horde)\n#group WildFarming Routes\n#subgroup Cooking\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Cooking (Horde)
+#displayname WildFarming Cooking (Horde)
+#group WildFarming Routes
+#subgroup Cooking
+step
     #loop
     .goto Alterac Mountains,73.57,66.04,40,0
     .goto Alterac Mountains,77.21,62.35,40,0
@@ -2180,7 +2194,14 @@ step
     >>Farm Coyote Meat (recommended level 15+, Westfall). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Dropped (Alliance)\n#displayname WildFarming Dropped (Alliance)\n#group WildFarming Routes\n#subgroup Dropped\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Dropped (Alliance)
+#displayname WildFarming Dropped (Alliance)
+#group WildFarming Routes
+#subgroup Dropped
+step
     #loop
     .goto 1448,38.44,59.39,40,0
     .goto 1448,37.63,60.96,40,0
@@ -2304,7 +2325,14 @@ step
     >>Farm Sharp Claw (recommended level 25+, Wetlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Dropped (Horde)\n#displayname WildFarming Dropped (Horde)\n#group WildFarming Routes\n#subgroup Dropped\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Dropped (Horde)
+#displayname WildFarming Dropped (Horde)
+#group WildFarming Routes
+#subgroup Dropped
+step
     #loop
     .goto 1448,38.44,59.39,40,0
     .goto 1448,37.63,60.96,40,0
@@ -2465,7 +2493,14 @@ step
     >>Farm Zesty Clam Meat (recommended level 45+, The Hinterlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Elements (Alliance)\n#displayname WildFarming Elements (Alliance)\n#group WildFarming Routes\n#subgroup Elements\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Elements (Alliance)
+#displayname WildFarming Elements (Alliance)
+#group WildFarming Routes
+#subgroup Elements
+step
     #loop
     .goto 1417,52.03,50.77,40,0
     >>Farm Elemental Air (recommended level 35+, Arathi Highlands). Follow the suggested waypoint loop; node spawns may vary.
@@ -2539,7 +2574,14 @@ step
     >>Farm Ichor of Undeath (recommended level 55+, Winterspring). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Elements (Horde)\n#displayname WildFarming Elements (Horde)\n#group WildFarming Routes\n#subgroup Elements\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Elements (Horde)
+#displayname WildFarming Elements (Horde)
+#group WildFarming Routes
+#subgroup Elements
+step
     #loop
     .goto 1417,52.03,50.77,40,0
     >>Farm Elemental Air (recommended level 35+, Arathi Highlands). Follow the suggested waypoint loop; node spawns may vary.
@@ -2613,7 +2655,14 @@ step
     >>Farm Ichor of Undeath (recommended level 55+, Winterspring). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Fishing (Alliance)\n#displayname WildFarming Fishing (Alliance)\n#group WildFarming Routes\n#subgroup Fishing\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Fishing (Alliance)
+#displayname WildFarming Fishing (Alliance)
+#group WildFarming Routes
+#subgroup Fishing
+step
     #loop
     .goto 1429,33.59,63.52,40,0
     >>Farm Raw Brilliant Smallfish (recommended level 1+, profession skill 1+, Elwynn Forest). Follow the suggested waypoint loop; node spawns may vary.
@@ -2651,7 +2700,14 @@ step
     >>Farm Raw Sunscale Salmon (recommended level 40+, profession skill 205+, Feralas). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Fishing (Horde)\n#displayname WildFarming Fishing (Horde)\n#group WildFarming Routes\n#subgroup Fishing\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Fishing (Horde)
+#displayname WildFarming Fishing (Horde)
+#group WildFarming Routes
+#subgroup Fishing
+step
     #loop
     .goto 1411,56.41,10.85,40,0
     >>Farm Raw Slitherskin Mackerel (recommended level 1+, profession skill 1+, Durotar). Follow the suggested waypoint loop; node spawns may vary.
@@ -2689,7 +2745,14 @@ step
     >>Farm Raw Sunscale Salmon (recommended level 40+, profession skill 205+, Feralas). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Herbalism (Alliance)\n#displayname WildFarming Herbalism (Alliance)\n#group WildFarming Routes\n#subgroup Herbalism\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Herbalism (Alliance)
+#displayname WildFarming Herbalism (Alliance)
+#group WildFarming Routes
+#subgroup Herbalism
+step
     #loop
     .goto 1429,35.16,58.15,40,0
     .goto 1429,35.80,61.90,40,0
@@ -3825,7 +3888,14 @@ step
     >>Farm Black Lotus (recommended level 50+, profession skill 300+, Burning Steppes). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Herbalism (Horde)\n#displayname WildFarming Herbalism (Horde)\n#group WildFarming Routes\n#subgroup Herbalism\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Herbalism (Horde)
+#displayname WildFarming Herbalism (Horde)
+#group WildFarming Routes
+#subgroup Herbalism
+step
     #loop
     .goto 1420,51.54,54.24,40,0
     .goto 1420,50.24,56.05,40,0
@@ -5086,7 +5156,14 @@ step
     >>Farm Black Lotus (recommended level 50+, profession skill 300+, Burning Steppes). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Mining (Alliance)\n#displayname WildFarming Mining (Alliance)\n#group WildFarming Routes\n#subgroup Mining\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Mining (Alliance)
+#displayname WildFarming Mining (Alliance)
+#group WildFarming Routes
+#subgroup Mining
+step
     #loop
     .goto 1449,40.24,18.78,40,0
     .goto 1449,37.48,20.20,40,0
@@ -5809,7 +5886,14 @@ step
     >>Farm Thorium Ore (recommended level 48+, profession skill 245+, Un'Goro Crater). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Mining (Horde)\n#displayname WildFarming Mining (Horde)\n#group WildFarming Routes\n#subgroup Mining\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Mining (Horde)
+#displayname WildFarming Mining (Horde)
+#group WildFarming Routes
+#subgroup Mining
+step
     #loop
     .goto 1449,40.24,18.78,40,0
     .goto 1449,37.48,20.20,40,0
@@ -6546,7 +6630,14 @@ step
     >>Farm Thorium Ore (recommended level 48+, profession skill 245+, Un'Goro Crater). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Skinning (Alliance)\n#displayname WildFarming Skinning (Alliance)\n#group WildFarming Routes\n#subgroup Skinning\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Skinning (Alliance)
+#displayname WildFarming Skinning (Alliance)
+#group WildFarming Routes
+#subgroup Skinning
+step
     #loop
     .goto 1429,41.58,86.96,40,0
     >>Farm Light Leather (recommended level 1+, profession skill 1+, Elwynn Forest). Follow the suggested waypoint loop; node spawns may vary.
@@ -6685,7 +6776,14 @@ step
     >>Farm Red Dragonscale (recommended level 25+, profession skill 300+, Wetlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Skinning (Horde)\n#displayname WildFarming Skinning (Horde)\n#group WildFarming Routes\n#subgroup Skinning\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Skinning (Horde)
+#displayname WildFarming Skinning (Horde)
+#group WildFarming Routes
+#subgroup Skinning
+step
     #loop
     .goto 1411,43.89,17.49,40,0
     >>Farm Light Leather (recommended level 1+, profession skill 1+, Durotar). Follow the suggested waypoint loop; node spawns may vary.
@@ -6823,7 +6921,14 @@ step
     >>Farm Red Dragonscale (recommended level 25+, profession skill 300+, Wetlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Tailoring (Alliance)\n#displayname WildFarming Tailoring (Alliance)\n#group WildFarming Routes\n#subgroup Tailoring\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Tailoring (Alliance)
+#displayname WildFarming Tailoring (Alliance)
+#group WildFarming Routes
+#subgroup Tailoring
+step
     #loop
     .goto 1428,42.17,35.64,40,0
     >>Farm Runecloth (recommended level 54+, Burning Steppes). Follow the suggested waypoint loop; node spawns may vary.
@@ -6875,7 +6980,14 @@ step
     >>Farm Spider's Silk (recommended level 25+, Wetlands). Follow the suggested waypoint loop; node spawns may vary.
 ]])
 
-RXPGuides.RegisterGuide([[\n#forever\n#version 1\n#name WildFarming Tailoring (Horde)\n#displayname WildFarming Tailoring (Horde)\n#group WildFarming Routes\n#subgroup Tailoring\nstep
+RXPGuides.RegisterGuide([[
+#forever
+#version 1
+#name WildFarming Tailoring (Horde)
+#displayname WildFarming Tailoring (Horde)
+#group WildFarming Routes
+#subgroup Tailoring
+step
     #loop
     .goto 1440,54.08,62.60,40,0
     >>Farm Wool Cloth (recommended level 18+, Ashenvale). Follow the suggested waypoint loop; node spawns may vary.
