@@ -182,7 +182,9 @@ end
 function WP:CreateUI()
     if self.mainFrame then return end
 
-    local main = CreateFrame("Frame", "WildProfessionsDashboard", UIParent, "BackdropTemplate")
+    local art = WP.SkillUp and WP.SkillUp.Art
+    local main = art and art.Window and art.Window("WildProfessionsDashboard", 1080, 700, "WildProfessions")
+        or CreateFrame("Frame", "WildProfessionsDashboard", UIParent, "BackdropTemplate")
     main:SetSize(1080, 700)
     main:SetFrameStrata("DIALOG")
     main:SetClampedToScreen(true)
@@ -190,76 +192,53 @@ function WP:CreateUI()
     main:EnableMouse(true)
     main:SetResizable(true)
     if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 900, 600) end
-    if main.SetBackdrop then
-        main:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
-        main:SetBackdropColor(0.025, 0.035, 0.06, 0.99)
-        main:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
-    end
     restorePoint(main, "dashboardPoint", "CENTER", 0, 0)
     local savedSize = self.db.settings.dashboardSize
     if type(savedSize) == "table" then main:SetSize(math.max(980, tonumber(savedSize.width) or 1080), math.max(660, tonumber(savedSize.height) or 700)) end
 
-    local header = CreateFrame("Frame", nil, main, "BackdropTemplate")
-    header:SetPoint("TOPLEFT", 8, -8)
-    header:SetPoint("TOPRIGHT", -8, -8)
-    header:SetHeight(66)
-    if header.SetBackdrop then
-        header:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
-        header:SetBackdropColor(0.07, 0.10, 0.17, 1)
+    local header = main.header or CreateFrame("Frame", nil, main, "BackdropTemplate")
+    if not main.header then
+        header:SetPoint("TOPLEFT", 8, -8); header:SetPoint("TOPRIGHT", -8, -8); header:SetHeight(62)
+        local title = createText(header, "GameFontNormalLarge", 18, {0.94,0.96,1})
+        title:SetText("WildProfessions"); title:SetPoint("LEFT",18,0)
     end
-    local accent = header:CreateTexture(nil, "ARTWORK")
-    accent:SetColorTexture(0.96, 0.62, 0.20, 1)
-    accent:SetHeight(2)
-    accent:SetPoint("BOTTOMLEFT", 0, 0)
-    accent:SetPoint("BOTTOMRIGHT", 0, 0)
-
-    local logo = createText(header, "GameFontNormalLarge", 20, { 0.38, 0.72, 1.0 })
-    logo:SetText("WP")
-    logo:SetPoint("LEFT", 18, 1)
-    local title = createText(header, "GameFontNormalLarge", 17, { 0.93, 0.96, 0.98 })
-    title:SetText("PROFESSION FIELD DESK")
-    title:SetPoint("LEFT", logo, "RIGHT", 12, 5)
-    local subtitle = createText(header, "GameFontDisableSmall", 10)
-    subtitle:SetText("GUIDES  /  MATERIALS  /  FIELD ROUTES")
-    subtitle:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -3)
+    if main.windowIcon then main.windowIcon:SetTexture("Interface\\Icons\\Trade_Herbalism") end
     local navButtons = {}
-    local function navButton(label, key, width, action)
-        local button = makeButton(header, label, width, 30, action)
-        button:SetPoint("RIGHT", navButtons[#navButtons] or header, navButtons[#navButtons] and "LEFT" or "RIGHT", navButtons[#navButtons] and -6 or -52, 0)
-        button.pageKey = key
-        navButtons[#navButtons + 1] = button
-        return button
+    local tabDefs = {
+        {"More","Interface\\Icons\\INV_Misc_Book_09",function()
+            WP:SetMainPage("More"); WP:ShowSystemGuide(WP.systemGuideKind == "camping" and "merchants" or "camping")
+        end},
+        {"Materials","Interface\\Icons\\INV_Misc_Note_06",function() WP:SetMainPage("Overview"); WP:OpenShoppingList() end},
+        {"Farming","Interface\\Icons\\INV_Misc_Map_01",function() WP:SetMainPage("Farming") end},
+        {"Leveling","Interface\\Icons\\Trade_Alchemy",function() WP:SetMainPage("Leveling") end},
+        {"Overview","Interface\\Icons\\INV_Misc_Herb_01",function() WP:SetMainPage("Overview") end},
+    }
+    for index, def in ipairs(tabDefs) do
+        local tab = CreateFrame("Button", nil, main)
+        tab:SetSize(34,34)
+        tab:SetPoint("TOPRIGHT", main, "TOPRIGHT", -7, -91 - (index-1)*42)
+        tab:SetNormalTexture(def[2])
+        tab:GetNormalTexture():SetTexCoord(0.08,0.92,0.08,0.92)
+        tab:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square","ADD")
+        tab:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress")
+        tab.pageKey = def[1]
+        tab:SetScript("OnClick", def[3])
+        tab:SetScript("OnEnter",function(button)
+            GameTooltip:SetOwner(button,"ANCHOR_LEFT"); GameTooltip:SetText(button.pageKey); GameTooltip:Show()
+        end)
+        tab:SetScript("OnLeave",function() GameTooltip:Hide() end)
+        navButtons[#navButtons+1]=tab
     end
-    navButton("MORE", "More", 78, function()
-        WP:SetMainPage("More")
-        WP:ShowSystemGuide(WP.systemGuideKind == "camping" and "merchants" or "camping")
-    end)
-    navButton("MATERIALS", "Materials", 104, function()
-        WP:SetMainPage("Overview")
-        WP:OpenShoppingList()
-    end)
-    navButton("FARMING", "Farming", 94, function() WP:SetMainPage("Farming") end)
-    navButton("GUIDES", "Leveling", 86, function() WP:SetMainPage("Leveling") end)
-    navButton("HOME", "Overview", 76, function() WP:SetMainPage("Overview") end)
     self.mainNavButtons = navButtons
-    local version = createText(header, "GameFontDisableSmall", 10)
-    version:SetText("v" .. self.version .. "  -  STANDALONE")
-    version:SetPoint("LEFT", subtitle, "RIGHT", 12, 0)
 
-    local close = CreateFrame("Button", nil, header, "UIPanelCloseButton")
-    close:SetPoint("RIGHT", -4, 0)
-    close:SetScript("OnClick", function() main:Hide() end)
-
-    local drag = CreateFrame("Frame", nil, header)
-    drag:SetPoint("TOPLEFT", 0, 0)
-    drag:SetSize(520, 60)
+    local drag = header
     drag:EnableMouse(true)
     drag:RegisterForDrag("LeftButton")
     drag:SetScript("OnDragStart", function()
         if WP.dashboardDocked then
             local left, top = main:GetLeft(), main:GetTop()
             main:ClearAllPoints()
-            if type(left) == "number" and type(top) == "number" then main:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top) end
+            if type(left)=="number" and type(top)=="number" then main:SetPoint("TOPLEFT",UIParent,"BOTTOMLEFT",left,top) end
             WP.dashboardDocked, WP.dashboardHost = false, nil
         end
         main:StartMoving()
@@ -313,7 +292,7 @@ function WP:CreateUI()
     local content = CreateFrame("Frame", nil, main)
     main.contentPane = content
     content:SetPoint("TOPLEFT", 270, -88)
-    content:SetPoint("BOTTOMRIGHT", -20, 42)
+    content:SetPoint("BOTTOMRIGHT", -58, 42)
 
     local eyebrow = createText(content, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
     eyebrow:SetText("CURRENT TRAINING PLAN")
@@ -513,7 +492,7 @@ function WP:CreateUI()
     -- from the skill-up guide picker so players can browse every gathered item/zone.
     local farming = CreateFrame("Frame", "WildProfessionsFarmingGuides", main, "BackdropTemplate")
     farming:SetPoint("TOPLEFT", 10, -76)
-    farming:SetPoint("BOTTOMRIGHT", -10, 36)
+    farming:SetPoint("BOTTOMRIGHT", -48, 36)
     farming:SetFrameLevel(main:GetFrameLevel() + 10)
     if farming.SetBackdrop then
         farming:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=12, insets={left=4,right=4,top=4,bottom=4} })
@@ -590,7 +569,7 @@ function WP:CreateUI()
 
     local overview = CreateFrame("Frame", "WildProfessionsOverview", main, "BackdropTemplate")
     overview:SetPoint("TOPLEFT", 16, -84)
-    overview:SetPoint("BOTTOMRIGHT", -16, 44)
+    overview:SetPoint("BOTTOMRIGHT", -48, 44)
     overview:SetFrameLevel(main:GetFrameLevel() + 5)
     if overview.SetBackdrop then
         overview:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Buttons\\WHITE8X8", edgeSize=1 })
