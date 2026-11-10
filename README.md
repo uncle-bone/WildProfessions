@@ -7,7 +7,7 @@ WildProfessions is a standalone World of Warcraft Forever profession guide and p
 **Open:** minimap icon, AddOn Compartment, or `/wp`  
 **Download:** [WildProfessions 1.3.0-test.9-dev](https://github.com/uncle-bone/WildProfessions/raw/refs/heads/main/downloads/WildProfessions-1.3.0-test.9-dev.zip)
 
-**Standalone farming + RXP route pack (development):** [Download GitHub branch ZIP](https://github.com/uncle-bone/WildProfessions/archive/refs/heads/ui/wildspark-style-dev9.zip). Extract `WildProfessions/WildFarming` and/or `WildProfessions/WildFarmingRXP` into `Interface/AddOns`. RXP routes can also be opened in [LevelForge Studio](https://levelforge.dev/studio) from `WildFarmingRXP/Routes.lua`.
+**Standalone farming + RXP profession guides (dev 0.2.0):** [Download current GitHub branch ZIP](https://github.com/uncle-bone/WildProfessions/archive/refs/heads/ui/wildspark-style-dev9.zip). Copy `WildProfessions/WildFarming` and/or `WildProfessions/WildFarmingRXP` into `Interface/AddOns` beside `RXPGuides`. The RXP pack includes 1–300 skill-gated guides for gathering and crafting professions; its `Routes.lua` can also be opened in [LevelForge Studio](https://levelforge.dev/studio).
 
 ## Interface
 
