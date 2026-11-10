@@ -20,7 +20,8 @@ local function faction() return UnitFactionGroup and UnitFactionGroup("player") 
 local function professionSkills()
     local out={}
     if GetProfessions and GetProfessionInfo then
-        for _,slot in ipairs({GetProfessions()}) do
+        local p1,p2,p3,p4=GetProfessions()
+        for _,slot in ipairs({p1,p2,p3,p4}) do
             if slot then local name,_,rank,maxRank=GetProfessionInfo(slot); if name then out[name]={rank=rank or 0,max=maxRank or 0} end end
         end
     end
@@ -144,7 +145,7 @@ function WF:UpdateArrow()
         local ok,pos=pcall(C_Map.GetPlayerMapPosition,r.mapID,"player")
         if ok and pos and pos.GetXY then
             local x,y=pos:GetXY();local dx=(p[1] or 0)/100-x;local dy=y-(p[2] or 0)/100
-            if math.sqrt(dx*dx+dy*dy)<0.008 then self:NextWaypoint() end
+            if math.sqrt(dx*dx+dy*dy)<0.008 then self.db.waypoint=i%#r.points+1; self:RefreshOverlay(); self:UpdateArrow(); return end
         end
     end
 end
@@ -192,7 +193,7 @@ function WF:Initialize()
     local title=label(f,"WILDFARMING",18,{1,0.78,0.31},"GameFontNormalLarge");title:SetPoint("TOPLEFT",24,-20)
     local sub=label(f,"ROUTE PLANNER  /  GATHER  /  TRACK",10,{0.72,0.66,0.50});sub:SetPoint("TOPLEFT",26,-47)
     local close=CreateFrame("Button",nil,f,"UIPanelCloseButton");close:SetPoint("TOPRIGHT",-4,-4)
-    local filter=button(f,"All Professions",150,25,function(b)
+    local filter=button(f,self.db.selectedCategory=="All" and "All Professions" or self.db.selectedCategory,150,25,function(b)
         local cats={"All"};local seen={};for _,r in ipairs(WF.routes) do if not seen[r.category] then seen[r.category]=true;cats[#cats+1]=r.category end end;table.sort(cats);table.remove(cats,1);table.insert(cats,1,"All")
         local i=1;for n,v in ipairs(cats) do if v==WF.db.selectedCategory then i=n end end;WF.db.selectedCategory=cats[i%#cats+1];b:SetText(WF.db.selectedCategory=="All" and "All Professions" or WF.db.selectedCategory);WF:RefreshList()
     end);filter:SetPoint("TOPLEFT",22,-72);self.categoryButton=filter
@@ -219,7 +220,7 @@ function WF:Initialize()
     local at=label(self.arrow,"",12,{1,0.88,0.55},"GameFontNormal");at:SetPoint("CENTER");at:SetPoint("LEFT",12,0);at:SetPoint("RIGHT",-12,0);at:SetJustifyH("CENTER");self.arrowText=at;self.arrow:Hide()
     self.overlayMarks={}
     if WorldMapFrame then WorldMapFrame:HookScript("OnShow",function() self:AttachMap() end);if WorldMapFrame.ScrollContainer then WorldMapFrame.ScrollContainer:HookScript("OnSizeChanged",function() if WorldMapFrame:IsShown() then self:AttachMap() end end) end end
-    local tick=CreateFrame("Frame");local elapsed=0;tick:SetScript("OnUpdate",function(_,dt) elapsed=elapsed+dt;if elapsed<0.35 then return end;elapsed=0;if WorldMapFrame and WorldMapFrame:IsShown() then self:AttachMap() end;if self.db.route then self:UpdateArrow() end end)
+    local tick=CreateFrame("Frame");local elapsed,lastMap=0,nil;tick:SetScript("OnUpdate",function(_,dt) elapsed=elapsed+dt;if elapsed<0.35 then return end;elapsed=0;if WorldMapFrame and WorldMapFrame:IsShown() then local map=currentMap();if map~=lastMap then lastMap=map;self:AttachMap() end end;if self.db.route then self:UpdateArrow() end end)
     self:RefreshList();self:UpdateDetails();self.frame:Hide()
     if self.db.route then self.arrow:Show();self:UpdateArrow() end
 end
