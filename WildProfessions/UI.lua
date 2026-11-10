@@ -219,6 +219,12 @@ function WP:CreateUI()
         tab:SetPoint("TOPRIGHT", main, "TOPRIGHT", -7, -91 - (index-1)*42)
         tab:SetNormalTexture(def[2])
         tab:GetNormalTexture():SetTexCoord(0.08,0.92,0.08,0.92)
+        tab.selection = tab:CreateTexture(nil, "BACKGROUND")
+        tab.selection:SetTexture("Interface\\\\Buttons\\\\WHITE8X8")
+        tab.selection:SetPoint("TOPLEFT", -3, 3)
+        tab.selection:SetPoint("BOTTOMRIGHT", 3, -3)
+        tab.selection:SetVertexColor(0.72, 0.52, 0.20, 0.55)
+        tab.selection:Hide()
         tab:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square","ADD")
         tab:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress")
         tab.pageKey = def[1]
@@ -722,7 +728,8 @@ function WP:SetMainPage(page)
     end
     for _,button in ipairs(self.mainNavButtons or {}) do
         local selected=button.pageKey==page
-        button:SetText((selected and "* " or "")..string.upper(button.pageKey))
+        button:SetAlpha(selected and 1 or 0.62)
+        if button.selection then button.selection:SetShown(selected) end
     end
 end
 
