@@ -54,6 +54,26 @@ local function makeButton(parent, text, width, height, onClick)
     return button
 end
 
+local function applyWildsparkPanel(frame)
+    if not frame then return end
+    if frame.SetBackdrop then
+        frame:SetBackdrop({
+            bgFile = "Interface\\Buttons\\WHITE8X8",
+            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+            tile = false, edgeSize = 14,
+            insets = { left = 3, right = 3, top = 3, bottom = 3 },
+        })
+        frame:SetBackdropColor(0.03, 0.03, 0.03, 0.78)
+        frame:SetBackdropBorderColor(0.62, 0.56, 0.46, 0.9)
+        return
+    end
+    -- Modern client frames can expose a NineSlice instead of SetBackdrop.
+    local border = frame.NineSlice
+    if border and border.SetBorder then
+        pcall(border.SetBorder, border, "Tooltip")
+    end
+end
+
 local function savePoint(frame, key)
     local point, _, relativePoint, x, y = frame:GetPoint(1)
     WP.db.settings[key] = { point = point, relativePoint = relativePoint, x = x, y = y }
