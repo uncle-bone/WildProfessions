@@ -227,6 +227,10 @@ function WP:CreateUI()
         tab.selection:Hide()
         tab:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square","ADD")
         tab:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress")
+        tab.slotBorder = tab:CreateTexture(nil, "OVERLAY")
+        tab.slotBorder:SetTexture("Interface\\Buttons\\UI-Quickslot2")
+        tab.slotBorder:SetSize(58, 58)
+        tab.slotBorder:SetPoint("CENTER")
         tab.pageKey = def[1]
         tab:SetScript("OnClick", def[3])
         tab:SetScript("OnEnter",function(button)
@@ -294,6 +298,7 @@ function WP:CreateUI()
     configureVerticalScroll(scroll, list, 48)
     self.professionButtons = {}
     self.professionList, self.professionScroll = list, scroll
+    applyWildsparkPanel(sidebar)
 
     local content = CreateFrame("Frame", nil, main)
     main.contentPane = content
@@ -456,6 +461,7 @@ function WP:CreateUI()
         routeChild:SetWidth(math.max(170, columnWidth - 10))
     end
     card:SetScript("OnSizeChanged", layoutGuideCard)
+    applyWildsparkPanel(card)
     layoutGuideCard()
 
     local prefLabel = createText(content, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
@@ -549,6 +555,7 @@ function WP:CreateUI()
     self.farmingScroll,self.farmingList,self.farmingRouteRows=farmScroll,farmList,{}
     farming:Hide()
     self.farmingFrame=farming
+    applyWildsparkPanel(farming)
 
     local systemGuide = CreateFrame("Frame", nil, main, "BackdropTemplate")
     systemGuide:SetPoint("TOPLEFT", main, "TOPLEFT", 26, -78)
@@ -571,6 +578,7 @@ function WP:CreateUI()
     guideBody:SetWordWrap(true)
     self.systemGuideText = guideBody
     self.systemGuideFrame = systemGuide
+    applyWildsparkPanel(systemGuide)
     systemGuide:Hide()
 
     local overview = CreateFrame("Frame", "WildProfessionsOverview", main, "BackdropTemplate")
@@ -623,6 +631,7 @@ function WP:CreateUI()
     overviewScroll:SetScrollChild(overviewList)
     configureVerticalScroll(overviewScroll,overviewList,58)
     self.overviewFrame,self.overviewScroll,self.overviewList=overview,overviewScroll,overviewList
+    applyWildsparkPanel(overview)
     self.overviewCards={}
     overview:Hide()
 
@@ -749,9 +758,7 @@ function WP:UpdateOverview()
         if not card then
             card=CreateFrame("Button",nil,self.overviewList,"BackdropTemplate")
             card:SetHeight(94)
-            card:SetBackdrop({bgFile="Interface\\Buttons\\WHITE8X8",edgeFile="Interface\\Buttons\\WHITE8X8",edgeSize=1})
-            card:SetBackdropColor(0.075,0.10,0.16,1)
-            card:SetBackdropBorderColor(0.18,0.27,0.42,1)
+            applyWildsparkPanel(card)
             card.name=createText(card,"GameFontNormal",13,{0.94,0.97,1.0})
             card.name:SetPoint("TOPLEFT",12,-10)
             card.name:SetPoint("RIGHT",-90,0)
