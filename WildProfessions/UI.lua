@@ -234,30 +234,30 @@ function WP:CreateUI()
         {"Overview","Interface\\Icons\\INV_Misc_Herb_01",function() WP:SetMainPage("Overview") end},
     }
     for index, def in ipairs(tabDefs) do
-        local tab = CreateFrame("Button", nil, main)
-        tab:SetSize(34,34)
-        tab:SetPoint("TOPRIGHT", main, "TOPRIGHT", -7, -91 - (index-1)*42)
-        tab:SetNormalTexture(def[2])
-        tab:GetNormalTexture():SetTexCoord(0.08,0.92,0.08,0.92)
-        tab.selection = tab:CreateTexture(nil, "BACKGROUND")
-        tab.selection:SetTexture("Interface\\Buttons\\WHITE8X8")
-        tab.selection:SetPoint("TOPLEFT", -3, 3)
-        tab.selection:SetPoint("BOTTOMRIGHT", 3, -3)
-        tab.selection:SetVertexColor(0.72, 0.52, 0.20, 0.55)
-        tab.selection:Hide()
-        tab:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square","ADD")
-        tab:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress")
-        tab.slotBorder = tab:CreateTexture(nil, "OVERLAY")
-        tab.slotBorder:SetTexture("Interface\\Buttons\\UI-Quickslot2")
-        tab.slotBorder:SetSize(58, 58)
-        tab.slotBorder:SetPoint("CENTER")
+        local tab = CreateFrame("CheckButton", nil, main)
+        tab:SetSize(32, 32)
+        tab:SetPoint("TOPLEFT", main, "TOPRIGHT", -2, -68 - (index-1)*46)
+        local tabArt = tab:CreateTexture(nil, "BACKGROUND")
+        tabArt:SetTexture("Interface\\SpellBook\\SpellBook-SkillLineTab")
+        tabArt:SetSize(64, 64)
+        tabArt:SetPoint("TOPLEFT", -3, 11)
+        tab.icon = tab:CreateTexture(nil, "ARTWORK")
+        tab.icon:SetTexture(def[2])
+        tab.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+        tab.icon:SetAllPoints()
+        tab:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
+        tab:SetCheckedTexture("Interface\\Buttons\\CheckButtonHilight")
+        local glow = tab:GetCheckedTexture()
+        if glow then glow:SetBlendMode("ADD") end
         tab.pageKey = def[1]
         tab:SetScript("OnClick", def[3])
-        tab:SetScript("OnEnter",function(button)
-            GameTooltip:SetOwner(button,"ANCHOR_LEFT"); GameTooltip:SetText(button.pageKey); GameTooltip:Show()
+        tab:SetScript("OnEnter", function(button)
+            GameTooltip:SetOwner(button, "ANCHOR_LEFT")
+            GameTooltip:SetText(button.pageKey)
+            GameTooltip:Show()
         end)
-        tab:SetScript("OnLeave",function() GameTooltip:Hide() end)
-        navButtons[#navButtons+1]=tab
+        tab:SetScript("OnLeave", function() GameTooltip:Hide() end)
+        navButtons[#navButtons+1] = tab
     end
     self.mainNavButtons = navButtons
 
@@ -448,7 +448,7 @@ function WP:CreateUI()
     reagentText:SetJustifyV("TOP")
     self.reagentText = reagentText
     self.reagentScroll,self.reagentTextChild=reagentScroll,reagentChild
-    local routeHeading = createText(card,"GameFontNormalSmall",10,{0.38,0.72,1.0})
+    local routeHeading = createText(card,"GameFontNormalSmall",10,{1.0,0.78,0.30})
     routeHeading:SetText("AVAILABLE FIELD ROUTES")
     routeHeading:SetPoint("TOPLEFT",330,-118)
     self.routeHeading=routeHeading
@@ -530,7 +530,7 @@ function WP:CreateUI()
         farming:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=12, insets={left=4,right=4,top=4,bottom=4} })
         farming:SetBackdropColor(0.035,0.045,0.06,0.99)
     end
-    local farmTitle = createText(farming,"GameFontNormalLarge",20,{0.38,0.72,1.0})
+    local farmTitle = createText(farming,"GameFontNormalLarge",20,{1.0,0.78,0.30})
     farmTitle:SetPoint("TOPLEFT",18,-18)
     farmTitle:SetText("Farming & Gathering Atlas")
     local farmBack = makeButton(farming,"Back to Leveling Guides",168,26,function() WP:SetMainPage("Leveling") end)
@@ -585,7 +585,7 @@ function WP:CreateUI()
         systemGuide:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=14, insets={left=4,right=4,top=4,bottom=4} })
         systemGuide:SetBackdropColor(0.035,0.045,0.06,0.99)
     end
-    local guideTitle = createText(systemGuide,"GameFontNormalLarge",20,{0.38,0.72,1.0})
+    local guideTitle = createText(systemGuide,"GameFontNormalLarge",20,{1.0,0.78,0.30})
     guideTitle:SetPoint("TOPLEFT",18,-18)
     guideTitle:SetText("Forever Systems")
     local guideClose = makeButton(systemGuide,"Back to Profession Guides",190,28,function() systemGuide:Hide() end)
@@ -616,7 +616,7 @@ function WP:CreateUI()
     local overviewTitle=createText(overview,"GameFontNormalLarge",25,{0.94,0.97,1.0})
     overviewTitle:SetText("Profession Desk")
     overviewTitle:SetPoint("TOPLEFT",22,-38)
-    local overviewSummary=createText(overview,"GameFontHighlight",12,{0.72,0.82,0.94})
+    local overviewSummary=createText(overview,"GameFontHighlight",12,{0.92,0.87,0.76})
     overviewSummary:SetPoint("TOPLEFT",24,-72)
     overviewSummary:SetPoint("RIGHT",-22,0)
     overviewSummary:SetJustifyH("LEFT")
@@ -637,7 +637,7 @@ function WP:CreateUI()
         button:SetPoint("TOPLEFT",22+(i-1)*236,-101)
         button:SetHeight(42)
     end
-    local guideListTitle=createText(overview,"GameFontNormal",13,{0.38,0.72,1.0})
+    local guideListTitle=createText(overview,"GameFontNormal",13,{1.0,0.78,0.30})
     guideListTitle:SetText("YOUR GUIDE LIBRARY")
     guideListTitle:SetPoint("TOPLEFT",22,-158)
     local guideListHint=createText(overview,"GameFontDisableSmall",10)
@@ -757,8 +757,7 @@ function WP:SetMainPage(page)
     end
     for _,button in ipairs(self.mainNavButtons or {}) do
         local selected=button.pageKey==page
-        button:SetAlpha(selected and 1 or 0.62)
-        if button.selection then button.selection:SetShown(selected) end
+        button:SetChecked(selected)
     end
 end
 
@@ -782,9 +781,9 @@ function WP:UpdateOverview()
             card.name=createText(card,"GameFontNormal",13,{0.94,0.97,1.0})
             card.name:SetPoint("TOPLEFT",12,-10)
             card.name:SetPoint("RIGHT",-90,0)
-            card.skill=createText(card,"GameFontHighlightSmall",10,{0.98,0.72,0.34})
+            card.skill=createText(card,"GameFontHighlightSmall",10,{0.52,0.88,0.42})
             card.skill:SetPoint("TOPRIGHT",-10,-12)
-            card.step=createText(card,"GameFontHighlightSmall",10,{0.72,0.82,0.94})
+            card.step=createText(card,"GameFontHighlightSmall",10,{0.92,0.87,0.76})
             card.step:SetPoint("TOPLEFT",12,-34)
             card.step:SetPoint("RIGHT",-10,0)
             card.step:SetJustifyH("LEFT")
