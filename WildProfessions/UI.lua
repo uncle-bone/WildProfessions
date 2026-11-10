@@ -47,8 +47,8 @@ local function makeButton(parent, text, width, height, onClick)
     button:SetNormalTexture("Interface\\Buttons\\WHITE8X8")
     button:SetHighlightTexture("Interface\\Buttons\\WHITE8X8")
     button:SetPushedTexture("Interface\\Buttons\\WHITE8X8")
-    local normal=button:GetNormalTexture();if normal then normal:SetVertexColor(0.1,0.16,0.16,1) end
-    local highlight=button:GetHighlightTexture();if highlight then highlight:SetVertexColor(0.25,0.78,0.45,0.35) end
+    local normal=button:GetNormalTexture();if normal then normal:SetVertexColor(0.09,0.13,0.22,1) end
+    local highlight=button:GetHighlightTexture();if highlight then highlight:SetVertexColor(0.24,0.55,0.90,0.40) end
     local fs=button:GetFontString();if fs then fs:SetTextColor(0.88,0.94,0.91) end
     button:SetScript("OnClick", onClick)
     return button
@@ -66,6 +66,27 @@ local function restorePoint(frame, key, defaultPoint, x, y)
     else
         frame:SetPoint(defaultPoint, UIParent, defaultPoint, x, y)
     end
+end
+
+local function configureVerticalScroll(scroll, child, step)
+    if not scroll or not child then return end
+    local function clamp()
+        local view = math.max(0, scroll:GetHeight() or 0)
+        local content = math.max(view, child:GetHeight() or 0)
+        local maximum = math.max(0, content - view)
+        scroll:SetVerticalScroll(math.max(0, math.min(maximum, scroll:GetVerticalScroll() or 0)))
+    end
+    scroll:EnableMouseWheel(true)
+    scroll:SetScript("OnMouseWheel", function(frame, delta)
+        local maximum = math.max(0, (child:GetHeight() or 0) - (frame:GetHeight() or 0))
+        frame:SetVerticalScroll(math.max(0, math.min(maximum, (frame:GetVerticalScroll() or 0) - delta * (step or 44))))
+    end)
+    scroll:SetScript("OnSizeChanged", function(frame)
+        local width = frame:GetWidth() or 0
+        if width > 0 and child.SetWidth then child:SetWidth(math.max(160, width - 26)) end
+        clamp()
+    end)
+    child:SetScript("OnSizeChanged", clamp)
 end
 
 local function farmingKey(name)
@@ -129,10 +150,10 @@ local function collectFarmingRoutes(professionName)
                 for zoneName, mapRoute in pairs(step.mapRoutes or {}) do
                     add({ zone = zoneName, mapID = mapRoute.mapID, points = mapRoute.points,
                         name = step.title, skill = step.min or step.target, faction = mapRoute.faction,
-                        source = "WoW-Professions guide route" }, routeName)
+                        source = "Bundled guide route" }, routeName)
                 end
             end
-            -- Keep every WoW-Professions zone choice visible; only imported waypoint data can be clicked.
+            -- Keep every guide zone choice visible; only imported waypoint data can be clicked.
             local mappedZones = {}
             for _, entry in ipairs(result) do
                 if entry.category == routeName then mappedZones[entry.zone] = true end
@@ -142,7 +163,7 @@ local function collectFarmingRoutes(professionName)
                 if not mappedZones[zoneName] then
                     add({ zone=zoneName, item=step.title or "Guide zone recommendation",
                         target=tonumber(step.target) or 0, points={}, unmapped=true,
-                        source="WoW-Professions zone recommendation; no imported waypoint route" }, routeName)
+                        source="Zone recommendation; no imported waypoint route" }, routeName)
                     mappedZones[zoneName] = true
                 end
             end
@@ -162,53 +183,65 @@ function WP:CreateUI()
     if self.mainFrame then return end
 
     local main = CreateFrame("Frame", "WildProfessionsDashboard", UIParent, "BackdropTemplate")
-    main:SetSize(900, 600)
+    main:SetSize(1080, 700)
     main:SetFrameStrata("DIALOG")
     main:SetClampedToScreen(true)
     main:SetMovable(true)
     main:EnableMouse(true)
     main:SetResizable(true)
-    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 760, 440) end
+    if main.SetResizeBounds then pcall(main.SetResizeBounds, main, 900, 600) end
     if main.SetBackdrop then
         main:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 14, insets = { left = 4, right = 4, top = 4, bottom = 4 } })
-        main:SetBackdropColor(0.035, 0.045, 0.06, 0.98)
-        main:SetBackdropBorderColor(0.25, 0.34, 0.39, 1)
+        main:SetBackdropColor(0.025, 0.035, 0.06, 0.99)
+        main:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
     end
     restorePoint(main, "dashboardPoint", "CENTER", 0, 0)
     local savedSize = self.db.settings.dashboardSize
-    if type(savedSize) == "table" then main:SetSize(math.max(760, tonumber(savedSize.width) or 900), math.max(440, tonumber(savedSize.height) or 600)) end
+    if type(savedSize) == "table" then main:SetSize(math.max(980, tonumber(savedSize.width) or 1080), math.max(660, tonumber(savedSize.height) or 700)) end
 
     local header = CreateFrame("Frame", nil, main, "BackdropTemplate")
     header:SetPoint("TOPLEFT", 8, -8)
     header:SetPoint("TOPRIGHT", -8, -8)
-    header:SetHeight(60)
+    header:SetHeight(66)
     if header.SetBackdrop then
         header:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
-        header:SetBackdropColor(0.055, 0.075, 0.09, 1)
+        header:SetBackdropColor(0.07, 0.10, 0.17, 1)
     end
     local accent = header:CreateTexture(nil, "ARTWORK")
-    accent:SetColorTexture(0.25, 0.78, 0.45, 1)
+    accent:SetColorTexture(0.96, 0.62, 0.20, 1)
     accent:SetHeight(2)
     accent:SetPoint("BOTTOMLEFT", 0, 0)
     accent:SetPoint("BOTTOMRIGHT", 0, 0)
 
-    local logo = createText(header, "GameFontNormalLarge", 20, { 0.45, 0.9, 0.62 })
-    logo:SetText("W")
+    local logo = createText(header, "GameFontNormalLarge", 20, { 0.38, 0.72, 1.0 })
+    logo:SetText("WP")
     logo:SetPoint("LEFT", 18, 1)
     local title = createText(header, "GameFontNormalLarge", 17, { 0.93, 0.96, 0.98 })
-    title:SetText("WILD PROFESSIONS")
+    title:SetText("PROFESSION FIELD DESK")
     title:SetPoint("LEFT", logo, "RIGHT", 12, 5)
     local subtitle = createText(header, "GameFontDisableSmall", 10)
-    subtitle:SetText("FOREVER PROFESSION GUIDES")
+    subtitle:SetText("GUIDES  /  MATERIALS  /  FIELD ROUTES")
     subtitle:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -3)
-    local systemGuides = makeButton(header, "Camping Guide", 178, 26, function()
+    local navButtons = {}
+    local function navButton(label, key, width, action)
+        local button = makeButton(header, label, width, 30, action)
+        button:SetPoint("RIGHT", navButtons[#navButtons] or header, navButtons[#navButtons] and "LEFT" or "RIGHT", navButtons[#navButtons] and -6 or -52, 0)
+        button.pageKey = key
+        navButtons[#navButtons + 1] = button
+        return button
+    end
+    navButton("MORE", "More", 78, function()
+        WP:SetMainPage("More")
         WP:ShowSystemGuide(WP.systemGuideKind == "camping" and "merchants" or "camping")
     end)
-    systemGuides:SetPoint("RIGHT", -52, 0)
-    self.systemGuideButton = systemGuides
-    local shoppingNotes = makeButton(header, "Shopping Notes", 116, 26, function() WP:OpenShoppingList() end)
-    shoppingNotes:SetPoint("RIGHT", systemGuides, "LEFT", -8, 0)
-    self.shoppingNotesButton = shoppingNotes
+    navButton("MATERIALS", "Materials", 104, function()
+        WP:SetMainPage("Overview")
+        WP:OpenShoppingList()
+    end)
+    navButton("FARMING", "Farming", 94, function() WP:SetMainPage("Farming") end)
+    navButton("GUIDES", "Leveling", 86, function() WP:SetMainPage("Leveling") end)
+    navButton("HOME", "Overview", 76, function() WP:SetMainPage("Overview") end)
+    self.mainNavButtons = navButtons
     local version = createText(header, "GameFontDisableSmall", 10)
     version:SetText("v" .. self.version .. "  -  STANDALONE")
     version:SetPoint("LEFT", subtitle, "RIGHT", 12, 0)
@@ -219,7 +252,7 @@ function WP:CreateUI()
 
     local drag = CreateFrame("Frame", nil, header)
     drag:SetPoint("TOPLEFT", 0, 0)
-    drag:SetPoint("BOTTOMRIGHT", -38, 2)
+    drag:SetSize(520, 60)
     drag:EnableMouse(true)
     drag:RegisterForDrag("LeftButton")
     drag:SetScript("OnDragStart", function()
@@ -239,26 +272,20 @@ function WP:CreateUI()
     end)
 
     local sidebar = CreateFrame("Frame", nil, main, "BackdropTemplate")
-    sidebar:SetPoint("TOPLEFT", 16, -78)
+    sidebar:SetPoint("TOPLEFT", 16, -84)
     sidebar:SetPoint("BOTTOMLEFT", 16, 44)
     sidebar:SetWidth(235)
     if sidebar.SetBackdrop then
         sidebar:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Buttons\\WHITE8X8", edgeSize = 1 })
-        sidebar:SetBackdropColor(0.055, 0.07, 0.085, 0.94)
-        sidebar:SetBackdropBorderColor(0.12, 0.19, 0.21, 1)
+        sidebar:SetBackdropColor(0.055, 0.075, 0.12, 0.98)
+        sidebar:SetBackdropBorderColor(0.17, 0.25, 0.39, 1)
     end
-    local listHeading = createText(sidebar, "GameFontNormal", 12, { 0.45, 0.9, 0.62 })
-    listHeading:SetText("GUIDE LIBRARY")
+    local listHeading = createText(sidebar, "GameFontNormal", 12, { 0.38, 0.72, 1.0 })
+    listHeading:SetText("YOUR PROFESSION TRACKS")
     listHeading:SetPoint("TOPLEFT", 14, -14)
     local listSub = createText(sidebar, "GameFontDisableSmall", 10)
-    listSub:SetText("Choose a profession to view its route")
+    listSub:SetText("Live skill  |  next step  |  route options")
     listSub:SetPoint("TOPLEFT", 14, -34)
-
-    local farmingButton = makeButton(sidebar, "Farming Guides", 112, 24, function()
-        if WP.farmingFrame then WP.farmingFrame:Show(); WP:UpdateFarmingGuides() end
-    end)
-    farmingButton:SetPoint("TOPRIGHT", -10, -10)
-    self.farmingNavButton = farmingButton
 
     local search = CreateFrame("EditBox", nil, sidebar, "InputBoxTemplate")
     search:SetSize(205, 24)
@@ -279,19 +306,17 @@ function WP:CreateUI()
     local list = CreateFrame("Frame", nil, scroll)
     list:SetSize(190, 400)
     scroll:SetScrollChild(list)
-    scroll:SetScript("OnMouseWheel", function(f, delta)
-        local current = f:GetVerticalScroll()
-        f:SetVerticalScroll(math.max(0, current - delta * 48))
-    end)
+    configureVerticalScroll(scroll, list, 48)
     self.professionButtons = {}
     self.professionList, self.professionScroll = list, scroll
 
     local content = CreateFrame("Frame", nil, main)
-    content:SetPoint("TOPLEFT", 270, -82)
+    main.contentPane = content
+    content:SetPoint("TOPLEFT", 270, -88)
     content:SetPoint("BOTTOMRIGHT", -20, 42)
 
-    local eyebrow = createText(content, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
-    eyebrow:SetText("ACTIVE PROFESSION")
+    local eyebrow = createText(content, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
+    eyebrow:SetText("CURRENT TRAINING PLAN")
     eyebrow:SetPoint("TOPLEFT", 8, -4)
     local professionTitle = createText(content, "GameFontNormalLarge", 22, { 0.94, 0.97, 0.98 })
     professionTitle:SetText("Select a guide")
@@ -303,12 +328,13 @@ function WP:CreateUI()
     self.skillLabel = skillLabel
 
     local progress = CreateFrame("StatusBar", nil, content)
-    progress:SetSize(570, 14)
     progress:SetPoint("TOPLEFT", 8, -62)
+    progress:SetPoint("TOPRIGHT", -8, -62)
+    progress:SetHeight(14)
     progress:SetMinMaxValues(0, 1)
     progress:SetValue(0)
     progress:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-    progress:SetStatusBarColor(0.24, 0.78, 0.46, 1)
+    progress:SetStatusBarColor(0.96, 0.62, 0.20, 1)
     local progressBg = progress:CreateTexture(nil, "BACKGROUND")
     progressBg:SetAllPoints()
     progressBg:SetColorTexture(0.1, 0.14, 0.16, 1)
@@ -317,19 +343,19 @@ function WP:CreateUI()
     local card = CreateFrame("Frame", nil, content, "BackdropTemplate")
     card:SetPoint("TOPLEFT", 0, -94)
     card:SetPoint("TOPRIGHT", 0, -94)
-    card:SetHeight(246)
+    card:SetHeight(310)
     if card.SetBackdrop then
         card:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Buttons\\WHITE8X8", edgeSize = 1 })
-        card:SetBackdropColor(0.06, 0.08, 0.095, 0.98)
-        card:SetBackdropBorderColor(0.14, 0.22, 0.23, 1)
+        card:SetBackdropColor(0.065, 0.09, 0.145, 0.99)
+        card:SetBackdropBorderColor(0.20, 0.30, 0.46, 1)
     end
     local cardAccent = card:CreateTexture(nil, "ARTWORK")
-    cardAccent:SetColorTexture(0.25, 0.78, 0.45, 1)
+    cardAccent:SetColorTexture(0.96, 0.62, 0.20, 1)
     cardAccent:SetWidth(3)
     cardAccent:SetPoint("TOPLEFT", 0, 0)
     cardAccent:SetPoint("BOTTOMLEFT", 0, 0)
-    local stepLabel = createText(card, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
-    stepLabel:SetText("CURRENT GUIDE STEP")
+    local stepLabel = createText(card, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
+    stepLabel:SetText("NEXT MILESTONE")
     stepLabel:SetPoint("TOPLEFT", 18, -16)
     local stepTitle = createText(card, "GameFontNormal", 16, { 0.96, 0.97, 0.98 })
     stepTitle:SetText("Waiting for guide data")
@@ -367,35 +393,27 @@ function WP:CreateUI()
         self.zoneChoiceButtons[i] = choiceButton
     end
     local routeList = CreateFrame("ScrollFrame", nil, card)
-    routeList:SetSize(270, 88)
     routeList:SetPoint("TOPLEFT", 330, -184)
+    routeList:SetPoint("BOTTOMRIGHT", -16, 16)
     local routeChild = CreateFrame("Frame", nil, routeList)
-    routeChild:SetSize(260, 88)
+    routeChild:SetSize(250, 88)
     routeList:SetScrollChild(routeChild)
-    routeList:EnableMouseWheel(true)
-    routeList:SetScript("OnMouseWheel", function(frame, delta)
-        local maxScroll = math.max(0, (routeChild:GetHeight() or 0) - frame:GetHeight())
-        frame:SetVerticalScroll(math.max(0, math.min(maxScroll, frame:GetVerticalScroll() - delta * 52)))
-    end)
+    configureVerticalScroll(routeList, routeChild, 48)
     self.gatherRouteChoices = {}
     self.gatherRouteChild = routeChild
     self.gatherRouteScroll = routeList
     local detailScroll = CreateFrame("ScrollFrame", nil, card)
-    detailScroll:SetSize(285, 140)
     detailScroll:SetPoint("TOPLEFT", 18, -116)
+    detailScroll:SetPoint("BOTTOMLEFT", 18, 16)
     local detailChild = CreateFrame("Frame", nil, detailScroll)
-    detailChild:SetSize(265, 140)
+    detailChild:SetSize(250, 180)
     detailScroll:SetScrollChild(detailChild)
-    detailScroll:EnableMouseWheel(true)
-    detailScroll:SetScript("OnMouseWheel", function(frame, delta)
-        local maxScroll = math.max(0, (detailChild:GetHeight() or 0) - frame:GetHeight())
-        frame:SetVerticalScroll(math.max(0, math.min(maxScroll, frame:GetVerticalScroll() - delta * 42)))
-    end)
+    configureVerticalScroll(detailScroll, detailChild, 42)
     self.detailScroll, self.detailTextChild = detailScroll, detailChild
     local detail = createText(detailChild, "GameFontHighlight", 12, { 0.78, 0.84, 0.87 })
     detail:SetPoint("TOPLEFT", 0, 0)
-    detail:SetWidth(265)
-    detail:SetHeight(140)
+    detail:SetWidth(250)
+    detail:SetHeight(180)
     detail:SetJustifyH("LEFT")
     detail:SetJustifyV("TOP")
     self.detailText = detail
@@ -404,26 +422,27 @@ function WP:CreateUI()
     divider:SetColorTexture(0.16, 0.25, 0.27, 1)
     divider:SetSize(1, 132)
     divider:SetPoint("TOPLEFT", 315, -120)
-    local reagentHeading = createText(card, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
+    local reagentHeading = createText(card, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
     reagentHeading:SetText("CRAFTING REAGENTS")
     reagentHeading:SetPoint("TOPLEFT", 330, -118)
     self.reagentHeading = reagentHeading
     local reagentScroll = CreateFrame("ScrollFrame",nil,card)
     local reagentChild = CreateFrame("Frame",nil,reagentScroll)
-    reagentChild:SetSize(250,120)
+    reagentChild:SetSize(250,180)
     reagentScroll:SetScrollChild(reagentChild)
-    reagentScroll:EnableMouseWheel(true)
-    reagentScroll:SetScript("OnMouseWheel",function(frame,delta)
-        local max=math.max(0,(reagentChild:GetHeight() or 0)-frame:GetHeight())
-        frame:SetVerticalScroll(math.max(0,math.min(max,frame:GetVerticalScroll()-delta*42)))
-    end)
+    configureVerticalScroll(reagentScroll,reagentChild,42)
     local reagentText = createText(reagentChild, "GameFontHighlightSmall", 11, { 0.82, 0.87, 0.89 })
     reagentText:SetPoint("TOPLEFT", 0, 0)
-    reagentText:SetWidth(245)
+    reagentText:SetWidth(250)
     reagentText:SetJustifyH("LEFT")
     reagentText:SetJustifyV("TOP")
     self.reagentText = reagentText
     self.reagentScroll,self.reagentTextChild=reagentScroll,reagentChild
+    local routeHeading = createText(card,"GameFontNormalSmall",10,{0.38,0.72,1.0})
+    routeHeading:SetText("AVAILABLE FIELD ROUTES")
+    routeHeading:SetPoint("TOPLEFT",330,-118)
+    self.routeHeading=routeHeading
+    routeHeading:Hide()
 
     local function layoutGuideCard()
         local width = card:GetWidth() or 570
@@ -439,6 +458,8 @@ function WP:CreateUI()
         divider:SetPoint("BOTTOMLEFT", 30 + columnWidth, 16)
         reagentHeading:ClearAllPoints()
         reagentHeading:SetPoint("TOPLEFT", 44 + columnWidth, -118)
+        routeHeading:ClearAllPoints()
+        routeHeading:SetPoint("TOPLEFT", 44 + columnWidth, -118)
         reagentScroll:ClearAllPoints()
         reagentScroll:SetPoint("TOPLEFT", 44 + columnWidth, -136)
         reagentScroll:SetPoint("BOTTOMRIGHT", -16, 16)
@@ -452,9 +473,9 @@ function WP:CreateUI()
     card:SetScript("OnSizeChanged", layoutGuideCard)
     layoutGuideCard()
 
-    local prefLabel = createText(content, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
+    local prefLabel = createText(content, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
     prefLabel:SetText("ROUTE PREFERENCE")
-    prefLabel:SetPoint("TOPLEFT", 8, -356)
+    prefLabel:SetPoint("TOPLEFT", 8, -424)
     local strategyButtons = {}
     local strategyDefs = {
         { key = "fastest", text = "Fastest" },
@@ -463,17 +484,17 @@ function WP:CreateUI()
     }
     for i, def in ipairs(strategyDefs) do
         local b = makeButton(content, def.text, 145, 26, function() WP.Planner.SetStrategy(def.key) end)
-        b:SetPoint("TOPLEFT", 8 + (i - 1) * 153, -376)
+        b:SetPoint("TOPLEFT", 8 + (i - 1) * 153, -444)
         strategyButtons[def.key] = b
     end
     self.strategyButtons = strategyButtons
 
-    local toolsLabel = createText(content, "GameFontNormalSmall", 10, { 0.45, 0.9, 0.62 })
+    local toolsLabel = createText(content, "GameFontNormalSmall", 10, { 0.38, 0.72, 1.0 })
     toolsLabel:SetText("GUIDE TOOLS")
-    toolsLabel:SetPoint("TOPLEFT", 8, -418)
+    toolsLabel:SetPoint("TOPLEFT", 8, -486)
     local function toolButton(text, x, onClick)
         local b = makeButton(content, text, 135, 30, onClick)
-        b:SetPoint("TOPLEFT", x, -438)
+        b:SetPoint("TOPLEFT", x, -506)
         return b
     end
     toolButton("Start Route Arrow", 8, function() if not WP.guideArrow then WP:InitializeGuideArrow() end; WP.db.settings.guideVisible = true; WP.guideArrow:Show(); WP:UpdateGuideArrow() end)
@@ -498,10 +519,10 @@ function WP:CreateUI()
         farming:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=12, insets={left=4,right=4,top=4,bottom=4} })
         farming:SetBackdropColor(0.035,0.045,0.06,0.99)
     end
-    local farmTitle = createText(farming,"GameFontNormalLarge",20,{0.45,0.9,0.62})
+    local farmTitle = createText(farming,"GameFontNormalLarge",20,{0.38,0.72,1.0})
     farmTitle:SetPoint("TOPLEFT",18,-18)
     farmTitle:SetText("Farming & Gathering Atlas")
-    local farmBack = makeButton(farming,"Back to Leveling Guides",168,26,function() farming:Hide() end)
+    local farmBack = makeButton(farming,"Back to Leveling Guides",168,26,function() WP:SetMainPage("Leveling") end)
     farmBack:SetPoint("TOPRIGHT",-18,-16)
     local farmHint = createText(farming,"GameFontHighlightSmall",11,{0.75,0.82,0.86})
     farmHint:SetPoint("TOPLEFT",20,-50)
@@ -536,15 +557,10 @@ function WP:CreateUI()
     local farmScroll = CreateFrame("ScrollFrame",nil,farming,"UIPanelScrollFrameTemplate")
     farmScroll:SetPoint("TOPLEFT",18,-164)
     farmScroll:SetPoint("BOTTOMRIGHT",-34,18)
-    farmScroll:EnableMouseWheel(true)
-    farmScroll:SetScript("OnMouseWheel",function(frame,delta)
-        local max=math.max(0,(self.farmingList:GetHeight() or 0)-frame:GetHeight())
-        frame:SetVerticalScroll(math.max(0,math.min(max,frame:GetVerticalScroll()-delta*56)))
-    end)
     local farmList = CreateFrame("Frame",nil,farmScroll)
     farmList:SetSize(600,1)
     farmScroll:SetScrollChild(farmList)
-    farmScroll:SetScript("OnSizeChanged",function(frame) farmList:SetWidth(math.max(200,frame:GetWidth()-4)) end)
+    configureVerticalScroll(farmScroll,farmList,56)
     self.farmingScroll,self.farmingList,self.farmingRouteRows=farmScroll,farmList,{}
     farming:Hide()
     self.farmingFrame=farming
@@ -557,7 +573,7 @@ function WP:CreateUI()
         systemGuide:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Tooltips\\UI-Tooltip-Border", tile=false, edgeSize=14, insets={left=4,right=4,top=4,bottom=4} })
         systemGuide:SetBackdropColor(0.035,0.045,0.06,0.99)
     end
-    local guideTitle = createText(systemGuide,"GameFontNormalLarge",20,{0.45,0.9,0.62})
+    local guideTitle = createText(systemGuide,"GameFontNormalLarge",20,{0.38,0.72,1.0})
     guideTitle:SetPoint("TOPLEFT",18,-18)
     guideTitle:SetText("Forever Systems")
     local guideClose = makeButton(systemGuide,"Back to Profession Guides",190,28,function() systemGuide:Hide() end)
@@ -571,6 +587,59 @@ function WP:CreateUI()
     self.systemGuideText = guideBody
     self.systemGuideFrame = systemGuide
     systemGuide:Hide()
+
+    local overview = CreateFrame("Frame", "WildProfessionsOverview", main, "BackdropTemplate")
+    overview:SetPoint("TOPLEFT", 16, -84)
+    overview:SetPoint("BOTTOMRIGHT", -16, 44)
+    overview:SetFrameLevel(main:GetFrameLevel() + 5)
+    if overview.SetBackdrop then
+        overview:SetBackdrop({ bgFile="Interface\\Buttons\\WHITE8X8", edgeFile="Interface\\Buttons\\WHITE8X8", edgeSize=1 })
+        overview:SetBackdropColor(0.045,0.065,0.105,0.98)
+        overview:SetBackdropBorderColor(0.17,0.25,0.39,1)
+    end
+    local overviewEyebrow=createText(overview,"GameFontNormalSmall",10,{0.98,0.61,0.20})
+    overviewEyebrow:SetText("CHARACTER WORKSHOP")
+    overviewEyebrow:SetPoint("TOPLEFT",22,-18)
+    local overviewTitle=createText(overview,"GameFontNormalLarge",25,{0.94,0.97,1.0})
+    overviewTitle:SetText("Profession Desk")
+    overviewTitle:SetPoint("TOPLEFT",22,-38)
+    local overviewSummary=createText(overview,"GameFontHighlight",12,{0.72,0.82,0.94})
+    overviewSummary:SetPoint("TOPLEFT",24,-72)
+    overviewSummary:SetPoint("RIGHT",-22,0)
+    overviewSummary:SetJustifyH("LEFT")
+    self.overviewSummary=overviewSummary
+    local actions={
+        {"OPEN LEVELING GUIDES",function()
+            local list=WP:GetProfessionList()
+            if WP.lastTrackedProfession and WP.professions[WP.lastTrackedProfession] then WP.selectedProfession=WP.lastTrackedProfession
+            elseif #list>0 then WP.selectedProfession=list[1].name end
+            WP:UpdateDashboard();WP:SetMainPage("Leveling")
+        end},
+        {"FARMING & GATHERING",function() WP:SetMainPage("Farming") end},
+        {"SHOPPING NOTES",function() WP:OpenShoppingList() end},
+        {"CAMPING & MERCHANT FAVOR",function() WP:SetMainPage("More");WP:ShowSystemGuide("camping") end},
+    }
+    for i,action in ipairs(actions) do
+        local button=makeButton(overview,action[1],220,42,action[2])
+        button:SetPoint("TOPLEFT",22+(i-1)*236,-101)
+        button:SetHeight(42)
+    end
+    local guideListTitle=createText(overview,"GameFontNormal",13,{0.38,0.72,1.0})
+    guideListTitle:SetText("YOUR GUIDE LIBRARY")
+    guideListTitle:SetPoint("TOPLEFT",22,-158)
+    local guideListHint=createText(overview,"GameFontDisableSmall",10)
+    guideListHint:SetText("Select a profession card to continue at its current skill.")
+    guideListHint:SetPoint("LEFT",guideListTitle,"RIGHT",12,0)
+    local overviewScroll=CreateFrame("ScrollFrame",nil,overview,"UIPanelScrollFrameTemplate")
+    overviewScroll:SetPoint("TOPLEFT",18,-182)
+    overviewScroll:SetPoint("BOTTOMRIGHT",-30,18)
+    local overviewList=CreateFrame("Frame",nil,overviewScroll)
+    overviewList:SetSize(900,1)
+    overviewScroll:SetScrollChild(overviewList)
+    configureVerticalScroll(overviewScroll,overviewList,58)
+    self.overviewFrame,self.overviewScroll,self.overviewList=overview,overviewScroll,overviewList
+    self.overviewCards={}
+    overview:Hide()
 
     local resize = CreateFrame("Button", nil, main)
     resize:SetSize(16, 16)
@@ -588,48 +657,156 @@ function WP:CreateUI()
     self.mainFrame = main
     main:Hide()
 
-    local tracker = CreateFrame("Frame", "WildProfessionsTracker", UIParent, "BackdropTemplate")
-    tracker:SetSize(280, 210)
+    local tracker = WP.SkillUp and WP.SkillUp.Art and WP.SkillUp.Art.Window
+        and WP.SkillUp.Art.Window("WildProfessionsTracker", 340, 236, "PROFESSION TRACKER")
+        or CreateFrame("Frame", "WildProfessionsTracker", UIParent, "BackdropTemplate")
+    tracker:ClearAllPoints()
+    tracker:SetSize(340, 236)
     tracker:SetFrameStrata("MEDIUM")
     tracker:SetClampedToScreen(true)
     tracker:SetMovable(true)
     tracker:EnableMouse(true)
     if tracker.SetBackdrop then
         tracker:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = false, edgeSize = 12, insets = { left = 3, right = 3, top = 3, bottom = 3 } })
-        tracker:SetBackdropColor(0.035, 0.045, 0.06, 0.96)
+        tracker:SetBackdropColor(0.025, 0.035, 0.06, 0.98)
+        tracker:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
     end
     restorePoint(tracker, "trackerPoint", "TOPRIGHT", -80, -220)
     tracker:RegisterForDrag("LeftButton")
     tracker:SetScript("OnDragStart", function(f) if not WP.db.settings.trackerLocked then f:StartMoving() end end)
     tracker:SetScript("OnDragStop", function(f) f:StopMovingOrSizing(); savePoint(f, "trackerPoint") end)
-    tracker.title = createText(tracker, "GameFontNormal", 13, { 0.45, 0.9, 0.62 })
-    tracker.title:SetPoint("TOPLEFT", 12, -10)
+    tracker.title = createText(tracker, "GameFontNormal", 13, { 0.38, 0.72, 1.0 })
+    tracker.title:SetPoint("TOPLEFT", 14, -58)
     tracker.progress = createText(tracker, "GameFontHighlight", 11)
-    tracker.progress:SetPoint("TOPLEFT", 12, -34)
+    tracker.progress:SetPoint("TOPLEFT", 14, -80)
     tracker.status = CreateFrame("StatusBar", nil, tracker)
-    tracker.status:SetSize(252, 9)
-    tracker.status:SetPoint("TOPLEFT", 12, -52)
+    tracker.status:SetSize(310, 10)
+    tracker.status:SetPoint("TOPLEFT", 14, -99)
     tracker.status:SetMinMaxValues(0, 1)
     tracker.status:SetValue(0)
     tracker.status:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-    tracker.status:SetStatusBarColor(0.24, 0.78, 0.46, 1)
+    tracker.status:SetStatusBarColor(0.96, 0.62, 0.20, 1)
     local trackerBackground = tracker.status:CreateTexture(nil, "BACKGROUND")
     trackerBackground:SetAllPoints()
     trackerBackground:SetColorTexture(0.1, 0.14, 0.16, 1)
     tracker.activity = createText(tracker, "GameFontHighlightSmall", 10, { 0.78, 0.84, 0.87 })
-    tracker.activity:SetPoint("TOPLEFT", 12, -70)
-    tracker.activity:SetWidth(252)
-    tracker.activity:SetHeight(124)
+    tracker.activity:SetPoint("TOPLEFT", 14, -120)
+    tracker.activity:SetWidth(310)
+    tracker.activity:SetHeight(98)
     tracker.activity:SetJustifyH("LEFT")
     tracker.activity:SetJustifyV("TOP")
-    local trackerClose = CreateFrame("Button", nil, tracker, "UIPanelCloseButton")
+    local trackerClose = tracker.windowClose or CreateFrame("Button", nil, tracker, "UIPanelCloseButton")
     trackerClose:SetSize(22, 22)
-    trackerClose:SetPoint("TOPRIGHT", -1, -1)
+    if not tracker.windowClose then trackerClose:SetPoint("TOPRIGHT", -2, -2) end
     trackerClose:SetScript("OnClick", function() tracker:Hide(); WP.db.settings.trackerVisible = false end)
+    if tracker.header then
+        tracker.header:SetScript("OnDragStop", function()
+            tracker:StopMovingOrSizing()
+            savePoint(tracker, "trackerPoint")
+        end)
+    end
     self.trackerFrame = tracker
     if self.db.settings.trackerVisible == false then tracker:Hide() end
 
-    main:SetScript("OnSizeChanged", function(f, w, h) WP.db.settings.dashboardSize = { width = w, height = h } end)
+    self:SetMainPage("Overview")
+    self:UpdateOverview()
+    main:SetScript("OnSizeChanged", function(f, w, h)
+        WP.db.settings.dashboardSize = { width = w, height = h }
+        if WP.UpdateOverview then WP:UpdateOverview() end
+    end)
+end
+
+function WP:SetMainPage(page)
+    page=page or "Overview"
+    self.currentMainPage=page
+    local overview=self.overviewFrame
+    if overview then overview:Hide() end
+    if self.professionScroll and self.professionScroll:GetParent() then self.professionScroll:GetParent():Show() end
+    if self.mainFrame then
+        for _,child in ipairs({self.mainFrame:GetChildren()}) do
+            if child==overview or child==self.farmingFrame or child==self.systemGuideFrame then child:Hide() end
+        end
+    end
+    if page=="Overview" or page=="More" then
+        if self.overviewFrame then self.overviewFrame:Show() end
+        if self.professionScroll and self.professionScroll:GetParent() then self.professionScroll:GetParent():Hide() end
+        if self.mainFrame and self.mainFrame.contentPane then self.mainFrame.contentPane:Hide() end
+    elseif page=="Farming" then
+        if self.professionScroll and self.professionScroll:GetParent() then self.professionScroll:GetParent():Hide() end
+        if self.mainFrame and self.mainFrame.contentPane then self.mainFrame.contentPane:Hide() end
+        if self.farmingFrame then self.farmingFrame:Show(); self:UpdateFarmingGuides() end
+    else
+        if self.overviewFrame then self.overviewFrame:Hide() end
+        if self.professionScroll and self.professionScroll:GetParent() then self.professionScroll:GetParent():Show() end
+        if self.mainFrame and self.mainFrame.contentPane then self.mainFrame.contentPane:Show() end
+        if self.farmingFrame then self.farmingFrame:Hide() end
+    end
+    for _,button in ipairs(self.mainNavButtons or {}) do
+        local selected=button.pageKey==page
+        button:SetText((selected and "* " or "")..string.upper(button.pageKey))
+    end
+end
+
+function WP:UpdateOverview()
+    if not self.overviewList then return end
+    local guides=self:GetProfessionList()
+    local learned=0
+    for _,guide in ipairs(guides) do if self.professions[guide.name] then learned=learned+1 end end
+    self.overviewSummary:SetText(string.format("%d profession skills detected  |  %d guides ready  |  Your tracker follows the next unfinished step for a learned profession.",learned,#guides))
+    local width=math.max(220,(self.overviewScroll:GetWidth() or 900)-26)
+    local columns=3
+    local gap=12
+    local cardWidth=math.max(210,(width-gap*(columns-1))/columns)
+    local rowHeight=104
+    for index,guide in ipairs(guides) do
+        local card=self.overviewCards[index]
+        if not card then
+            card=CreateFrame("Button",nil,self.overviewList,"BackdropTemplate")
+            card:SetHeight(94)
+            card:SetBackdrop({bgFile="Interface\\Buttons\\WHITE8X8",edgeFile="Interface\\Buttons\\WHITE8X8",edgeSize=1})
+            card:SetBackdropColor(0.075,0.10,0.16,1)
+            card:SetBackdropBorderColor(0.18,0.27,0.42,1)
+            card.name=createText(card,"GameFontNormal",13,{0.94,0.97,1.0})
+            card.name:SetPoint("TOPLEFT",12,-10)
+            card.name:SetPoint("RIGHT",-90,0)
+            card.skill=createText(card,"GameFontHighlightSmall",10,{0.98,0.72,0.34})
+            card.skill:SetPoint("TOPRIGHT",-10,-12)
+            card.step=createText(card,"GameFontHighlightSmall",10,{0.72,0.82,0.94})
+            card.step:SetPoint("TOPLEFT",12,-34)
+            card.step:SetPoint("RIGHT",-10,0)
+            card.step:SetJustifyH("LEFT")
+            card.step:SetWordWrap(true)
+            card:SetScript("OnEnter",function(f) f:SetBackdropColor(0.11,0.17,0.27,1) end)
+            card:SetScript("OnLeave",function(f) f:SetBackdropColor(0.075,0.10,0.16,1) end)
+            card:SetScript("OnClick",function(f)
+                if not f.guide then return end
+                WP.selectedProfession=f.guide.name
+                if WP.professions[f.guide.name] then WP.lastTrackedProfession=f.guide.name end
+                WP:UpdateDashboard()
+                WP:SetMainPage("Leveling")
+            end)
+            self.overviewCards[index]=card
+        end
+        local col=(index-1)%columns
+        local row=math.floor((index-1)/columns)
+        card:ClearAllPoints()
+        card:SetSize(cardWidth,94)
+        card:SetPoint("TOPLEFT",col*(cardWidth+gap),-row*rowHeight)
+        card.name:SetText(guide.name)
+        local current=self.professions[guide.name]
+        card.skill:SetText(current and string.format("%d/%d",current.skill or 0,current.maxSkill or 300) or "GUIDE")
+        local state=self:GetGuideState(current or guide)
+        local line=state and (state.title or state.text) or "Guide ready — select to view steps."
+        if state and state.zone then line=line.."  |  "..state.zone end
+        card.step:SetText(line)
+        card.guide=guide
+        card:Show()
+    end
+    for i=#guides+1,#self.overviewCards do self.overviewCards[i]:Hide() end
+    local rows=math.ceil(#guides/columns)
+    self.overviewList:SetWidth(width)
+    self.overviewList:SetHeight(math.max(1,rows*rowHeight))
+    self.overviewScroll:SetVerticalScroll(math.min(self.overviewScroll:GetVerticalScroll() or 0,math.max(0,self.overviewList:GetHeight()-self.overviewScroll:GetHeight())))
 end
 
 function WP:UpdateFarmingGuides()
@@ -638,7 +815,7 @@ function WP:UpdateFarmingGuides()
     self.selectedFarmingProfession = profession
     local skill = self.professions and self.professions[profession]
     if profession == "All Farms" then
-        self.farmingSkillLabel:SetText(string.format("%d source route records | click mapped routes to open their map", #(WP.ZygorFarmingGuideIndex or {})))
+        self.farmingSkillLabel:SetText(string.format("%d route entries | click mapped routes to open their map", #(WP.ZygorFarmingGuideIndex or {})))
     else
         self.farmingSkillLabel:SetText(skill and string.format("Your %s: %d/%d",profession,skill.skill or 0,skill.maxSkill or 300) or ("Your "..profession.." skill is not learned"))
     end
@@ -658,7 +835,7 @@ function WP:UpdateFarmingGuides()
             if not row then
                 row=CreateFrame("Button",nil,self.farmingList,"BackdropTemplate")
             row:SetHeight(48)
-                if row.SetBackdrop then row:SetBackdrop({bgFile="Interface\\Buttons\\WHITE8X8",edgeFile="Interface\\Buttons\\WHITE8X8",edgeSize=1});row:SetBackdropColor(0.07,0.09,0.10,1);row:SetBackdropBorderColor(0.14,0.22,0.23,1) end
+                if row.SetBackdrop then row:SetBackdrop({bgFile="Interface\\Buttons\\WHITE8X8",edgeFile="Interface\\Buttons\\WHITE8X8",edgeSize=1});row:SetBackdropColor(0.075,0.10,0.16,1);row:SetBackdropBorderColor(0.14,0.22,0.23,1) end
                 row.title=createText(row,"GameFontNormal",12,{0.92,0.95,0.93})
                 row.title:SetPoint("TOPLEFT",12,-7)
                 row.title:SetPoint("RIGHT",-150,0)
@@ -667,8 +844,8 @@ function WP:UpdateFarmingGuides()
                 row.detail:SetPoint("BOTTOMLEFT",12,7)
                 row.detail:SetPoint("RIGHT",-8,0)
                 row.detail:SetJustifyH("LEFT")
-                row:SetScript("OnEnter",function(f) if f.route then f:SetBackdropColor(0.10,0.18,0.15,1) end end)
-                row:SetScript("OnLeave",function(f) if f.route then f:SetBackdropColor(0.07,0.09,0.10,1) end end)
+                row:SetScript("OnEnter",function(f) if f.route then f:SetBackdropColor(0.12,0.22,0.34,1) end end)
+                row:SetScript("OnLeave",function(f) if f.route then f:SetBackdropColor(0.075,0.10,0.16,1) end end)
                 row:SetScript("OnClick",function(f)
                     if not f.route or f.route.unmapped then return end
                     WP.activeFarmRoute=f.route
@@ -690,12 +867,12 @@ function WP:UpdateFarmingGuides()
             local faction=entry.faction and (" | "..entry.faction) or ""
             if entry.unmapped then
                 local requirement = (entry.target and entry.target > 0) and string.format("skill %d+",entry.target) or ((entry.levelRequirement and entry.levelRequirement > 0) and string.format("character level %d+",entry.levelRequirement) or "skill bracket not listed")
-                row.detail:SetText(string.format("%s  |  %s%s  |  No mapped coordinates  |  %s",entry.zone,requirement,faction,entry.source or "Source guide"))
-                row:SetBackdropColor(0.055,0.065,0.075,1)
+                row.detail:SetText(string.format("%s  |  %s%s  |  No mapped coordinates  |  Zone recommendation",entry.zone,requirement,faction))
+                row:SetBackdropColor(0.045,0.06,0.10,1)
             else
                 local requirement = (entry.target and entry.target > 0) and string.format("skill %d+",entry.target) or ((entry.levelRequirement and entry.levelRequirement > 0) and string.format("character level %d+",entry.levelRequirement) or "skill bracket not listed")
-                row.detail:SetText(string.format("%s  |  %s%s  |  %d mapped waypoints  |  %s",entry.zone,requirement,faction,#entry.points,entry.source or "Bundled guide"))
-                row:SetBackdropColor(0.07,0.09,0.10,1)
+                row.detail:SetText(string.format("%s  |  %s%s  |  %d mapped waypoints  |  Imported route",entry.zone,requirement,faction,#entry.points))
+                row:SetBackdropColor(0.075,0.10,0.16,1)
             end
             row.professionName=profession
             row.route=entry
@@ -735,12 +912,12 @@ function WP:UpdateDashboard()
             local b = self.professionButtons[visible]
             if not b then
                 b = CreateFrame("Button", nil, self.professionList, "BackdropTemplate")
-                b:SetSize(190, 30)
+                b:SetSize(math.max(150, self.professionList:GetWidth() or 190), 30)
                 b.bg = b:CreateTexture(nil, "BACKGROUND")
                 b.bg:SetAllPoints()
                 b.bg:SetColorTexture(0.08, 0.1, 0.12, 1)
                 b.mark = b:CreateTexture(nil, "ARTWORK")
-                b.mark:SetColorTexture(0.25, 0.78, 0.45, 1)
+                b.mark:SetColorTexture(0.96, 0.62, 0.20, 1)
                 b.mark:SetSize(3, 18)
                 b.label = createText(b, "GameFontHighlight", 11)
                 b.label:SetPoint("LEFT", 12, 0)
@@ -795,7 +972,7 @@ function WP:UpdateDashboard()
     local labels = { fastest = "Fastest", cheapest = "Lowest cost", owned = "Use my materials" }
     for key, button in pairs(self.strategyButtons or {}) do
         local choice = labels[key] or key
-        button:SetText((key == strategy and "✓  " or "") .. choice)
+        button:SetText((key == strategy and ">  " or "") .. choice)
     end
 
     if selected then
@@ -833,7 +1010,7 @@ function WP:UpdateDashboard()
         if combinedTasks ~= "" then body = combinedTasks .. "\n\n" .. body end
         local cookingTask = status.activeTasks and status.activeTasks.Cooking
         if cookingTask then
-            body = body .. "\n\nCooking materials follow the selected WoW-Professions recipe branch. Use fish already caught before adding fish to a shopping list; itemized carry-forward counts are not yet available for this section."
+            body = body .. "\n\nCooking materials follow the selected guide recipe branch. Use fish already caught before adding fish to a shopping list; itemized carry-forward counts are not yet available for this section."
         end
         local fishingTask = status.activeTasks and status.activeTasks.Fishing
         if fishingTask and WP.Planner.GetGatheringChoices then
@@ -874,12 +1051,14 @@ function WP:UpdateDashboard()
         self.detailScroll:SetVerticalScroll(math.min(priorDetailScroll, math.max(0, detailHeight - self.detailScroll:GetHeight())))
         local isGathering = WP.Planner.IsGatheringProfession and WP.Planner.IsGatheringProfession(selected.name)
         if isGathering then
-            self.reagentHeading:SetText("GATHERING ROUTE OPTIONS")
             self.reagentText:Hide()
             self.reagentScroll:Hide()
             self.reagentHeading:Hide()
+            self.routeHeading:SetText("AVAILABLE ZONES & ROUTES")
+            self.routeHeading:Show()
             if self.gatherRouteScroll then self.gatherRouteScroll:Show() end
         else
+            self.routeHeading:Hide()
             self.reagentHeading:SetText("GUIDE MATERIALS")
             self.reagentHeading:Show()
             self.reagentScroll:Show()
@@ -916,13 +1095,14 @@ function WP:UpdateDashboard()
                 self.gatherRouteChoices[i] = button
             end
             button:SetPoint("TOPLEFT", 0, -(i - 1) * 26)
+            button:SetWidth(math.max(160,(self.gatherRouteChild:GetWidth() or 190)-4))
             local factionTag = entry.faction and (" [" .. entry.faction .. "]") or ""
             button:SetText(entry.zone .. "  |  " .. (entry.item or entry.bracket or "Gathering route") .. factionTag)
             button.zoneName, button.mapID, button.routeEntry = entry.zone, entry.mapID, entry
             button:Show()
         end
-        if self.gatherRouteChild then self.gatherRouteChild:SetHeight(math.max(88, #gatherRoutes * 26)) end
-        self.dashboardFooter:SetText("GUIDE SOURCE  WoW-Professions Forever  |  GATHERING ROUTES  user-supplied Zygor guide files")
+        if self.gatherRouteChild then self.gatherRouteChild:SetHeight(math.max(self.gatherRouteScroll:GetHeight() or 1, #gatherRoutes * 26)) end
+        self.dashboardFooter:SetText("GUIDE DATA  Profession leveling steps  |  FIELD ROUTES  Imported waypoint guides")
     else
         self.professionTitle:SetText("Select a profession guide")
         self.skillLabel:SetText("No profession scanned")
@@ -937,9 +1117,11 @@ function WP:UpdateDashboard()
         self.reagentHeading:Show()
         self.reagentScroll:Show()
         self.reagentText:Show()
+        self.routeHeading:Hide()
         self.gatherRouteScroll:Hide()
         self.dashboardFooter:SetText("No skill data detected yet.")
     end
+    if self.UpdateOverview then self:UpdateOverview() end
     if self.farmingFrame and self.farmingFrame:IsShown() then self:UpdateFarmingGuides() end
     if self.UpdateGuideArrow then self:UpdateGuideArrow() end
 end
@@ -1058,5 +1240,10 @@ function WP:ToggleLock()
     self.db.settings.trackerLocked = not self.db.settings.trackerLocked
     self:Print("tracker " .. (self.db.settings.trackerLocked and "locked" or "unlocked") .. ".")
 end
+
+
+
+
+
 
 

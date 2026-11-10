@@ -691,7 +691,7 @@ local function LayoutGuideBlock(self, profession, state)
 	block.vendorMissing, block.steps = {}, {}
 	block:SetHeader(string.format("%s  %d/%d", profession.name, profession.skill or 0, profession.maxSkill or 300))
 	if not state or state.status == "route-needed" then
-		block:AddObjective("Guide", state and state.text or "No WoW-Professions guide data is available.")
+        block:AddObjective("Guide", state and state.text or "No bundled profession guide data is available.")
 		return self:LayoutBlock(block)
 	end
 	local routeSteps = state.route and state.route.steps

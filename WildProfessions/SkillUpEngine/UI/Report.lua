@@ -48,6 +48,7 @@ ns.Report = Report
 local window
 ---@type EditBox
 local editBox
+local reportScroll
 ---@type string
 local shown = ""
 
@@ -317,24 +318,14 @@ local function Window()
 		return window
 	end
 	local name = addonName .. "Report"
-	local frame = CreateFrame("Frame", name, UIParent, "PortraitFrameTemplate") --[[@as ForeverReportWindow]]
+	local frame = Art.Window(name, WIDTH, HEIGHT, ns.ReportTitle) --[[@as ForeverReportWindow]]
 	-- Escape closes it like any panel, with or without the edit box's focus (an addon-owned frame).
 	table.insert(UISpecialFrames, name)
-	frame:SetSize(WIDTH, HEIGHT)
-	frame:SetPoint("CENTER")
-	frame:SetFrameStrata("DIALOG")
-	frame:SetToplevel(true)
-	frame:SetClampedToScreen(true)
-	frame:SetMovable(true)
-	frame:EnableMouse(true)
-	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
 	frame:SetTitle(ns.ReportTitle)
-	Art.Icon(frame:GetPortrait(), ICON, 62)
+	Art.Icon(frame:GetPortrait(), ICON, 30)
 
 	local hint = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	hint:SetPoint("TOPLEFT", 70, -32)
+	hint:SetPoint("TOPLEFT", 20, -62)
 	hint:SetPoint("RIGHT", -16, 0)
 	hint:SetJustifyH("LEFT")
 	hint:SetText(
@@ -342,10 +333,11 @@ local function Window()
 	)
 
 	local inset = CreateFrame("Frame", nil, frame, "InsetFrameTemplate")
-	inset:SetPoint("TOPLEFT", 10, -64)
+	inset:SetPoint("TOPLEFT", 10, -88)
 	inset:SetPoint("BOTTOMRIGHT", -10, 10)
 
 	local scroll = CreateFrame("ScrollFrame", nil, inset, "ScrollFrameTemplate")
+	reportScroll = scroll
 	scroll:SetPoint("TOPLEFT", 8, -8)
 	scroll:SetPoint("BOTTOMRIGHT", -28, 8)
 
@@ -378,6 +370,8 @@ local function Window()
 	scroll:SetScript("OnSizeChanged", function(frame)
 		edit:SetWidth(math.max(180, frame:GetWidth() - 4))
 		edit:SetHeight(math.max(frame:GetHeight(), EstimateTextHeight(shown, edit:GetWidth())))
+		local maximum = math.max(0, edit:GetHeight() - frame:GetHeight())
+		frame:SetVerticalScroll(math.max(0, math.min(maximum, frame:GetVerticalScroll() or 0)))
 	end)
 	editBox, window = edit, frame
 	return frame
@@ -391,6 +385,7 @@ function Report.Show(text)
 	editBox:SetText(text)
 	frame:Show()
 	editBox:SetHeight(math.max(HEIGHT - 92, EstimateTextHeight(text, editBox:GetWidth())))
+	if reportScroll then reportScroll:SetVerticalScroll(0) end
 	Select(editBox)
 end
 
@@ -496,6 +491,7 @@ end
 
 ---@type ForeverIssueWindow?
 local issueWindow
+local issueScroll
 ---@type EditBox
 local issueTitle, issueDetails, issueOutput
 ---@type string
@@ -540,6 +536,10 @@ local function RefreshIssue(kind, lines)
 	issueShown = Report.Issue(kind, title, issueDetails:GetText() or "", lines)
 	issueOutput:SetText(issueShown)
 	issueOutput:SetHeight(math.max(406, EstimateTextHeight(issueShown, issueOutput:GetWidth())))
+	if issueScroll then
+		local maximum = math.max(0, issueOutput:GetHeight() - issueScroll:GetHeight())
+		issueScroll:SetVerticalScroll(math.max(0, math.min(maximum, issueScroll:GetVerticalScroll() or 0)))
+	end
 end
 
 ---@param kind string
@@ -558,23 +558,13 @@ local function IssueWindow()
 		return issueWindow
 	end
 	local name = addonName .. "Issue"
-	local frame = CreateFrame("Frame", name, UIParent, "PortraitFrameTemplate") --[[@as ForeverIssueWindow]]
+	local frame = Art.Window(name, 560, 570, L["Report a bug or request a feature"]) --[[@as ForeverIssueWindow]]
 	table.insert(UISpecialFrames, name)
-	frame:SetSize(520, 500)
-	frame:SetPoint("CENTER")
-	frame:SetFrameStrata("DIALOG")
-	frame:SetToplevel(true)
-	frame:SetClampedToScreen(true)
-	frame:SetMovable(true)
-	frame:EnableMouse(true)
-	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
 	frame:SetTitle(L["Report a bug or request a feature"])
-	Art.Icon(frame:GetPortrait(), ICON, 62)
+	Art.Icon(frame:GetPortrait(), ICON, 30)
 
 	local hint = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	hint:SetPoint("TOPLEFT", 70, -30)
+	hint:SetPoint("TOPLEFT", 20, -62)
 	hint:SetPoint("RIGHT", -16, 0)
 	hint:SetJustifyH("LEFT")
 	hint:SetText(
@@ -583,40 +573,41 @@ local function IssueWindow()
 
 	local bug = CreateFrame("Button", nil, frame, "SharedButtonSmallTemplate") --[[@as Button]]
 	bug:SetSize(110, 24)
-	bug:SetPoint("TOPLEFT", 18, -66)
+	bug:SetPoint("TOPLEFT", 18, -92)
 	bug:SetText(L["Bug"])
 	local feature = CreateFrame("Button", nil, frame, "SharedButtonSmallTemplate") --[[@as Button]]
 	feature:SetSize(150, 24)
 	feature:SetPoint("LEFT", bug, "RIGHT", 8, 0)
 	feature:SetText(L["Feature request"])
-	Label(frame, L["Title"], "TOPLEFT", frame, "TOPLEFT", 18, -102)
+	Label(frame, L["Title"], "TOPLEFT", frame, "TOPLEFT", 18, -128)
 	local title = CreateFrame("EditBox", nil, frame, "InputBoxTemplate") --[[@as EditBox]]
 	title:SetAutoFocus(false)
 	title:SetSize(478, 24)
-	title:SetPoint("TOPLEFT", 20, -122)
+	title:SetPoint("TOPLEFT", 20, -148)
 	title:SetMaxLetters(300)
 	title:SetText(L["Bug: "])
-	Label(frame, L["What happened, or what you would like"], "TOPLEFT", frame, "TOPLEFT", 18, -158)
+	Label(frame, L["What happened, or what you would like"], "TOPLEFT", frame, "TOPLEFT", 18, -184)
 	local details = CreateFrame("EditBox", nil, frame, "InputBoxTemplate") --[[@as EditBox]]
 	details:SetMultiLine(true)
 	details:SetAutoFocus(false)
 	details:SetFontObject("ChatFontNormal")
 	details:SetSize(470, 72)
-	details:SetPoint("TOPLEFT", 22, -178)
+	details:SetPoint("TOPLEFT", 22, -204)
 	details:SetMaxLetters(1000)
 
 	local copyLink = CreateFrame("Button", nil, frame, "SharedButtonSmallTemplate") --[[@as Button]]
 	copyLink:SetSize(150, 24)
-	copyLink:SetPoint("TOPLEFT", 18, -260)
+	copyLink:SetPoint("TOPLEFT", 18, -286)
 	copyLink:SetText(L["Copy issue link"])
 	local copyReport = CreateFrame("Button", nil, frame, "SharedButtonSmallTemplate") --[[@as Button]]
 	copyReport:SetSize(140, 24)
 	copyReport:SetPoint("LEFT", copyLink, "RIGHT", 8, 0)
 	copyReport:SetText(L["Copy report"])
 	local inset = CreateFrame("Frame", nil, frame, "InsetFrameTemplate")
-	inset:SetPoint("TOPLEFT", 10, -294)
+	inset:SetPoint("TOPLEFT", 10, -320)
 	inset:SetPoint("BOTTOMRIGHT", -10, 10)
 	local scroll = CreateFrame("ScrollFrame", nil, inset, "ScrollFrameTemplate")
+	issueScroll = scroll
 	scroll:SetPoint("TOPLEFT", 8, -8)
 	scroll:SetPoint("BOTTOMRIGHT", -28, 8)
 	local output = CreateFrame("EditBox", nil, scroll)
@@ -672,6 +663,8 @@ local function IssueWindow()
 	scroll:SetScript("OnSizeChanged", function(frame)
 		output:SetWidth(math.max(180, frame:GetWidth() - 4))
 		output:SetHeight(math.max(frame:GetHeight(), EstimateTextHeight(issueShown, output:GetWidth())))
+		local maximum = math.max(0, output:GetHeight() - frame:GetHeight())
+		frame:SetVerticalScroll(math.max(0, math.min(maximum, frame:GetVerticalScroll() or 0)))
 	end)
 	frame.titleBox, frame.detailsBox, frame.outputBox, frame.hint, frame.kind = title, details, output, hint, "bug"
 	frame.bugButton, frame.featureButton = bug, feature

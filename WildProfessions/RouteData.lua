@@ -4,7 +4,7 @@ WP.RouteData = {
     herbalism = {
         name = "Herbalism",
         maxSkill = 300,
-        source = "https://www.wow-professions.com/forever/herbalism-leveling-guide",
+        source = "Bundled profession guide",
         sourceStatus = "The source is beta-derived; portions above skill 170 may not be live-tested.",
         routeNote = "Waypoints mark approximate farming areas, not herb node locations. Use Find Herbs on the minimap for live node tracking.",
         rankGates = {
@@ -133,7 +133,7 @@ WP.RouteData = {
 }
 
 local herb = WP.RouteData.herbalism
-herb.source = "https://www.wow-professions.com/forever/herbalism-leveling-guide"
+herb.source = "Bundled profession guide"
 herb.sourceStatus = "Forever beta-derived. The page warns that high-skill sections may not have been live-tested."
 herb.routeNote = "Zone choices are summarized from the source maps; waypoints are broad areas. Use Find Herbs for live nodes."
 herb.steps = {
@@ -145,7 +145,6 @@ herb.steps = {
     { target = 270, title = "Herbalism 230-270", zone = "The Hinterlands", mapID = 1425, x = 60.0, y = 50.0, herbs = "Sungrass, Purple Lotus, Golden Sansam, Ghost Mushroom (245)", instructions = "The source map includes a cave detour for Ghost Mushroom at 245." },
     { target = 300, title = "Herbalism 270-300", zone = "Felwood", mapID = 1448, x = 50.0, y = 25.0, herbs = "Sungrass, Gromsblood, Golden Sansam, Dreamfoil, Mountain Silversage, Plaguebloom", instructions = "Continue through the Felwood route until 300." },
 }
-local guideRoot = "https://www.wow-professions.com/forever/"
 -- Do not hand-author waypoint loops here. Gathered-resource overlays come from
 -- imported route records with explicit zone/map coordinates. The guide's zone
 -- alternatives remain in the step data and text-only choices are labeled as such.
@@ -154,7 +153,7 @@ herb.steps[2].mapRoutes = {}
 local function registerGuide(name, slug, sourceStatus, steps, notes, rankGates)
     local key = name:lower():gsub("[^%a]", "")
     local route = {
-        name = name, maxSkill = 300, source = guideRoot .. slug,
+        name = name, maxSkill = 300, source = "Bundled profession guide",
         sourceStatus = sourceStatus,
         rankGates = rankGates or {
             { skill = 50, cap = 75, rank = "Journeyman" },
@@ -337,7 +336,7 @@ registerGuide("Fishing", "fishing-leveling-guide",
 -- ZygorProfessionsAllianceCLASSIC.lua. These are fishing access points, not
 -- guaranteed pool spawns; open-water locations can move with server changes.
 local fishing = WP.RouteData.fishing
-fishing.routeNote = "Fishing spots are adapted from the supplied Zygor profession guide. They mark water access points, not guaranteed school spawns."
+fishing.routeNote = "Fishing spots mark water access points, not guaranteed school spawns."
 fishing.steps[1].zone, fishing.steps[1].mapID, fishing.steps[1].x, fishing.steps[1].y = "Elwynn Forest", 1429, 33.70, 62.97
 fishing.steps[1].focus = "Train in Stormwind; fish Elwynn waters to 75; keep Shiny Baubles active."
 fishing.steps[1].mapRoutes = {
@@ -384,7 +383,7 @@ WP.RouteData.fishingcooking.skills = {
 }
 WP.RouteData.fishingcooking.name = "Cooking with Fishing"
 WP.RouteData.fishingcooking.mode = "cookingfishing"
-WP.RouteData.fishingcooking.source = "https://www.wow-professions.com/forever/fishing-and-cooking-leveling-guide"
+WP.RouteData.fishingcooking.source = "Bundled profession guide"
 WP.RouteData.fishingcooking.steps = {
     { skill="Cooking", from=0, target=50, title="Cooking 1-50: starting fish recipes", zone="Cooking fire", fish="Raw Brilliant Smallfish or Raw Slitherskin Mackerel", fishingTarget=75, fishingChoices={"Mulgore","Durotar","Tirisfal Glades","Zephras Isle","Elwynn Forest","Dun Morogh","Teldrassil"}, focus="Cook fish you already caught; either fish recipe is a choice, not an additive shopping requirement.", instructions="The guide estimates about 55 crafts for this band. If you are short, catch and cook more. Keep other catches for later Cooking steps." },
     { skill="Cooking", from=50, target=100, title="Cooking 50-100: Longjaw Mud Snapper", zone="Cooking fire", fish="Raw Longjaw Mud Snapper", fishingTarget=130, fishingChoices={"Stormwind City","Thunder Bluff","Undercity","Orgrimmar"}, focus="Cook saved Longjaw Mud Snapper. The source says later fishing can supply more if Cooking is still short.", instructions="Learn Journeyman Cooking at skill 50 before continuing. Fish in a nearby capital for the catch." },

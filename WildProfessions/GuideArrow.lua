@@ -87,8 +87,14 @@ function WP:InitializeGuideArrow()
             tile = true, tileSize = 16, edgeSize = 12,
             insets = { left = 3, right = 3, top = 3, bottom = 3 },
         })
-        frame:SetBackdropColor(0.02, 0.03, 0.05, 0.92)
+        frame:SetBackdropColor(0.025, 0.035, 0.06, 0.96)
+        frame:SetBackdropBorderColor(0.30, 0.45, 0.68, 1)
     end
+    local accent = frame:CreateTexture(nil, "ARTWORK")
+    accent:SetColorTexture(0.98, 0.61, 0.20, 1)
+    accent:SetHeight(2)
+    accent:SetPoint("TOPLEFT", 6, -6)
+    accent:SetPoint("TOPRIGHT", -6, -6)
 
     local point = self.db.settings.guideArrowPoint
     if type(point) == "table" and type(point.point) == "string" then
@@ -113,6 +119,7 @@ function WP:InitializeGuideArrow()
     frame.title:SetPoint("TOPLEFT", 58, -12)
     frame.title:SetWidth(208)
     frame.title:SetJustifyH("LEFT")
+    frame.title:SetTextColor(0.38, 0.72, 1.0)
 
     frame.subtitle = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     frame.subtitle:SetPoint("TOPLEFT", 58, -34)
@@ -166,7 +173,7 @@ function WP:UpdateGuideArrow()
     if minimapArrow then minimapArrow:Hide() end
 
     frame.title:SetText(state.title or "Profession guide")
-    frame.subtitle:SetText((state.zone or "Route") .. "  ·  " .. tostring(state.skill or 0) .. " → " .. tostring(state.target or 300))
+    frame.subtitle:SetText((state.zone or "Route") .. "  |  " .. tostring(state.skill or 0) .. " -> " .. tostring(state.target or 300))
 
     local onMap = isPlayerOnMap(state.mapID)
     local px, py
@@ -198,7 +205,7 @@ function WP:UpdateGuideArrow()
                 marker.icon = marker:CreateTexture(nil, "OVERLAY")
                 marker.icon:SetAllPoints()
                 marker.icon:SetTexture("Interface\\Minimap\\MinimapArrow")
-                marker.icon:SetVertexColor(0.25, 1, 0.42, 1)
+                marker.icon:SetVertexColor(0.98, 0.61, 0.20, 1)
                 self.minimapRouteArrow = marker
             end
             local marker = self.minimapRouteArrow
@@ -211,7 +218,7 @@ function WP:UpdateGuideArrow()
             marker.icon:SetRotation(angle)
             marker:SetScript("OnEnter", function(target)
                 GameTooltip:SetOwner(target, "ANCHOR_LEFT")
-                GameTooltip:SetText(string.format("%s — %d yd", targetLabel, yards or 0), 0.25, 1, 0.42)
+                GameTooltip:SetText(string.format("%s - %d yd", targetLabel, yards or 0), 0.98, 0.61, 0.20)
                 GameTooltip:Show()
             end)
             marker:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -236,4 +243,5 @@ function WP:ToggleGuideArrow()
         self:UpdateGuideArrow()
     end
 end
+
 

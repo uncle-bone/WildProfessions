@@ -15,29 +15,34 @@ local function Name(itemID)
 	return name
 end
 
+local function TextHeight(text, width)
+	local chars = math.max(20, math.floor((width or 300) / 7))
+	local lines = 0
+	for line in (tostring(text or "") .. "\n"):gmatch("(.-)\n") do
+		lines = lines + math.max(1, math.ceil(#line / chars))
+	end
+	return lines * 16 + 4
+end
+
+local function ClampScroll()
+	if not (scroll and body) then return end
+	local maximum = math.max(0, (body:GetHeight() or 0) - (scroll:GetHeight() or 0))
+	scroll:SetVerticalScroll(math.max(0, math.min(maximum, scroll:GetVerticalScroll() or 0)))
+end
+
 local function Copy(text)
 	if not copyWindow then
-		copyWindow = CreateFrame("Frame", addonName .. "ShoppingCopy", UIParent, "PortraitFrameTemplate")
+		copyWindow = ns.Art.Window(addonName .. "ShoppingCopy", 560, 450, L["Shopping list"])
 		table.insert(UISpecialFrames, addonName .. "ShoppingCopy")
-		copyWindow:SetSize(460, 380)
-		copyWindow:SetPoint("CENTER")
-		copyWindow:SetFrameStrata("DIALOG")
-		copyWindow:SetToplevel(true)
-		copyWindow:SetClampedToScreen(true)
-		copyWindow:SetMovable(true)
-		copyWindow:EnableMouse(true)
-		copyWindow:RegisterForDrag("LeftButton")
-		copyWindow:SetScript("OnDragStart", copyWindow.StartMoving)
-		copyWindow:SetScript("OnDragStop", copyWindow.StopMovingOrSizing)
 		copyWindow:SetTitle(L["Shopping list"])
-		ns.Art.Icon(copyWindow:GetPortrait(), ICON, 62)
+		ns.Art.Icon(copyWindow:GetPortrait(), ICON, 30)
 		local hint = copyWindow:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-		hint:SetPoint("TOPLEFT", 70, -32)
+		hint:SetPoint("TOPLEFT", 20, -62)
 		hint:SetPoint("RIGHT", -16, 0)
 		hint:SetJustifyH("LEFT")
 		hint:SetText(L["The text is selected. Press Ctrl+C (Cmd+C on a Mac) to copy it."])
 		local inset = CreateFrame("Frame", nil, copyWindow, "InsetFrameTemplate")
-		inset:SetPoint("TOPLEFT", 10, -64)
+		inset:SetPoint("TOPLEFT", 10, -88)
 		inset:SetPoint("BOTTOMRIGHT", -10, 10)
 		local sf = CreateFrame("ScrollFrame", nil, inset, "ScrollFrameTemplate")
 		sf:SetPoint("TOPLEFT", 8, -8)
@@ -47,6 +52,7 @@ local function Copy(text)
 		copyEdit:SetAutoFocus(false)
 		copyEdit:SetFontObject("ChatFontNormal")
 		copyEdit:SetWidth(390)
+		copyEdit:SetHeight(340)
 		copyEdit:SetMaxLetters(0)
 		copyEdit:SetScript("OnTextChanged", function(self, userInput)
 			if userInput then
@@ -54,6 +60,7 @@ local function Copy(text)
 				self:SetFocus()
 				self:HighlightText()
 			end
+			self:SetHeight(math.max(sf:GetHeight(), TextHeight(shown, self:GetWidth())))
 		end)
 		copyEdit:SetScript("OnEditFocusGained", copyEdit.HighlightText)
 		copyEdit:SetScript("OnEscapePressed", function()
@@ -62,6 +69,8 @@ local function Copy(text)
 		sf:SetScrollChild(copyEdit)
 		sf:SetScript("OnSizeChanged", function(frame)
 			copyEdit:SetWidth(math.max(180, frame:GetWidth() - 6))
+			copyEdit:SetHeight(math.max(frame:GetHeight(), TextHeight(shown, copyEdit:GetWidth())))
+			frame:SetVerticalScroll(math.min(frame:GetVerticalScroll() or 0, math.max(0, copyEdit:GetHeight() - frame:GetHeight())))
 		end)
 	end
 	shown = text
@@ -90,6 +99,7 @@ local function Refresh()
 		text:SetWordWrap(true)
 		text:SetText("SkillUp recipe totals are not used as WildProfessions guide data. Open the window again when WildProfessions finishes loading.")
 		body:SetHeight(80)
+		ClampScroll()
 		footer:SetText("Guide shopping data unavailable")
 		if tripButton then tripButton:Hide() end
 		return
@@ -102,9 +112,9 @@ local function Refresh()
 		local state = guideProfession and wp:GetGuideState(guideProfession)
 		local lines = {}
 		local professionName = route and route.name or guideName or "No guide selected"
-		summary:SetText("WoW-Professions guide notes for " .. professionName)
+		summary:SetText("Profession guide notes for " .. professionName)
 		if not route or not state or state.status == "route-needed" then
-			lines[#lines + 1] = "No bundled WoW-Professions guide data is available for this profession yet."
+			lines[#lines + 1] = "No bundled profession guide data is available for this profession yet."
 		else
 			if learned then
 				lines[#lines + 1] = string.format("Current skill: %d/%d", learned.skill or 0, learned.maxSkill or 300)
@@ -162,9 +172,11 @@ local function Refresh()
 			text:SetJustifyH("LEFT")
 			text:SetWordWrap(true)
 			text:SetText(line)
-			top = top - (line == "" and 8 or 34)
+			local lineHeight = line == "" and 8 or math.max(24, (text:GetStringHeight() or 16) + 8)
+			top = top - lineHeight
 		end
 		body:SetHeight(math.max(1, -top + 20))
+		ClampScroll()
 		footer:SetText("Guide notes only; exact item totals are incomplete where marked.")
 		if tripButton then tripButton:Hide() end
 		return
@@ -236,7 +248,9 @@ local function Refresh()
 				elseif row.missing > 0 then
 					unpriced = unpriced + 1
 				end
-				top = top - 50
+				local itemHeight = math.max(48, (detail:GetStringHeight() or 16) + 20)
+				item:SetHeight(itemHeight)
+				top = top - itemHeight - 4
 			end
 		end
 	end
@@ -246,6 +260,7 @@ local function Refresh()
 		empty:SetText(#lists == 0 and L["No tracked profession"] or L["Nothing to buy"])
 	end
 	body:SetHeight(math.max(1, -top + 20))
+	ClampScroll()
 	footer:SetText(
 		L["Total for priced items: "]
 			.. ns.FormatNet(ns.Model.RoundMoney(total), false)
@@ -257,28 +272,18 @@ local function Create()
 	if frame then
 		return frame
 	end
-	frame = CreateFrame("Frame", addonName .. "ShoppingList", UIParent, "PortraitFrameTemplate")
+	frame = ns.Art.Window(addonName .. "ShoppingList", 760, 620, L["Shopping list"])
 	table.insert(UISpecialFrames, addonName .. "ShoppingList")
-	frame:SetSize(620, 500)
-	frame:SetPoint("CENTER")
-	frame:SetFrameStrata("DIALOG")
-	frame:SetToplevel(true)
-	frame:SetClampedToScreen(true)
-	frame:SetMovable(true)
-	frame:EnableMouse(true)
-	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
 	frame:SetTitle(L["Shopping list"])
-	ns.Art.Icon(frame:GetPortrait(), ICON, 62)
-	-- Clear of the portrait, which overhangs the top-left corner, and above the list.
+	ns.Art.Icon(frame:GetPortrait(), ICON, 30)
+	-- Header uses the same custom frame as the guide dashboard and report panels.
 	summary = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	summary:SetPoint("TOPLEFT", 82, -36)
+	summary:SetPoint("TOPLEFT", 20, -64)
 	summary:SetPoint("RIGHT", -16, 0)
 	summary:SetJustifyH("LEFT")
 	summary:SetHeight(28)
 	local inset = CreateFrame("Frame", nil, frame, "InsetFrameTemplate")
-	inset:SetPoint("TOPLEFT", 10, -70)
+	inset:SetPoint("TOPLEFT", 10, -92)
 	inset:SetPoint("BOTTOMRIGHT", -10, 48)
 	scroll = CreateFrame("ScrollFrame", nil, inset, "ScrollFrameTemplate")
 	scroll:SetPoint("TOPLEFT", 8, -8)

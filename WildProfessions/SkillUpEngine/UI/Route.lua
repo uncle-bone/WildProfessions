@@ -950,7 +950,7 @@ local function RenderWildProfessionsGuide(skillUpProfession)
 	if not learned then
 		page.Skill:SetText("Learn this profession to track its current guide step.")
 		page.RouteList:Message("WildProfessions guide data")
-		page.RouteList:Message(route and (route.name .. " guide is available in the WildProfessions window.") or "No bundled WoW-Professions guide data is available yet.")
+        page.RouteList:Message(route and (route.name .. " guide is available in the WildProfessions window.") or "No bundled guide data is available yet.")
 		page.ReagentList:Message("The guide library is available from /wp. The tracker only follows professions your character knows.")
 		page.Track:SetText("Open WildProfessions")
 		page.Track:SetEnabled(true)
@@ -964,7 +964,7 @@ local function RenderWildProfessionsGuide(skillUpProfession)
 	local state = wp:GetGuideState(learned)
 	local skill = tonumber(learned.skill) or 0
 	local maxSkill = tonumber(learned.maxSkill) or 300
-	page.Skill:SetFormattedText("%s  %d/%d  |  WoW-Professions guide", skillUpProfession.name, skill, maxSkill)
+    page.Skill:SetFormattedText("%s  %d/%d  |  Profession guide", skillUpProfession.name, skill, maxSkill)
 	page.Track:SetText("Show WP tracker")
 	page.Track:SetEnabled(true)
 	page.Track:SetScript("OnClick", function()
@@ -973,7 +973,7 @@ local function RenderWildProfessionsGuide(skillUpProfession)
 		if wp.ToggleTracker then wp:ToggleTracker() end
 	end)
 	if not route or not state or state.status == "route-needed" then
-		page.RouteList:Message(state and state.text or "No bundled WoW-Professions guide data is available yet.")
+    page.RouteList:Message(state and state.text or "No bundled guide data is available yet.")
 	else
 		page.RouteList:Message(state.title or "Current guide step")
 		page.RouteList:Message(string.format("Current skill %d  |  next target %d", skill, tonumber(state.target) or maxSkill))

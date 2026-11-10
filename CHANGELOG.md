@@ -1,52 +1,35 @@
-## 1.2.0-test.6
-- Added 163 faction-aware farming paths from the supplied Zygor profession guides across Herbalism, Mining, Skinning, and Fishing, including the material farming guides.
-- Reworked the map overlay to draw each route separately, deduplicate shared paths, color routes by profession, and show route names and skill requirements on hover.
-- Refreshes route geometry only when the map or selected profession changes to avoid rebuilding overlay frames every update tick.
-- Added the full route dataset as a separate load-once Lua data file and credited the supplied Alliance/Horde guide files.
-
-## 1.2.0-test.5
-- Added Fishing leveling map routes, starter and faction water stops, the Nat Pagle quest fish locations, and item-specific fish farming pins adapted from the supplied Zygor profession guide.
-- Added fishing farming pins to the map overlay and made alternate route selection prefer the zone currently shown on the world map.
-- Updated attribution for the adapted Fishing location data.
-
-## 1.2.0-test.4
-- Replaced cramped dashboard with a searchable guide library, clearer route card, skill progress, and large in-window controls.
-- Styled the tracker and actions with a dark, high-contrast green accent theme.
-
-## 1.2.0-test.3
-- Fixed route arrow player-coordinate handling so it computes direction instead of silently losing the Y coordinate.
-
-## 1.2.0-test.2
-- Fixed map overlay rendering on the Forever world map and removed unsupported map event registration.
-- Added the Zygor-derived Loch Modan Herbalism route and route line markers.
-- Route arrow follows the nearest route waypoint and opens the selected guide map.
-- Included attribution for the adapted route data.
-
-## 1.2.0-test.1
-- Added minimap launcher and visible profession-window launcher.
-- Added dashboard controls for tracker, route arrow, map routes, and diagnostics.
-- Exposed all bundled profession guides in the dashboard before profession scanning.
-- Added World Map route marker overlay for route steps with coordinates.
-- Kept the addon standalone with no auction house features or added dependencies.
-
 # Changelog
 
-## 1.1.0-alpha.2 - Source-linked guide expansion
+## 1.3.0-test.9-dev
+- Rebuilt the addon landing screen as a profession dashboard with live-skill guide cards and direct navigation to the major features.
+- Kept the farming atlas in its own page and improved the shared scroll sizing and clamping used by guide, atlas, shopping, and report lists.
+- Reworked the live tracker and utility windows to use the WildProfessions frame style.
+- Replaced imported source filenames in player-facing route metadata with neutral route labels.
+- Removed third-party source names from player-facing route and diagnostic text.
 
-- Added original source-linked route summaries for all 13 profession guide entries, including the combined Fishing + Cooking route.
-- Added `/wp route` to show all bundled skill steps, alternatives and source confidence notes.
-- Generalized rank reminders and tracker completion text for professions beyond Herbalism.
-- Expanded Herbalism route choices and documented Mining, Skinning and other gathering zone brackets.
-- Marked incomplete and beta-derived guide ranges instead of filling gaps with unverified recipes.
-- Updated README to state what this guide expansion does and what a full recipe planner still needs.
+## 1.3.0-test.8-dev
+- Added a large imported farm-route catalog with faction and skill metadata. Entries without coordinates remain text-only.
+- Added an all-farms view with category-aware search and waypoint counts.
+- Loaded route data as a standalone addon data file.
 
-This is an unpublished local preview. It has not been tested in the Forever client. CraftRoute code was not copied; its repository did not specify reuse terms. No exact recipe-by-recipe shopping engine is included in this build.
+## 1.3.0-test.7-dev
+- Added a separate Farming & Gathering Atlas with profession filters and zone/material search.
+- Listed mapped farm records by zone, material, skill threshold, faction, and waypoint count.
+- Reflowed guide-card columns and improved scrolling in guide, shopping, and report views.
 
-## 1.1.0-alpha.1 - Skill-tracked Herbalism guide
+## 1.3.0-test.6-dev
+- Held the combined Fishing + Cooking route out of guide selection and runtime tracking; standalone Cooking and Fishing remain available.
+- Expanded standalone Cooking into skill sections with recipe alternatives, unlock gates, estimated quantities, and carry-forward notes.
+- Expanded Camping and Merchant's Favor references with mechanics and live-verification notes.
+- Disabled Auction House pricing and search integrations.
 
-- Added a guide runtime that chooses steps from the live profession skill and current rank cap.
-- Added Herbalism rank-training reminders at skill 50, 125, and 200.
-- Added a movable route tracker and directional waypoint arrow.
-- Added a Skyborne starter step and Alliance-friendly Herbalism route through skill 300.
-- Marked route-area waypoint coordinates as approximate and retained the source's high-level validation caveat.
-- Kept the addon independent of external guide or database addons.
+## 1.3.0-test.4
+- Restored the missing vendor-only item value function so the planner pricing file loads.
+- Guarded tracker settings during early frame callbacks before saved variables are ready.
+
+## 1.3.0-test.3
+- Integrated the profession planner and profession-pane interface into WildProfessions.
+- Rebranded planner title, saved variables, reports, settings, and slash dispatch.
+- Unified `/wp` and `/wildprofessions` commands.
+- Removed Auction House pricing, search, collection, and shopping-list integrations.
+- Included the planner engine's GPL-3.0-or-later license and third-party notices.

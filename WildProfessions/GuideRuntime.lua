@@ -427,7 +427,7 @@ function WP:FormatGuideRoute(profession)
         if row.confidence and row.confidence ~= "" then lines[#lines + 1] = "    Data: " .. row.confidence end
     end
     if route.routeNote then lines[#lines + 1] = "Note: " .. route.routeNote end
-    lines[#lines + 1] = "Source: " .. (route.source or "WoW-Professions Forever")
+    lines[#lines + 1] = "Guide data: bundled profession guide"
     lines[#lines + 1] = "Confidence: " .. (route.sourceStatus or "Guide-derived; confirm in game")
     return table.concat(lines, "\n")
 end
@@ -449,7 +449,7 @@ function WP:FormatCombinedGuideRoute(route)
         if step.focus then lines[#lines + 1] = "    Focus: " .. step.focus end
         if step.instructions then lines[#lines + 1] = "    " .. step.instructions end
     end
-    lines[#lines + 1] = "Source: " .. (route.source or "WoW-Professions Forever")
+    lines[#lines + 1] = "Guide data: bundled profession guide"
     lines[#lines + 1] = "Confidence: " .. (route.sourceStatus or "Guide-derived; confirm in game")
     return table.concat(lines, "\n")
 end

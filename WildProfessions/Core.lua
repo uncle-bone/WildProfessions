@@ -2,7 +2,7 @@ local addonName, WP = ...
 WP = WP or {}
 _G.WildProfessions = WP
 WP.name = addonName or "WildProfessions"
-WP.version = "1.3.0-test.8-dev"
+WP.version = "1.3.0-test.9-dev"
 WP.professions = WP.professions or {}
 WP.selectedProfession = nil
 WP.refreshPending = false
@@ -95,7 +95,7 @@ function WP:Diagnostics()
     for _ in pairs(WP.RouteData or {}) do routes = routes + 1 end
     local gathering = 0
     for _, rows in pairs(WP.ZygorGatheringIndex or {}) do for _ in ipairs(rows) do gathering = gathering + 1 end end
-    self:Print("Bundled guide routes: " .. routes .. " | indexed Zygor gathering/farming paths: " .. gathering .. ". Use /wp route to print the selected profession's full route. Source recommendations remain unverified until checked in game.")
+    self:Print("Bundled guide routes: " .. routes .. " | indexed gathering/farming paths: " .. gathering .. ". Use /wp route to print the selected profession's full route. Route recommendations may need in-game verification.")
 end
 
 local frame = CreateFrame("Frame")

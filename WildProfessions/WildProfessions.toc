@@ -3,7 +3,7 @@
 ## Title: WildProfessions
 ## Notes: Profession planner, guides, reagent tracker, and gathering routes for WoW Forever
 ## Author: Uncle Bone; based on SkillUp Forever by Cillian Berragan
-## Version: 1.3.0-test.8-dev
+## Version: 1.3.0-test.9-dev
 ## X-License: GPL-3.0-or-later
 ## X-Website: https://github.com/uncle-bone/WildProfessions
 ## SavedVariables: WildProfessionsDB, WildProfessionsPlannerDB
